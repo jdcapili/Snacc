@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
+import Root from './components/root';
 
 //utils
 import * as actions from './actions/session_actions'
@@ -18,5 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   //test
 
-  ReactDOM.render(<h1>SNACC</h1>, root)
+
+
+  ReactDOM.render(<Root store={store} />, root)
 })
