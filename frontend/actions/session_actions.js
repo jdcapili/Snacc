@@ -31,17 +31,20 @@ export const receiveErrors = (errors) => (
 export const login = (user) => dispatch => {
   return SessionApiUtil.login(user)
   .then(payload => 
-    dispatch(receiveCurrentUser(payload)))
+    dispatch(receiveCurrentUser(payload)), 
+    err => dispatch(receiveErrors(err)))
 }
 
 export const signup = (user) => dispatch => {
-  return SessionApiUtil.signup(user)
-  .then(payload => 
-    dispatch(receiveCurrentUser(payload)))
+  return SessionApiUtil.signup(user).then(
+    payload => dispatch(receiveCurrentUser(payload)),
+    err => dispatch(receiveErrors(err))
+  );
 }
 
 export const logout = () => dispatch => {
-  return SessionApiUtil.logout()
-  .then(() => 
-    dispatch(receiveCurrentUser()))
+  return SessionApiUtil.logout().then(
+    () => dispatch(logoutCurrentUser()),
+    err => dispatch(receiveErrors(err))
+  );
 }
