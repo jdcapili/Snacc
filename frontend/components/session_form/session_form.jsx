@@ -3,6 +3,7 @@ import React from 'react';
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
+    debugger
     this.state = {
       display_name: '',
       email: '',
@@ -45,29 +46,25 @@ class SessionForm extends React.Component {
       <h1>{this.props.formType}</h1>
       {errors}
       <form onSubmit={this.handleClick} className="session-form">
-        <label>
-          Username: 
+        
           <input type="text" 
           onChange={this.update('display_name')}
           value={this.state.display_name}
           placeholder="username" />
-        </label>
+        
 
-        <label>
-          Email:
-          <input type="text"
+        
+          <input type="email"
             onChange={this.update('email')}
             value={this.state.email}
-            placeholder="email" />
-        </label>
-
-        <label>
-          Password:
+            placeholder="email@example.com" />
+        
+        
           <input type="password"
             onChange={this.update('password')}
             value={this.state.password}
             placeholder="password" />
-        </label>
+        
 
         <input type="submit" value={this.props.formType}/>
       </form>
