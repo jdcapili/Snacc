@@ -2,7 +2,6 @@ import { RECEIVE_ERRORS, RECEIVE_CURRENT_USER, REMOVE_ERRORS } from '../actions/
 
 
 const sessionErrorsReducer = (oldState = [],action) => {
-  debugger
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ERRORS: {
