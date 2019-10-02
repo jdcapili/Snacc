@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Greeting extends React.Component{
+  constructor(props){
+    super(props);
+    debugger 
+  }
+
+  componentDidMount(){
+    // debugger
+  }
   
   render(){
     const currentUser = this.props.currentUser;

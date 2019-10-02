@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { logout, clearErrors } from '../../actions/session_actions';
 import Greeting from './greeting';
 
-const msp = state => {
+const msp = (state) => {
+  // debugger
   return { currentUser: state.entities.users[state.session.id]}
 }
 

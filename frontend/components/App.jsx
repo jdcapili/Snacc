@@ -1,16 +1,18 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container'
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { AuthRoute,ProtectedRoute } from '../util/route_util';
 import Splash from './splash/splash'
 import SigninFormContainer from './session_form/signin_form_container'
 import SignupFormContainer from './session_form/signup_form_container'
 
+
+
 const App = () => (
   <div className="opening-page">
     <header>
-      <h1>S N A C C</h1>
-      <GreetingContainer />
+      <h1><Link to='/'>S N A C C</Link></h1>
+      <Route to='/' component={GreetingContainer} />
     </header>
 
     {/*    */}

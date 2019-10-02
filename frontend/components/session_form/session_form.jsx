@@ -1,16 +1,21 @@
 import React from 'react';
 
+
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
-    debugger
+    // debugger
+    
+    let email = this.props.history.location.state ? this.props.history.location.state.email : '';
+    
     this.state = {
       display_name: '',
-      email: '',
+      email,
       password: ''
     }
-    this.handleClick = this.handleClick.bind(this)
-    this.update = this.update.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    this.update = this.update.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field){
@@ -27,19 +32,40 @@ class SessionForm extends React.Component {
     }));
   }
 
+  demoLogin(demoUser){
+    return (e) => {
+    e.preventDefault();
+    this.setState({
+      display_name: demoUser.display_name,
+      email: demoUser.email,
+      password: demoUser.password 
+    }, () => this.props.action(this.state))
+  }
+  }
+
   componentDidMount(){
     this.props.clearErrors();
   }
 
   render(){
-      let {errors} = this.props
+    
+    let {errors} = this.props
     if(errors.length > 0){
       errors = errors.map((error) => {
         return <li key={error}>{error}</li>
       })
     }
+    let demoButton;
+    if(this.props.formType === 'Sign In'){
+      let demoUser = {
+        display_name: 'DemoUser',
+        email: 'demo@user.com',
+        password: '123456'
+      }
+      demoButton = <input type="button" onClick={this.demoLogin(demoUser)} value='Demo Mode'/>
+    }
     
-
+    debugger
 
     return <div className="session-form-div">
       
@@ -67,6 +93,7 @@ class SessionForm extends React.Component {
         
 
         <input type="submit" value={this.props.formType}/>
+        {demoButton}
       </form>
     </div>
   }

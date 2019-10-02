@@ -18,17 +18,15 @@ class Splash extends React.Component {
 
   handleClick(e){
     e.preventDefault();
-    debugger
-    this.props.history.push('/signup', [this.state])
-    
+    this.props.history.push({pathname: '/signup', state: this.state})
   }
 
   render(){
     return <div className="splash-content"><h1>Working? Everyone could use a Snacc</h1>
       <p>Snacc gives your team the power and alignment you need to do your best work.</p>
 
-      <form onSubmit={this.handleClick}>
-        <input type="text" onChange={this.update} value={this.state.email}/>
+      <form onSubmit={this.handleClick} className='splash-form'>
+        <input type="email" onChange={this.update} value={this.state.email}/>
         <input type="submit" value="Sign Up for Free!"/>
       </form>
     </div>

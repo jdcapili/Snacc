@@ -50,7 +50,7 @@ header {
     padding-left: 55px;
     background: white;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     top: 0;
     height: 70px;
     box-sizing: border-box;
@@ -65,10 +65,20 @@ h1 {
 
 
 .sign-links {
-    margin-left: 0 auto;
     display: flex;
     margin-left: auto;
     align-items: center;
+}
+
+.sign-links > a {
+    color: #818081;
+    text-decoration: none;
+    cursor: default;
+    font-family: Oswald;
+    padding: 8px;
+    margin-right: 5px;
+    border: 2px solid gray;
+    border-radius: 5px;
 }
 
 main#root {
@@ -102,4 +112,40 @@ main#root {
 .splash-content p {
     font-size: 25px;
     text-align: center;
+}
+
+h1 > a {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
+
+
+input {
+    border: 1px solid #868686;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+form.splash-form {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;  
+}
+
+.splash-form > input {
+    padding: 5px;
+}
+
+.splash-form > input[type="email"] {
+    height: 60px;
+    width: 360px;
+}s
+
+.splash-form input[type="submit"] {
+    font-style: Oswald;
+    font-face: Oswald;
+    font-size: x-large;
+    font-family: Oswald;
+    font-weight: bold;
 }
