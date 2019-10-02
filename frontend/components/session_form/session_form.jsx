@@ -18,14 +18,33 @@ class SessionForm extends React.Component {
 
   handleClick(e){
     e.preventDefault();
-    this.props.action(this.state)
+    this.props.action(this.state).then(()=>
+    this.setState({
+      display_name: '',
+      email: '',
+      password: ''
+    }));
+  }
+
+  componentDidUpdate(prevProps){
+    // debugger
   }
 
   render(){
+      let {errors} = this.props
+    if(errors.length > 0){
+      errors = errors.map((error) => {
+        return <li key={error}>{error}</li>
+      })
+    }
+    
 
-    return <div>
+
+    return <div className="session-form-div">
+      
       <h1>{this.props.formType}</h1>
-      <form onSubmit={this.handleClick}>
+      {errors}
+      <form onSubmit={this.handleClick} className="session-form">
         <label>
           Username: 
           <input type="text" 
