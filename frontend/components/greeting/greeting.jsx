@@ -18,8 +18,8 @@ class Greeting extends React.Component{
     } else {
       return(
         <div className="sign-links">
-          <Link to="/signup" onClick={this.props.clearErrors} >Sign Up</Link>
-          <Link to="/signin" onClick={this.props.clearErrors} >Sign In</Link>
+          <Link to="/signup" >Sign Up</Link>
+          <Link to="/signin" >Sign In</Link>
         </div>
       )
     }
