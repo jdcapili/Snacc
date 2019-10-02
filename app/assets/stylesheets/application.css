@@ -29,3 +29,15 @@ form.session-form {
     flex-direction: column;
     margin: 0 auto;
 }
+
+header {
+    display: flex;
+}
+
+
+.sign-links {
+    margin-left: 0 auto;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}

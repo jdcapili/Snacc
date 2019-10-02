@@ -26,9 +26,13 @@ class SessionForm extends React.Component {
     }));
   }
 
-  componentDidUpdate(prevProps){
-    // debugger
-  }
+  // componentDidMount(prevProps){
+  //   debuggerd
+  //   // debugger
+  //   if(prevProps.location !== this.props.location){
+  //     this.props.clearErrors();
+  //   }
+  // }
 
   render(){
       let {errors} = this.props
