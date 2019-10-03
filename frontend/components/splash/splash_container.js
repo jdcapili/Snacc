@@ -13,3 +13,5 @@
 //   msp,
 //   mdp
 // )(Splash);
+
+// git remote add heroku https://git.heroku.com/snacc-aa.git
