@@ -12,6 +12,7 @@ const App = () => (
   <div className="opening-page">
     <header>
       <h1><Link to='/'>S N A C C</Link></h1>
+      {/* <GreetingContainer /> */}
       <Route to='/' component={GreetingContainer} />
     </header>
 

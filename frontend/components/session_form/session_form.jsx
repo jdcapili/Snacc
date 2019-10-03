@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.update = this.update.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.loginOrlogout = this.loginOrlogout.bind(this);
   }
 
   update(field){
@@ -30,21 +31,59 @@ class SessionForm extends React.Component {
       email: '',
       password: ''
     }));
+    this.autocomp = ''
   }
 
   demoLogin(demoUser){
     return (e) => {
     e.preventDefault();
+    this.autocomp = 'typewriter-text'
     this.setState({
       display_name: demoUser.display_name,
       email: demoUser.email,
       password: demoUser.password 
-    }, () => this.props.action(this.state))
+    }, () => setTimeout(() => this.props.action(this.state), 5000))
   }
   }
 
   componentDidMount(){
     this.props.clearErrors();
+  }
+
+  loginOrlogout(formType){
+    if(formType === "Sign In"){
+      return [<input type="text"
+        onChange={this.update('display_name')}
+        value={this.state.display_name}
+        placeholder="username" className={this.autocomp} 
+        key='display_name' />,
+        <input type="password"
+          onChange={this.update('password')}
+          value={this.state.password}
+          placeholder="password" className={this.autocomp} 
+          key='password' />]
+    }else if(formType === 'Sign Up'){
+      return [<input type="text"
+        onChange={this.update('display_name')}
+        value={this.state.display_name}
+        placeholder="username" className={this.autocomp} 
+        key='display_name' />,
+
+
+
+        <input type="email"
+          onChange={this.update('email')}
+          value={this.state.email}
+          placeholder="email@example.com" className={this.autocomp} 
+          key='email' />,
+
+
+        <input type="password"
+          onChange={this.update('password')}
+          value={this.state.password}
+          placeholder="password" className={this.autocomp} 
+          key='password' />]
+    }
   }
 
   render(){
@@ -55,6 +94,7 @@ class SessionForm extends React.Component {
         return <li key={error}>{error}</li>
       })
     }
+
     let demoButton;
     if(this.props.formType === 'Sign In'){
       let demoUser = {
@@ -65,7 +105,9 @@ class SessionForm extends React.Component {
       demoButton = <input type="button" onClick={this.demoLogin(demoUser)} value='Demo Mode'/>
     }
     
-    debugger
+    let formElements = this.loginOrlogout(this.props.formType)
+
+    // debugger
 
     return <div className="session-form-div">
       
@@ -73,23 +115,7 @@ class SessionForm extends React.Component {
       {errors}
       <form onSubmit={this.handleClick} className="session-form">
         
-          <input type="text" 
-          onChange={this.update('display_name')}
-          value={this.state.display_name}
-          placeholder="username" />
-        
-
-        
-          <input type="email"
-            onChange={this.update('email')}
-            value={this.state.email}
-            placeholder="email@example.com" />
-        
-        
-          <input type="password"
-            onChange={this.update('password')}
-            value={this.state.password}
-            placeholder="password" />
+        {formElements}
         
 
         <input type="submit" value={this.props.formType}/>

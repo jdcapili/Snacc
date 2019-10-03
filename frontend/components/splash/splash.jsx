@@ -26,7 +26,7 @@ class Splash extends React.Component {
       <p>Snacc gives your team the power and alignment you need to do your best work.</p>
 
       <form onSubmit={this.handleClick} className='splash-form'>
-        <input type="email" onChange={this.update} value={this.state.email}/>
+        <input type="email" onChange={this.update} value={this.state.email} placeholder='example@email.com'/>
         <input type="submit" value="Sign Up for Free!"/>
       </form>
     </div>

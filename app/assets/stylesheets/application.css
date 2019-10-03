@@ -81,6 +81,11 @@ h1 {
     border-radius: 5px;
 }
 
+.sign-links > a:hover {
+    color: #000000c2;
+    border-color: #000000c2;
+}
+
 main#root {
 
     height: 700px;
@@ -135,17 +140,46 @@ form.splash-form {
 
 .splash-form > input {
     padding: 5px;
+    font-family: Oswald;
+    height: 60px;
 }
 
 .splash-form > input[type="email"] {
     height: 60px;
     width: 360px;
+    box-sizing: border-box;
 }s
 
 .splash-form input[type="submit"] {
-    font-style: Oswald;
-    font-face: Oswald;
     font-size: x-large;
     font-family: Oswald;
-    font-weight: bold;
+    font-weight: bolder;
+    width: 165px;
+}
+
+.typewriter-text {
+    display: inline-block;
+  	overflow: hidden;
+  	letter-spacing: 2px;
+ 	animation: typing 2s steps(30, end), blink-caret .75s step-end infinite;;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+@keyframes typing {
+    from { 
+        width: 0% 
+    }
+    to { 
+        width: 100% 
+    }
+}
+
+@keyframes blink-caret {
+    from, to { 
+        border-color: transparent 
+    }
+    50% { 
+        border-color: orange; 
+    }
 }
