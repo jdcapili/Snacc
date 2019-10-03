@@ -32,6 +32,7 @@ body{
     box-shadow: 0 1px 0 rgba(0,0,0,.25);
     justify-content: space-evenly;
     align-items: center;
+    border-radius: 5px;
 }
 
 form.session-form {
@@ -120,6 +121,7 @@ main#root {
 }
 
 h1 > a {
+    font-family: Oswald;
     text-decoration: none;
     color: black;
     cursor: default;
@@ -135,7 +137,7 @@ input {
 form.splash-form {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;  
+    padding-top: 20px;
 }
 
 .splash-form > input {
@@ -148,6 +150,9 @@ form.splash-form {
     height: 60px;
     width: 360px;
     box-sizing: border-box;
+    padding:;
+    margin-right: 5px;
+    padding-left: 10px;
 }s
 
 .splash-form input[type="submit"] {
@@ -182,4 +187,14 @@ form.splash-form {
     50% { 
         border-color: orange; 
     }
+}
+
+
+button {
+    height: 30px;
+    width: 75px;
+}
+
+h2.user-greeting {
+    margin-right: 10px;
 }

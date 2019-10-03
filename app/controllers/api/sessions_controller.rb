@@ -2,29 +2,30 @@ class Api::SessionsController < ApplicationController
   def create
     # debugger
     errors = [];
+    # debugger
 
     errors.push("username can't be blank") if params[:user][:display_name].length == 0
-
-    debugger
+    # debugger
     if params[:user][:password].nil?
       errors.push("password can't be blank")
     elsif params[:user][:password].length < 6
       errors.push("password too short")
     end
-    unless errors.nil?
+    unless errors.empty?
       render json: errors, status: 401
-      return
-    end
-
-
-    @user = User.find_by_credentials(params[:user][:display_name],
-    params[:user][:password])
-
-    if @user
-      login(@user)
-      render "api/users/show"
     else
-      render json: ['invalid credentials'], status: 401
+
+
+      @user = User.find_by_credentials(params[:user][:display_name],
+      params[:user][:password])
+
+      if @user
+        login(@user)
+        render "api/users/show"
+      else
+        render json: ['invalid credentials'], status: 401
+      end
+
     end
 
   end
