@@ -197,3 +197,13 @@ button {
 h2.user-greeting {
     margin-right: 10px;
 }
+
+.side-nav-bar {
+    background-color: cadetblue;
+    width: 20%;
+}
+
+.main-content-container {
+    width: 80%;
+    background-color: slategray;
+}

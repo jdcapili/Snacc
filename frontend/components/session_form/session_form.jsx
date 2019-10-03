@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
       display_name: demoUser.display_name,
       email: demoUser.email,
       password: demoUser.password 
-    }, () => setTimeout(() => this.props.action(this.state), 5000))
+    }, () => setTimeout(() => this.props.action(this.state), 3000))
   }
   }
 
