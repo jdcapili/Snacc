@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //utils
-import * as actions from './actions/session_actions'
+import * as channels from './util/channel_api_util'
 //
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,9 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //test
-  window.login = actions.login;
-  window.logout = actions.logout;
-  window.signup = actions.signup;
+  window.fetchChannels = channels.fetchChannels;
+  window.fetchChannel = channels.fetchChannel;
+  window.createChannel = channels.createChannel;
+  window.deleteChannel = channels.deleteChannel;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //test

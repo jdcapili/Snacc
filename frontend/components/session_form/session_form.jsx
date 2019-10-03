@@ -88,12 +88,19 @@ class SessionForm extends React.Component {
 
   render(){
     
-    let {errors} = this.props
+    let {errors} = this.props;
+    let allErrors = [];
     if(errors.length > 0){
       errors = errors.map((error) => {
         return <li key={error}>{error}</li>
       })
+      allErrors = <div className='session-errors'>
+        <ul>
+        {errors}
+        </ul>
+      </div>
     }
+
 
     let demoButton;
     if(this.props.formType === 'Sign In'){
@@ -109,19 +116,25 @@ class SessionForm extends React.Component {
 
     
 
-    return <div className="session-form-div">
+    return <>
+    <div className='session-form-parent'>
       
-      <h1>{this.props.formType}</h1>
-      {errors}
-      <form onSubmit={this.handleClick} className="session-form">
-        
-        {formElements}
-        
+      {allErrors}
 
-        <input type="submit" value={this.props.formType}/>
-        {demoButton}
-      </form>
+      <div className="session-form-div">
+        
+        <h1>{this.props.formType}</h1>
+        <form onSubmit={this.handleClick} className="session-form">
+          
+          {formElements}
+          
+
+          <input type="submit" value={this.props.formType}/>
+          {demoButton}
+        </form>
+      </div>
     </div>
+    </>
   }
 }
 

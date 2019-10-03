@@ -33,6 +33,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     border-radius: 5px;
+    animation: fadeInForm 1s;
 }
 
 form.session-form {
@@ -107,6 +108,7 @@ main#root {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: fadeInForm 1s;
 }
 
 .splash-content h1 {
@@ -207,3 +209,43 @@ h2.user-greeting {
     width: 80%;
     background-color: slategray;
 }
+
+.session-form-parent {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.session-errors {
+    border: 1px solid rgba(255, 65, 65, 0.55);
+    border-left: 5px solid rgba(255, 10, 10, 0.74);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 1px 0 rgba(255, 10, 10, 0.74);
+    box-sizing: border-box;
+    list-style: none;
+    border-radius: 5px;
+    background-color: white;
+    animation: fadeIn 1s;
+
+}
+
+.session-errors ul{
+    font-family: Oswald;
+}
+
+@keyframes fadeIn {
+   0% {opacity: 0;
+    margin-bottom: 0px; 
+    }
+   100% {opacity: 1;
+    margin-bottom: 20px; 
+    }
+}
+
+@keyframes fadeInForm {
+   0% {opacity: 0; 
+    }
+   100% {opacity: 1;
+    }
+} 
