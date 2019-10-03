@@ -3,7 +3,7 @@ import { logout, clearErrors } from '../../actions/session_actions';
 import Greeting from './greeting';
 
 const msp = (state) => {
-  // debugger
+  
   return { currentUser: state.entities.users[state.session.id]}
 }
 

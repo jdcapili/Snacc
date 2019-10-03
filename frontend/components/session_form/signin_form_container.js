@@ -3,7 +3,7 @@ import { login,clearErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 const msp = state => {
-  // debugger
+  
   return{
     errors: state.errors.session,
     formType: "Sign In"

@@ -1,11 +1,11 @@
 class Api::SessionsController < ApplicationController
   def create
-    # debugger
+
     errors = [];
-    # debugger
+
 
     errors.push("username can't be blank") if params[:user][:display_name].length == 0
-    # debugger
+
     if params[:user][:password].nil?
       errors.push("password can't be blank")
     elsif params[:user][:password].length < 6
@@ -33,7 +33,7 @@ class Api::SessionsController < ApplicationController
   def destroy
 
     @user = current_user
-    # debugger
+
     if @user
       logout
       render json: {}

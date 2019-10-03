@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 class Greeting extends React.Component{
   constructor(props){
     super(props);
-    // debugger
+    
     this.state = {
       signLinks: []
     }
   }
 
   componentDidMount(){
-    // debugger
+    
     
     if (this.props.location.pathname === '/signup') {
-      // debugger
+      
       this.setState({signLinks: <Link to="/signin" >Sign In</Link>});
     } else if (this.props.location.pathname === '/signin') {
       this.setState({
@@ -29,7 +29,7 @@ class Greeting extends React.Component{
   componentDidUpdate(prevProps){
     if(prevProps.location.pathname !== this.props.location.pathname){
       if (this.props.location.pathname === '/signup') {
-        // debugger
+        
         this.setState({ signLinks: <Link to="/signin" >Sign In</Link> });
       } else if (this.props.location.pathname === '/signin') {
         this.setState({
@@ -47,7 +47,7 @@ class Greeting extends React.Component{
   render(){
     const currentUser = this.props.currentUser;
 
-    // debugger
+    
     
 
     if(currentUser){

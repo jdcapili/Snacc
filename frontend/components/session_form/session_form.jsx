@@ -4,7 +4,7 @@ import React from 'react';
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
-    // debugger
+    
     
     let email = this.props.history.location.state ? this.props.history.location.state.email : '';
     
@@ -107,7 +107,7 @@ class SessionForm extends React.Component {
     
     let formElements = this.loginOrlogout(this.props.formType)
 
-    // debugger
+    
 
     return <div className="session-form-div">
       
