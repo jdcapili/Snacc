@@ -45,7 +45,7 @@ form.session-form {
 }
 
 header {
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     padding-right: 55px;
@@ -58,13 +58,22 @@ header {
     box-sizing: border-box;
 }
 
-h1 {
-    font-family: Oswald;
-    font-weight: bolder;
-    font-size: x-large;
+.splash-content p{
+    margin: 0px 100px;
 }
 
+h1 {
+    font-family: Lato,sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+}
 
+header img {
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+}
 
 .sign-links {
     display: flex;
@@ -76,7 +85,7 @@ h1 {
     color: #818081;
     text-decoration: none;
     cursor: default;
-    font-family: Oswald;
+    font-family: Lato, sans-serif;
     padding: 8px;
     margin-right: 5px;
     border: 2px solid gray;
@@ -88,15 +97,13 @@ h1 {
     border-color: #000000c2;
 }
 
-main#root {
-
-    height: 100vh;
-    background-color: #f8f8f8;
-}
+main#root {height: 100vh;background-color: white;}
 
 .opening-page {
     height: 700px;
     display: flex;
+    justify-content: center;
+    /* background: white; */
 }
 
 
@@ -108,6 +115,7 @@ main#root {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 70px;
     animation: fadeInForm 1s;
 }
 
@@ -123,7 +131,7 @@ main#root {
 }
 
 h1 > a {
-    font-family: Oswald;
+    font-family: Lato,sans-serif;
     text-decoration: none;
     color: black;
     cursor: default;
@@ -144,7 +152,7 @@ form.splash-form {
 
 .splash-form > input {
     padding: 5px;
-    font-family: Oswald;
+    font-family: Lato,sans-serif;
     height: 60px;
 }
 
@@ -158,7 +166,7 @@ form.splash-form {
 
 .splash-form input[type="submit"] {
     font-size: x-large;
-    font-family: Oswald;
+    font-family: Lato, sans-serif;
     font-weight: bolder;
     width: 165px;
 }
@@ -201,8 +209,11 @@ h2.user-greeting {
 }
 
 .side-nav-bar {
-    background-color: cadetblue;
+    background-color: #6e2142;
     width: 222px;
+    box-sizing: border-box;
+    padding-left: 15px;
+    color: white;
 }
 
 .main-content-container {
@@ -231,7 +242,7 @@ h2.user-greeting {
 }
 
 .session-errors ul{
-    font-family: Oswald;
+    font-family: Lato,sans-serif;
 }
 
 @keyframes fadeIn {
@@ -256,15 +267,57 @@ h2.user-greeting {
 }
 
 .dropdown-sidebar {
-    height: 635px;
-    width: 300px;
+    position: relative;
+    padding-top: 15px;
 }
 
 .dropdown-sidebar-content{
     display: none;
   position: absolute;
+  z-index: 1;
+  padding: 0px 25px;
+  padding-top: 20px;
 }
 
-.dropdown-sidebar:hover .dropdown-sidebar-content{
-    display: block;
+.dropdown-sidebar-content h3 {
+    font-size: 15px;
+}
+
+.dropdown-sidebar-content h4 {
+    font-size: 13px;
+}
+
+
+.drop-show {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    background-color: white;
+    border-radius: 5px;
+    left: 10px;
+    color: black;
+}
+
+.userInfo .active{
+    font-weight: bolder;
+}
+
+h3 {
+
+    font-family: Lato, sans-serif;
+    font-weight: 900;
+}
+
+.userInfo {
+    font-size: large;
+}
+
+.userInfo h4 {
+    padding-top: 5px;
+    color: #c6b5c5;
+}
+
+.userInfo h4:hover{
+    color: white;
 }

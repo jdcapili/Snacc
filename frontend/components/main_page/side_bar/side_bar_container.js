@@ -4,8 +4,10 @@ import { logout } from '../../../actions/session_actions';
 import SideBar from './side_bar';
 
 const msp = state => {
+  // debugger
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    channels: state.entities.channels
   };
 }
 
