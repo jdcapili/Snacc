@@ -5,7 +5,7 @@ export const fetchChannels = sessionId =>
     data: {
       id: sessionId
   }
-}); //fetch channels currentUser is associated with
+}); //should fetch channels currentUser is associated with
 
 export const fetchChannel = channelId =>
   $.ajax({
@@ -13,14 +13,16 @@ export const fetchChannel = channelId =>
     url: `api/channels/${channelId}`,
 });
 
-export const createChannel = channel =>
-  $.ajax({
+export const createChannel = channel =>{
+  debugger
+  return $.ajax({
     method: "POST",
     url: "api/channels",
     data: {
       channel
   }
-});
+})
+};
 
 // export const updateChannel = channel =>
 //   $.ajax({

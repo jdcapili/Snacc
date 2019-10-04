@@ -7,12 +7,14 @@ import MainPage from './main_page/main_page';
 // import SigninFormContainer from './session_form/signin_form_container';
 // import SignupFormContainer from './session_form/signup_form_container';
 import AuthComp from './auth_compilation';
+import Modal from './modal/trial_modal';
 
 
 
 const App = () => {
   // debugger
   return <>
+    <Modal />
     <Switch>
     <ProtectedRoute exact path='/main' component={MainPage} />
 

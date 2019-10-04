@@ -23,7 +23,7 @@ class SideBar extends React.Component {
         dropStat: "dropdown-sidebar-content",
         h3Stat: ''
       })
-      }
+    }
   }
 
   componentDidMount(){
@@ -60,7 +60,7 @@ class SideBar extends React.Component {
         <ul>
           {userChannels}
         </ul>
-        <
+        <h4 onClick={this.props.openModal}>+ Add a Channel</h4>
       </div>
 
     </>

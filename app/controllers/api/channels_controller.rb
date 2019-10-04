@@ -12,16 +12,16 @@ class Api::ChannelsController < ApplicationController
   end
 
   def create
-    # debugger
+    
     @channel = Channel.new(channel_params);
     @channel.creator_id = current_user.id
     # debugger
 
     if @channel.save
-      # debugger
+      
       render 'api/channels/show'
     else
-      # debugger
+      
       render json: @channel.errors.full_messages, status: 422
     end
   end
