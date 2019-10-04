@@ -52,16 +52,26 @@ class Greeting extends React.Component{
 
     if(currentUser){
       return(
-        <div className="sign-links">
-          <h2 className='user-greeting'>{currentUser.display_name}</h2>
-          <button onClick={this.props.logout}>Logout</button>
-        </div>
+        <>
+        <header>
+          <h1><Link to='/'>S N A C C</Link></h1>
+          <div className="sign-links">
+            <h2 className='user-greeting'>{currentUser.display_name}</h2>
+            <button onClick={this.props.logout}>Logout</button>
+          </div>
+        </header>
+        </>
       )
     } else {
       return(
-        <div className="sign-links">
-          {this.state.signLinks}
-        </div>
+        <>
+        <header>
+          <h1><Link to='/'>S N A C C</Link></h1>
+          <div className="sign-links">
+            {this.state.signLinks}
+          </div>
+        </header>
+        </>
       )
     }
   }

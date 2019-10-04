@@ -1,29 +1,24 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_container'
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import { AuthRoute,ProtectedRoute } from '../util/route_util';
-import Splash from './splash/splash';
-import MainPage from './main_page/mainPage';
-import SigninFormContainer from './session_form/signin_form_container';
-import SignupFormContainer from './session_form/signup_form_container';
+import MainPage from './main_page/main_page';
+// import GreetingContainer from './greeting/greeting_container'
+// import Splash from './splash/splash';
+// import SigninFormContainer from './session_form/signin_form_container';
+// import SignupFormContainer from './session_form/signup_form_container';
+import AuthComp from './auth_compilation';
 
 
 
 const App = () => {
   // debugger
-  return <div className="opening-page">
-    <header>
-      <h1><Link to='/'>S N A C C</Link></h1>
-      {/* <GreetingContainer /> */}
-      <Route to='/' component={GreetingContainer} />
-    </header>
+  return <>
+    <Switch>
+    <ProtectedRoute exact path='/main' component={MainPage} />
 
-    {/*    */}
-    <ProtectedRoute path='/main' component={MainPage} />
-    <AuthRoute exact path='/signin' component={SigninFormContainer} />
-    <AuthRoute exact path='/signup' component={SignupFormContainer} />
-    <AuthRoute exact path='/' component={Splash} />
-  </div>
+    <AuthComp path='/' component={AuthComp} />
+    </Switch>
+  </>
 }
 
 export default App;

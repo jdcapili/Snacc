@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //utils
-import * as channels from './util/channel_api_util'
+import * as channels from './actions/channel_actions'
 //
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -90,12 +90,12 @@ h1 {
 
 main#root {
 
-    height: 700px;
+    height: 100vh;
     background-color: #f8f8f8;
 }
 
 .opening-page {
-    height: inherit;
+    height: 700px;
     display: flex;
 }
 
@@ -202,11 +202,11 @@ h2.user-greeting {
 
 .side-nav-bar {
     background-color: cadetblue;
-    width: 20%;
+    width: 222px;
 }
 
 .main-content-container {
-    width: 80%;
+    width: 100%;
     background-color: slategray;
 }
 
@@ -249,3 +249,22 @@ h2.user-greeting {
    100% {opacity: 1;
     }
 } 
+
+.main-page {
+    display: flex;
+    height: 100vh;
+}
+
+.dropdown-sidebar {
+    height: 635px;
+    width: 300px;
+}
+
+.dropdown-sidebar-content{
+    display: none;
+  position: absolute;
+}
+
+.dropdown-sidebar:hover .dropdown-sidebar-content{
+    display: block;
+}
