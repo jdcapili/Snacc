@@ -1,33 +1,84 @@
 .splash-content{
   position: absolute;
-  z-index: 3;
+  z-index: 11;
 
 }
 
-.splash-bg img{
+.splash-bg > div{
   position: absolute;
+  height: 30px;
+  width: 30px;
   z-index: 2;
-  height: 20px;
-  width: 20px;
 }
 
-.zoom{
-  top: 500px;
+.splash-bg img {
+  height: 30px;
+  width: 30px;
+  box-sizing: border-box;
+}
+
+/* positions */
+
+.alexa{
+  top: 200px;
   left: 500px;
+ z-index: 2;
 }
 
-.dropbox{
-  top: 400px;
+.apple{
+  top: 500px;
   left: 200px;
+ z-index: 2;
 }
 
-.zoom, .dropbox2 {
+.babel{
+  top: 300px;
+  left: 100px;
+ z-index: 2;
+}
+
+.ruby{
+  top: 200px;
+  right: 500px;
+ z-index: 2;
+}
+
+.webpack{
+  top: 150px;
+  right: 700px;
+ z-index: 2;
+}
+
+.rubyGem{
+  top: 500px;
+  right: 300px;
+ z-index: 2;
+}
+
+.dropbox {
+  top: 400px;
+  right: 500px;
+ z-index: 2;
+}
+
+.splash-bg > div > img {
   animation: xAxis 10s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
 }
 
-.zoom2, .dropbox {
+.splash-bg > div {
   animation: yAxis 10s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
 }
+
+/* .alexa2 {
+  animation: 5s linear infinite;
+} */
+
+/* .alexa2::after{
+  content:'';
+  animation: yAxis 10s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+} */
+
+
 
 @keyframes xAxis {
   50% {
@@ -42,4 +93,6 @@
     transform: translateY(-50px);
   }
 }
+
+
 

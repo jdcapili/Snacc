@@ -24,8 +24,14 @@ class Splash extends React.Component {
   render(){
     return <>
       <div className="splash-bg">
-        <div className='zoom'><img className='zoom2' src={window.zoomLogo} /></div>
-        <div className='dropbox'><img className='dropbox2' src={window.dropboxLogo} /></div>
+        <div className="alexa"><img className="alexa2" src={window.alexaLogo} /></div>
+        <div className='apple'><img className='apple2' src={window.appleLogo} /></div>
+        <div className='babel'><img className='babel2' src={window.babel} /></div>
+        <div className='ruby'><img className='ruby2' src={window.ruby} /></div>
+        <div className='webpack'><img className='webpack2' src={window.webpack} /></div>
+        <div className='rubyGem'><img className='rubyGem2' src={window.rubyGem} /></div>
+        <div className='dropbox'><img className='dropbox2' src={window.dropbox} /></div>
+        <div className='react'><img className='react2' src={window.react} /></div>
         </div>
 
 
@@ -38,6 +44,7 @@ class Splash extends React.Component {
         <input type="submit" value="Sign Up for Free!"/>
       </form>
     </div>
+
     </>
   }
 }
