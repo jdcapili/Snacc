@@ -20,7 +20,7 @@ const App = () => {
 
     <AuthRoute path='/' component={AuthComp} />
     </Switch>
-    <footer></footer>
+    <footer> <button><img src={window.github} alt='github/snacc'/></button></footer>
   </>
 }
 

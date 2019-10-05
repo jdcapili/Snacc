@@ -20,6 +20,29 @@ body{
 
 }
 
+footer img {
+    height: 35px;
+    width: 35px;
+}
+
+footer button {
+    background: transparent;
+    border: transparent;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: white;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+}
+
 .session-form-div {
     display: flex;
     flex-direction: column;
