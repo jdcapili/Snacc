@@ -10,6 +10,9 @@ class User < ApplicationRecord
     class_name: :Channel,
     foreign_key: :creator_id
 
+  has_many :channel_users, dependent: :destroy
+  has_many :subscribed_channels, through: :channel_users, source: :channel
+
   # FIGVAPER
   after_initialize :ensure_session_token
   attr_reader :password

@@ -1,12 +1,12 @@
 class Api::ChannelsController < ApplicationController
 
   def index
-    @channels = Channel.all
+    @channels = Channel.all #subscriber_ids
     render 'api/channels/index'
   end
 
   def show
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find(params[:id]) #.includes(:subscriber_ids)
     
     render 'api/channels/show'
   end
@@ -18,7 +18,8 @@ class Api::ChannelsController < ApplicationController
     # debugger
 
     if @channel.save
-      
+      ChannelUser.create(user_id: current_user.id, channel_id: @channel.id)
+      # debugger
       render 'api/channels/show'
     else
       

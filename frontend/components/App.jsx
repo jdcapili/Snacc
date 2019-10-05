@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { AuthRoute,ProtectedRoute } from '../util/route_util';
 import MainPage from './main_page/main_page';
 // import GreetingContainer from './greeting/greeting_container'
@@ -20,7 +20,7 @@ const App = () => {
 
     <AuthRoute path='/' component={AuthComp} />
     </Switch>
-    <footer> <button><img src={window.github} alt='github/snacc'/></button></footer>
+    <footer> <button h><img src={window.github} alt='github/snacc'/></button></footer>
   </>
 }
 
