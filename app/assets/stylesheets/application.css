@@ -51,16 +51,24 @@ header {
     padding-right: 10%;
     border: 0px 100px;
     padding-left: 10%;
-    background: white;
+    background-color: white;
     overflow: hidden;
     position: fixed;
+    z-index: 10;
     top: 0;
     height: 70px;
     margin: 0 auto;
     box-sizing: border-box;
-    z-index: 3;
     width: 100%;
 }
+
+
+.splash-content {
+    position: absolute;
+    z-index:5;
+}
+
+
 
 header h1 {
     align-items: center;
@@ -71,9 +79,7 @@ header h1 {
     box-shadow: 2px 0px 2px slategray;
 }
 
-.splash-content p{
-    margin: 0px 100px;
-}
+
 
 h1 {
     font-family: Lato,sans-serif;
@@ -126,35 +132,6 @@ main#root {height: 100vh;background-color: white;}
 }
 
 
-.splash-content {
-    display: flex;
-    height: 50%;
-    width: auto;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 70px;
-    animation: fadeInForm 1s;
-}
-
-.splash-content h1 {
-    font-size: 45px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.splash-form input[type="submit"] {
-    background-color: #611f69;
-    color: white;
-    display: flex;
-    padding: 5px 15px;
-}
-
-.splash-content p {
-    font-size: 25px;
-    text-align: center;
-}
 
 h1 > a {
     font-family: Lato,sans-serif;

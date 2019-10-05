@@ -62,7 +62,7 @@ class Greeting extends React.Component{
     if(currentUser){
       return(
         <>
-        <header>
+        <header className='nav-bar'>
            
             <Link to='/'> <h1> <img src={window.slackLogo} />S N A C C</h1></Link>
           <div className="sign-links">
@@ -75,7 +75,7 @@ class Greeting extends React.Component{
     } else {
       return(
         <>
-          <header className={this.state.headClass}>
+          <header className={`nav-bar ${this.state.headClass}`}>
             <h1> <img src={window.slackLogo} /><Link to='/'>S N A C C</Link></h1>
           <div className="sign-links">
             {this.state.signLinks}

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import SelectedFeature from './features_screen';
 
 class Splash extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      email: ''
+      email: '',
+      selectedFeat: '1'
     }
 
     this.update = this.update.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.changeSelection = this.changeSelection.bind(this);
   }
 
   update(e){
@@ -19,6 +22,10 @@ class Splash extends React.Component {
   handleClick(e){
     e.preventDefault();
     this.props.history.push({pathname: '/signup', state: this.state})
+  }
+
+  changeSelection(val){
+    this.setState({selectedFeat: val})
   }
 
   render(){
@@ -36,14 +43,31 @@ class Splash extends React.Component {
 
 
     <div className="splash-content">
-      <h1>Working? Everyone could use a Snacc</h1>
-      <p>Snacc gives your team the power and alignment you need to do your best work.</p>
+      <div className="splash-content1">
+        <h1>Working? Everyone could use a Snacc</h1>
+        <p>Snacc gives your team the power and alignment you need to do your best work.</p>
 
-      <form onSubmit={this.handleClick} className='splash-form'>
-        <input type="email" onChange={this.update} value={this.state.email} placeholder='example@email.com'/>
-        <input type="submit" value="Sign Up for Free!"/>
-      </form>
+        <form onSubmit={this.handleClick} className='splash-form'>
+          <input type="email" onChange={this.update} value={this.state.email} placeholder='example@email.com'/>
+          <input type="submit" value="Sign Up for Free!"/>
+        </form>
+      </div>
+      
+      <div className="splash-collabs">
+        <h1>Put collaboration at your fingertips</h1>
+        <div className='feat-selection'>
+          <div className='features-screen'><SelectedFeature selectedFeat={this.state.selectedFeat} /></div>
+          <div className='features-options'>
+            <ul>
+              <li onClick={() => this.changeSelection('1')}>Organize conversations</li>
+              <li onClick={() => this.changeSelection('2')}>Share files and Documents?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+
+    
 
     </>
   }
