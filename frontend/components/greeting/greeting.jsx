@@ -55,7 +55,7 @@ class Greeting extends React.Component{
         <>
         <header>
            
-            <h1> <img src={window.slackLogo} /><Link to='/'>S N A C C</Link></h1>
+            <Link to='/'> <h1> <img src={window.slackLogo} />S N A C C</h1></Link>
           <div className="sign-links">
             <h2 className='user-greeting'>{currentUser.display_name}</h2>
             <button onClick={this.props.logout}>Logout</button>

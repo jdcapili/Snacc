@@ -1,0 +1,45 @@
+.splash-content{
+  position: absolute;
+  z-index: 3;
+
+}
+
+.splash-bg img{
+  position: absolute;
+  z-index: 2;
+  height: 20px;
+  width: 20px;
+}
+
+.zoom{
+  top: 500px;
+  left: 500px;
+}
+
+.dropbox{
+  top: 400px;
+  left: 200px;
+}
+
+.zoom, .dropbox2 {
+  animation: xAxis 10s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+}
+
+.zoom2, .dropbox {
+  animation: yAxis 10s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+}
+
+@keyframes xAxis {
+  50% {
+    animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    transform: translateX(50px);
+  }
+}
+
+@keyframes yAxis {
+  50% {
+    animation-timing-function: ease-out;
+    transform: translateY(-50px);
+  }
+}
+

@@ -22,7 +22,15 @@ class Splash extends React.Component {
   }
 
   render(){
-    return <div className="splash-content"><h1>Working? Everyone could use a Snacc</h1>
+    return <>
+      <div className="splash-bg">
+        <div className='zoom'><img className='zoom2' src={window.zoomLogo} /></div>
+        <div className='dropbox'><img className='dropbox2' src={window.dropboxLogo} /></div>
+        </div>
+
+
+    <div className="splash-content">
+      <h1>Working? Everyone could use a Snacc</h1>
       <p>Snacc gives your team the power and alignment you need to do your best work.</p>
 
       <form onSubmit={this.handleClick} className='splash-form'>
@@ -30,6 +38,7 @@ class Splash extends React.Component {
         <input type="submit" value="Sign Up for Free!"/>
       </form>
     </div>
+    </>
   }
 }
 
