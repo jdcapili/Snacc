@@ -20,6 +20,7 @@ const App = () => {
 
     <AuthRoute path='/' component={AuthComp} />
     </Switch>
+    <footer></footer>
   </>
 }
 

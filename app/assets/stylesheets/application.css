@@ -48,14 +48,27 @@ header {
     width: 80%;
     display: flex;
     align-items: center;
-    padding-right: 55px;
-    padding-left: 55px;
+    padding-right: 10%;
+    border: 0px 100px;
+    padding-left: 10%;
     background: white;
     overflow: hidden;
     position: fixed;
     top: 0;
     height: 70px;
+    margin: 0 auto;
     box-sizing: border-box;
+    z-index: 3;
+    width: 100%;
+}
+
+header h1 {
+    align-items: center;
+}
+
+.form-page{
+    border-bottom: 1px solid slategray;
+    box-shadow: 2px 0px 2px slategray;
 }
 
 .splash-content p{
@@ -81,20 +94,26 @@ header img {
     align-items: center;
 }
 
+
 .sign-links > a {
-    color: #818081;
+    color: #ffffff;
     text-decoration: none;
-    cursor: default;
     font-family: Lato, sans-serif;
     padding: 8px;
     margin-right: 5px;
-    border: 2px solid gray;
+    height: 45px;
+    width: 135px;
+    box-sizing: border-box;
     border-radius: 5px;
+    background-color: #611f69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: font-size .5s;
 }
 
 .sign-links > a:hover {
-    color: #000000c2;
-    border-color: #000000c2;
+    font-size: larger;
 }
 
 main#root {height: 100vh;background-color: white;}
@@ -109,9 +128,9 @@ main#root {height: 100vh;background-color: white;}
 
 .splash-content {
     display: flex;
-    height: auto;
+    height: 50%;
     width: auto;
-    margin: 0 auto;
+    margin: auto;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -123,6 +142,13 @@ main#root {height: 100vh;background-color: white;}
     font-size: 45px;
     margin-bottom: 10px;
     text-align: center;
+}
+
+.splash-form input[type="submit"] {
+    background-color: #611f69;
+    color: white;
+    display: flex;
+    padding: 5px 15px;
 }
 
 .splash-content p {

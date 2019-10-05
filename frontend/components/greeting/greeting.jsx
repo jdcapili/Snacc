@@ -6,7 +6,8 @@ class Greeting extends React.Component{
     super(props);
     
     this.state = {
-      signLinks: []
+      signLinks: [],
+      headClass: '',
     }
   }
 
@@ -15,14 +16,19 @@ class Greeting extends React.Component{
     
     if (this.props.location.pathname === '/signup') {
       
-      this.setState({signLinks: <Link to="/signin" >Sign In</Link>});
+      this.setState({
+        signLinks: <Link to="/signin" >Sign In</Link>,
+        headClass: 'form-page'
+      });
     } else if (this.props.location.pathname === '/signin') {
       this.setState({
-      signLinks: <Link to="/signup" >Sign Up</Link>});
+      signLinks: <Link to="/signup" >Sign Up</Link>,
+      headClass: 'form-page'});
     } else {
       this.setState({
         signLinks: [<Link to="/signup" key='signup'>Sign Up</Link>,
-      <Link to="/signin" key='signin'>Sign In</Link>]})
+          <Link to="/signin" key='signin'>Sign In</Link>],
+        headClass: ''})
     }
   }
   
@@ -30,15 +36,18 @@ class Greeting extends React.Component{
     if(prevProps.location.pathname !== this.props.location.pathname){
       if (this.props.location.pathname === '/signup') {
         
-        this.setState({ signLinks: <Link to="/signin" >Sign In</Link> });
+        this.setState({ signLinks: <Link to="/signin" >Sign In</Link>,
+        headClass: 'form-page' });
       } else if (this.props.location.pathname === '/signin') {
         this.setState({
-          signLinks: <Link to="/signup" >Sign Up</Link>
+          signLinks: <Link to="/signup" >Sign Up</Link>,
+          headClass: 'form-page'
         });
       } else {
         this.setState({
           signLinks: [<Link to="/signup" key='signup'>Sign Up</Link>,
-          <Link to="/signin" key='signin'>Sign In</Link>]
+          <Link to="/signin" key='signin'>Sign In</Link>],
+          headClass: ''
         })
       }
     }
@@ -55,7 +64,7 @@ class Greeting extends React.Component{
         <>
         <header>
            
-            <h1> <img src={window.slackLogo} /><Link to='/'>S N A C C</Link></h1>
+            <Link to='/'> <h1> <img src={window.slackLogo} />S N A C C</h1></Link>
           <div className="sign-links">
             <h2 className='user-greeting'>{currentUser.display_name}</h2>
             <button onClick={this.props.logout}>Logout</button>
@@ -66,7 +75,7 @@ class Greeting extends React.Component{
     } else {
       return(
         <>
-        <header>
+          <header className={this.state.headClass}>
             <h1> <img src={window.slackLogo} /><Link to='/'>S N A C C</Link></h1>
           <div className="sign-links">
             {this.state.signLinks}
