@@ -1,7 +1,7 @@
 class Api::ChannelsController < ApplicationController
 
   def index
-    @channels = Channel.all #subscriber_ids
+    @channels = Channel.all #includes(:subscriber_ids)??
     render 'api/channels/index'
   end
 

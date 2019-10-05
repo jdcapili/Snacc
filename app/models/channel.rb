@@ -9,4 +9,5 @@ class Channel < ApplicationRecord
   has_many :channel_users, dependent: :destroy
   has_many :subscribers, through: :channel_users, source: :user, dependent: :destroy
 
+  has_many :messages, as :messageable
 end
