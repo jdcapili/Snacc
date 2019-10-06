@@ -68,6 +68,10 @@
     font-weight: bold;
 }
 
+.splash-bg {
+  position: relative;
+}
+
 .splash-bg > div{
   position: absolute;
   height: 30px;
