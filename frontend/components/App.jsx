@@ -8,13 +8,13 @@ import MainPage from './main_page/main_page';
 // import SignupFormContainer from './session_form/signup_form_container';
 import AuthComp from './auth_compilation';
 import Modal from './modal/trial_modal';
-import ChatRoomContainer from './main_page/main_content/chatroom_container'
-import ChatRoom from './main_page/main_content/chatroom';
+// import ChatRoomContainer from './main_page/main_content/chatroom_container'
+// import ChatRoom from './main_page/main_content/chatroom';
 
 
 
 const App = () => {
-  // debugger
+  
   return <>
     <Modal />
     <Switch>

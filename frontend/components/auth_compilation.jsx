@@ -9,7 +9,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 class AuthComp extends React.Component {
 
   render(){
-    // debugger
+    
   return <>
   
     <div className="opening-page">

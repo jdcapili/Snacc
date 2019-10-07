@@ -4,14 +4,15 @@ import { withRouter, Router } from 'react-router-dom';
 
 class SideBar extends React.Component {
   constructor(props){
-    // debugger
+    
     super(props);
     this.state = {
       dropStat: `dropdown-sidebar-content`,
       h3Stat: ''
     }
     this.dropDownClick = this.dropDownClick.bind(this);
-    // this.sidebarRedirect = this.sidebarRedirect.bind(this  );
+    this.sidebarRedirect = this.sidebarRedirect.bind(this);
+    this.subscriberHelper = this.subscriberHelper.bind(this);
   }
 
   dropDownClick(){
@@ -31,22 +32,52 @@ class SideBar extends React.Component {
 
   componentDidMount(){
     // debugger
-    this.props.fetchChannels();
-   
+    this.props.fetchChannels(this.props.currentUser.id);
+    // this.props.fetchMessages();
   }
 
-  // sidebarRedirect(field,id){
-  //   debugger
-  //   return () => this.props.history.push(`/main/channels/${id}`)
-  // }
+  sidebarRedirect(id, channel){
+    // debugger
+    this.props.history.push({pathname: `/main/channels/${id}`, state: channel})
+  }
+
+  subscriberHelper(channelId){
+    App.cable.subscriptions.create(
+      { channel: "ChatChannel", id: channelId },
+      {
+        received: data => {
+          debugger
+          switch (data.type) {
+            case "message":
+              this.props.receiveMessage(data.message); //dispatch actions
+              break;
+            case "messages":
+              this.props.receiveMessages(data.messages);
+              break;
+          }
+        },
+        speak: function (data) {
+          return this.perform("speak", data);
+        },
+        load: function () {
+          return this.perform("load");
+        }
+      }
+    );
+  }
 
   render(){
     let { currentUser } = this.props
     // debugger
     let userChannels = Object.values(this.props.channels).map((channel) => {
-      return <li key={channel.id} onClick={() => this.props.history.push({pathname: '/main/channels/1', state: channel})}># {channel.channel_name}</li>
+      return <li 
+      key={channel.id} 
+      onClick={() => this.sidebarRedirect(channel.id, channel)} 
+      ># {channel.channel_name}
+      {this.subscriberHelper(channel.id)}
+      </li>
     })
-    // debugger
+    
     return <>
 
       <div className='dropdown-sidebar' >

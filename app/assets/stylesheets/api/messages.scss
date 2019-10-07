@@ -13,6 +13,8 @@ button.load-button {
 }
 
 .message-list {
-    height: 500px;
-    background-color: antiquewhite;
+  overflow-y: scroll;
+  height: 300px;
+  width: 400px;
+  border: solid gray 1px;
 }

@@ -2,7 +2,7 @@
 // import Splash from "./splash";
 
 // const msp = state => {
-//   debugger
+//   
 // };
 
 // const mdp = dispatch => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBarContainer from './side_bar/side_bar_container';
-import ChatRoomContainer from './main_content/chatroom_container';
+import ChannelChatContainer from './main_content/channel_chatroom/channel_chat_container';
 import { ProtectedRoute } from '../../util/route_util';
 
 class MainPage extends React.Component {
@@ -18,7 +18,7 @@ class MainPage extends React.Component {
       <div className="main-content-container">
         {/* <MainContentContainer /> */}
         {/* <Route path='/main/channels/:channelId' component={ChatRoomContainer} /> */}
-          <ProtectedRoute exact path='/main/channels/:channelId' component={ChatRoomContainer} />
+          <ProtectedRoute exact path='/main/channels/:channelId' component={ChannelChatContainer} />
       </div>
     </div>
     </>

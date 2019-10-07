@@ -2,8 +2,10 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    channel = Channel.find_by(channel_name: 'general')
 
     if @user.save
+      ChannelUser.create(user: @user, channel: channel)
       login(@user)
       render "api/users/show"
     else

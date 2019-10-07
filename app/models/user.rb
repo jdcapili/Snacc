@@ -33,7 +33,9 @@ class User < ApplicationRecord
   attr_reader :password
   
   def self.find_by_credentials(username, password)
-    user = User.find_by(display_name: username)
+    # debugger
+    user = User.includes(:subscribed_channels, :owned_channels).find_by(display_name: username)
+    # debugger
     user && user.is_password?(password) ? user : nil
   end
 

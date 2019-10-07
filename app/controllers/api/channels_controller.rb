@@ -1,12 +1,17 @@
 class Api::ChannelsController < ApplicationController
 
+  before_action :ensure_logged_in
+
   def index
-    @channels = Channel.all #includes(:subscriber_ids)??
+    #current user's subscribed channels
+    # debugger
+    user = User.find(params[:id])
+    @channels = Channel.includes(:messages).all #includes(:subscriber_ids)??
     render 'api/channels/index'
   end
 
   def show
-    @channel = Channel.find(params[:id]).includes(:message_ids) #.includes(:subscriber_ids)
+    @channel = Channel.includes(:messages).find(params[:id]) #.includes(:subscriber_ids)
     
     render 'api/channels/show'
   end
@@ -15,11 +20,11 @@ class Api::ChannelsController < ApplicationController
     
     @channel = Channel.new(channel_params);
     @channel.creator_id = current_user.id
-    # debugger
+    
 
     if @channel.save
       ChannelUser.create(user_id: current_user.id, channel_id: @channel.id)
-      # debugger
+      
       render 'api/channels/show'
     else
       
