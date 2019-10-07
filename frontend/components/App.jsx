@@ -8,6 +8,8 @@ import MainPage from './main_page/main_page';
 // import SignupFormContainer from './session_form/signup_form_container';
 import AuthComp from './auth_compilation';
 import Modal from './modal/trial_modal';
+import ChatRoomContainer from './main_page/main_content/chatroom_container'
+import ChatRoom from './main_page/main_content/chatroom';
 
 
 
@@ -16,11 +18,12 @@ const App = () => {
   return <>
     <Modal />
     <Switch>
-    <ProtectedRoute exact path='/main' component={MainPage} />
+    <ProtectedRoute path='/main' component={MainPage} />
+    
 
     <AuthRoute path='/' component={AuthComp} />
     </Switch>
-    <footer> <button h><img src={window.github} alt='github/snacc'/></button></footer>
+    <footer> <button><img src={window.github} alt='github/snacc'/></button></footer>
   </>
 }
 

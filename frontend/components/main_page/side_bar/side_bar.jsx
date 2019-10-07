@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter, Router } from 'react-router-dom';
+
 
 class SideBar extends React.Component {
   constructor(props){
@@ -8,7 +10,8 @@ class SideBar extends React.Component {
       dropStat: `dropdown-sidebar-content`,
       h3Stat: ''
     }
-    this.dropDownClick = this.dropDownClick.bind(this)
+    this.dropDownClick = this.dropDownClick.bind(this);
+    // this.sidebarRedirect = this.sidebarRedirect.bind(this  );
   }
 
   dropDownClick(){
@@ -32,11 +35,16 @@ class SideBar extends React.Component {
    
   }
 
+  // sidebarRedirect(field,id){
+  //   debugger
+  //   return () => this.props.history.push(`/main/channels/${id}`)
+  // }
+
   render(){
     let { currentUser } = this.props
     // debugger
     let userChannels = Object.values(this.props.channels).map((channel) => {
-      return <li key={channel.id} ># {channel.channel_name}</li>
+      return <li key={channel.id} onClick={() => this.props.history.push({pathname: '/main/channels/1', state: channel})}># {channel.channel_name}</li>
     })
     // debugger
     return <>
@@ -67,4 +75,4 @@ class SideBar extends React.Component {
   }
 }
 
-export default SideBar
+export default withRouter(SideBar)

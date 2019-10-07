@@ -6,7 +6,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.find(params[:id]) #.includes(:subscriber_ids)
+    @channel = Channel.find(params[:id]).includes(:message_ids) #.includes(:subscriber_ids)
     
     render 'api/channels/show'
   end

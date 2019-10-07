@@ -1,0 +1,18 @@
+// Place all the styles related to the api/messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chatroom-container {height: 100vh;box-sizing: border-box;}
+
+.chatroom-container div {
+    font-size: 20px;
+}
+
+button.load-button {
+    width: 200px;
+}
+
+.message-list {
+    height: 500px;
+    background-color: antiquewhite;
+}
