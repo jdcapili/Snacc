@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2019_10_05_225911) do
   end
 
   create_table "channels", force: :cascade do |t|
+    t.integer "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "channel_name", null: false
-    t.string "creator_id", null: false
     t.index ["creator_id"], name: "index_channels_on_creator_id"
   end
 
