@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Channel.destroy_all
-Channeluser.destroy_all
+ChannelUser.destroy_all
 Message.destroy_all
 
 demo = User.create(display_name: 'DemoUser', email: 'demo@user.com', password:'123456' )
