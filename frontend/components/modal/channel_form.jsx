@@ -2,7 +2,7 @@ import React from 'react';
 
 class ChannelForm extends React.Component {
   constructor(props){
-    // 
+  
     super(props)
     this.state = {
       channel_name: ''

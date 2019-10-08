@@ -28,14 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //test
   
-  window.fetchMessage = messages.fetchMessage;
-  window.updateMessage = messages.updateMessage;
-  window.deleteMessage = messages.deleteMessage;
-  window.fetchChannelMessages = messages.fetchChannelMessages;
+  // window.fetchMessage = messages.fetchMessage;
+  // window.updateMessage = messages.updateMessage;
+  // window.deleteMessage = messages.deleteMessage;
+  // window.fetchChannelMessages = messages.fetchChannelMessages;
 
-  window.fetchChannel = channels.fetchChannel;
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.fetchChannel = channels.fetchChannel;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   //test
 
 

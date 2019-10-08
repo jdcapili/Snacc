@@ -12,7 +12,7 @@ export const fetchChannel = channelId =>
 });
 
 export const createChannel = channel =>{
-  // 
+
   return $.ajax({
     method: "POST",
     url: "api/channels",

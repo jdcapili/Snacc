@@ -33,11 +33,11 @@ class ChannelChat extends React.Component{
   }
 
   render(){
-    // 
+   
     let channel_id = typeof this.props.channel === 'undefined' ? '' : this.props.channel.id
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
-    // 
+   
     let messageList = [];
     if(this.props.messages.length > 0){
     messageList = this.props.messages.map(message => {
