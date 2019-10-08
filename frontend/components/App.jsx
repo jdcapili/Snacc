@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch,withRouter } from 'react-router-dom';
 import { AuthRoute,ProtectedRoute } from '../util/route_util';
 import MainPage from './main_page/main_page';
 // import GreetingContainer from './greeting/greeting_container'
@@ -11,20 +11,22 @@ import Modal from './modal/trial_modal';
 // import ChatRoomContainer from './main_page/main_content/chatroom_container'
 // import ChatRoom from './main_page/main_content/chatroom';
 
+class App extends React.Component {
+constructor(props){
+  super(props);
+}
 
-
-const App = () => {
-  
+render(){
+  debugger
   return <>
     <Modal />
     <Switch>
     <ProtectedRoute path='/main' component={MainPage} />
-    
-
     <AuthRoute path='/' component={AuthComp} />
     </Switch>
     <footer> <button><img src={window.github} alt='github/snacc'/></button></footer>
   </>
+}
 }
 
 export default App;

@@ -5,7 +5,7 @@ class Api::MessagesController < ApplicationController
   def index #tested
     
     channel = Channel.find(params[:id])
-    @messages = Message.where(messageable: channel)
+    @messages = Message.where(messageable: channel).includes(:author)
     render 'api/messages/index'
   end
 

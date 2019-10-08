@@ -10,8 +10,9 @@ import * as channels from './actions/channel_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  
+  // debugger
   let store;
+  
   if (window.currentUser) {
     const preloadedState = {
       entities: {

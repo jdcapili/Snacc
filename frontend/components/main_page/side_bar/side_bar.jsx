@@ -46,13 +46,13 @@ class SideBar extends React.Component {
       { channel: "ChatChannel", id: channelId },
       {
         received: data => {
-          debugger
+          // debugger
           switch (data.type) {
             case "message":
-              this.props.receiveMessage(data.message); //dispatch actions
+              this.props.receiveMessage(data.message).then(() => this.bottom.current.scrollIntoView()); //dispatch actions
               break;
             case "messages":
-              this.props.receiveMessages(data.messages);
+              this.props.receiveMessages(data.messages).then(() => this.bottom.current.scrollIntoView());
               break;
           }
         },
@@ -78,6 +78,8 @@ class SideBar extends React.Component {
       </li>
     })
     
+    // debugger
+
     return <>
 
       <div className='dropdown-sidebar' >

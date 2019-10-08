@@ -14,7 +14,8 @@ class ChatChannel < ApplicationCable::Channel
     message.author_id = data['author_id'] # I might need the currentUserId
 
     if message.save
-      debugger
+      # message = message.includes(:author)
+      # debugger
       socket = {message: message,type: 'message'}
       ChatChannel.broadcast_to(@chat_channel, socket)
     end

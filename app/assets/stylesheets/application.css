@@ -17,6 +17,7 @@
 
 body{
     margin: 0;
+    list-style: none;
 
 }
 
@@ -240,6 +241,10 @@ h2.user-greeting {
     box-sizing: border-box;
     padding-left: 15px;
     color: white;
+}
+
+.side-nav-bar * {
+    cursor: pointer;
 }
 
 .main-content-container {

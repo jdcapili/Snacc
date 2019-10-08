@@ -2,18 +2,26 @@ import React from 'react';
 import MessageForm from './message_form';
 
 class ChannelChat extends React.Component{
+  constructor(props){
+    super(props);
+    this.bottom = React.createRef();
+  }
   componentDidMount(){
-    debugger
+    // debugger
     if (this.props.messages.length < 1 && typeof this.props.channel !== 'undefined') {
-      this.props.fetchChannelMessages(this.props.channel.id)
+      this.props.fetchChannelMessages(this.props.channel.id).then(() => this.bottom.current.scrollIntoView())
     }
   }
 
   componentDidUpdate(){
     // debugger
     if (this.props.messages.length < 1){
-      this.props.fetchChannelMessages(this.props.channel.id)
+      this.props.fetchChannelMessages(this.props.channel.id).then(() => this.bottom.current.scrollIntoView())
+    } else {
+      this.bottom.current.scrollIntoView()
     }
+
+        
   }
 
   render(){
@@ -21,13 +29,13 @@ class ChannelChat extends React.Component{
     let channel_id = typeof this.props.channel === 'undefined' ? '' : this.props.channel.id
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
-debugger
+    // debugger
     let messageList = [];
     if(this.props.messages.length > 0){
     messageList = this.props.messages.map(message => {
       return (
         <li key={message.id}>
-          <h3>{message.author_id}</h3>
+          <h3>{message.author.display_name}</h3>
           {message.body}
           <div ref={this.bottom} />
         </li>

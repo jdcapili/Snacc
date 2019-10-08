@@ -2,7 +2,7 @@ import React from 'react';
 import SigninFormContainer from './session_form/signin_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import Splash from './splash/splash';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, withRouter } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -22,4 +22,4 @@ class AuthComp extends React.Component {
   }
 }
 
-export default AuthComp;
+export default withRouter(AuthComp);
