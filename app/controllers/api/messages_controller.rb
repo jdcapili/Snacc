@@ -10,7 +10,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def show #tested
-    @message = Message.find(params[:id])
+    @message = Message.includes(:author).find(params[:id])
     render 'api/messages/show'
   end
 

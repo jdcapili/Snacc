@@ -7,16 +7,16 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    
+     
     message = Message.new(body: data['message'])
     message.messageable_type = 'Channel'
     message.messageable_id = data['channel_id'] 
-    message.author_id = data['author_id'] # I might need the currentUserId
-
+    author = User.find(data['author_id']) # I might need the currentUserId
+    message.author = author
     if message.save
-      # message = message.includes(:author)
-      # debugger
-      socket = {message: message,type: 'message'}
+      
+      datum = message.attributes.merge({author: author.attributes})
+      socket = {message: datum,type: 'message'}
       ChatChannel.broadcast_to(@chat_channel, socket)
     end
   end

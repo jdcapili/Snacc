@@ -89,7 +89,8 @@ header {
 
 .splash-content {
     position: absolute;
-    z-index:5;
+    z-index: 5;
+    width: 100%;
 }
 
 
@@ -253,6 +254,7 @@ h2.user-greeting {
 }
 
 .session-form-parent {
+    height: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -294,8 +296,11 @@ h2.user-greeting {
 
 .main-page {
     display: flex;
+    width: 100%;
     height: 100vh;
+    margin: 0;
     animation: fadeInForm 1s;
+    box-sizing: border-box;
 }
 
 .dropdown-sidebar {
@@ -303,7 +308,7 @@ h2.user-greeting {
     padding-top: 15px;
 }
 
-.dropdown-sidebar-content{
+.dropdown-sidebar-content, .dropdown-options-content{
     display: none;
     position: absolute;
     z-index: 1;
@@ -319,6 +324,8 @@ h2.user-greeting {
     font-size: 13px;
     padding: 0;
 }
+
+
 
 
 .drop-show {
@@ -382,7 +389,7 @@ h4 {
 
 
 /* MODAL */
-.modal-background {
+.modal-background-form {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -390,6 +397,16 @@ h4 {
   left: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
+}
+
+.modal-background-button {
+    position: fixed;
+      top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
 }
 
 .modal-child {
@@ -459,3 +476,17 @@ h4 {
 }
 
 /* MODAL */
+
+
+.main-content-header {
+    justify-content: center;
+    height: 60px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid slategray;
+}
+
+.main-content-header h1 {
+
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Greeting extends React.Component{
   constructor(props){
@@ -17,17 +17,17 @@ class Greeting extends React.Component{
     if (this.props.location.pathname === '/signup') {
       
       this.setState({
-        signLinks: <Link to="/signin" >Sign In</Link>,
+        signLinks: <NavLink to="/signin" >Sign In</NavLink>,
         headClass: 'form-page'
       });
     } else if (this.props.location.pathname === '/signin') {
       this.setState({
-      signLinks: <Link to="/signup" >Sign Up</Link>,
+      signLinks: <NavLink to="/signup" >Sign Up</NavLink>,
       headClass: 'form-page'});
     } else {
       this.setState({
-        signLinks: [<Link to="/signup" key='signup'>Sign Up</Link>,
-          <Link to="/signin" key='signin'>Sign In</Link>],
+        signLinks: [<NavLink to="/signup" key='signup'>Sign Up</NavLink>,
+          <NavLink to="/signin" key='signin'>Sign In</NavLink>],
         headClass: ''})
     }
   }
@@ -36,17 +36,17 @@ class Greeting extends React.Component{
     if(prevProps.location.pathname !== this.props.location.pathname){
       if (this.props.location.pathname === '/signup') {
         
-        this.setState({ signLinks: <Link to="/signin" >Sign In</Link>,
+        this.setState({ signLinks: <NavLink to="/signin" >Sign In</NavLink>,
         headClass: 'form-page' });
       } else if (this.props.location.pathname === '/signin') {
         this.setState({
-          signLinks: <Link to="/signup" >Sign Up</Link>,
+          signLinks: <NavLink to="/signup" >Sign Up</NavLink>,
           headClass: 'form-page'
         });
       } else {
         this.setState({
-          signLinks: [<Link to="/signup" key='signup'>Sign Up</Link>,
-          <Link to="/signin" key='signin'>Sign In</Link>],
+          signLinks: [<NavLink to="/signup" key='signup'>Sign Up</NavLink>,
+          <NavLink to="/signin" key='signin'>Sign In</NavLink>],
           headClass: ''
         })
       }
@@ -56,7 +56,7 @@ class Greeting extends React.Component{
   render(){
     const currentUser = this.props.currentUser;
 
-    
+
     
 
     if(currentUser){
@@ -64,7 +64,7 @@ class Greeting extends React.Component{
         <>
         <header className='nav-bar'>
            
-            <Link to='/'> <h1> <img src={window.slackLogo} />S N A C C</h1></Link>
+            <NavLink to='/'> <h1> S N A C C</h1></NavLink>
           <div className="sign-links">
             <h2 className='user-greeting'>{currentUser.display_name}</h2>
             <button onClick={this.props.logout}>Logout</button>
@@ -76,7 +76,7 @@ class Greeting extends React.Component{
       return(
         <>
           <header className={`nav-bar ${this.state.headClass}`}>
-            <h1> <img src={window.slackLogo} /><Link to='/'>S N A C C</Link></h1>
+            <h1> <NavLink to='/'>S N A C C</NavLink></h1>
           <div className="sign-links">
             {this.state.signLinks}
           </div>
@@ -86,5 +86,5 @@ class Greeting extends React.Component{
     }
   }
 }
-
+{/* <img src={window.slackLogo} /> */}
 export default Greeting;

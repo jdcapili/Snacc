@@ -56,7 +56,7 @@ class Splash extends React.Component {
       <div className="splash-collabs">
         <h1>Put collaboration at your fingertips</h1>
         <div className='feat-selection'>
-          <div className='features-screen'><SelectedFeature selectedFeat={this.state.selectedFeat} /></div>
+            <div className='features-screen'><SelectedFeature selectedFeat={this.state.selectedFeat} /></div>
           <div className='features-options'>
             <ul>
               <li onClick={() => this.changeSelection('1')}>Organize conversations</li>

@@ -1,42 +1,49 @@
 import React from 'react';
 import MessageForm from './message_form';
+import Message from './message';
+import MainHeader from '../main_header/main_header';
 
 class ChannelChat extends React.Component{
   constructor(props){
     super(props);
     this.bottom = React.createRef();
+    
   }
   componentDidMount(){
-    // debugger
-    if (this.props.messages.length < 1 && typeof this.props.channel !== 'undefined') {
-      this.props.fetchChannelMessages(this.props.channel.id).then(() => this.bottom.current.scrollIntoView())
-    }
+    
+    if (typeof this.props.channel === 'undefined' || this.props.messages.length < 1) {
+      
+      // this.props.fetchChannelMessages(this.props.channel.id)
+      this.props.fetchChannel(this.props.match.params.channelId).then(() => this.bottom.current.scrollIntoView())
+    } 
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps){
     // debugger
-    if (this.props.messages.length < 1){
-      this.props.fetchChannelMessages(this.props.channel.id).then(() => this.bottom.current.scrollIntoView())
-    } else {
-      this.bottom.current.scrollIntoView()
-    }
-
+    if (prevProps.location !== this.props.location){
+      
+      this.props.fetchChannelMessages(this.props.channel.id).then((payload) => {
+        if(payload.messages.length > 0){
+        this.bottom.current.scrollIntoView()}
+      }
+      )
+      
+    } 
         
   }
 
   render(){
-    
+    // 
     let channel_id = typeof this.props.channel === 'undefined' ? '' : this.props.channel.id
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
-    // debugger
+    // 
     let messageList = [];
     if(this.props.messages.length > 0){
     messageList = this.props.messages.map(message => {
       return (
         <li key={message.id}>
-          <h3>{message.author.display_name}</h3>
-          {message.body}
+          <Message message={message}/>
           <div ref={this.bottom} />
         </li>
       )
@@ -45,7 +52,7 @@ class ChannelChat extends React.Component{
 
     return (
       <div className='chatroom-container'>
-        <div>ChatRoom</div>
+        <MainHeader channel={this.props.channel} />
 
 
         <div className='message-list'>

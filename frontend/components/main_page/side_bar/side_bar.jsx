@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter, Router } from 'react-router-dom';
+import { withRouter, Router, NavLink } from 'react-router-dom';
+import subscribeChannels from './channel_index';
 
 
 class SideBar extends React.Component {
@@ -8,11 +9,14 @@ class SideBar extends React.Component {
     super(props);
     this.state = {
       dropStat: `dropdown-sidebar-content`,
-      h3Stat: ''
+      h3Stat: '',
+      buttonStat: `dropdown-options-content`
     }
     this.dropDownClick = this.dropDownClick.bind(this);
-    this.sidebarRedirect = this.sidebarRedirect.bind(this);
-    this.subscriberHelper = this.subscriberHelper.bind(this);
+    this.dropOptionsClick = this.dropOptionsClick.bind(this);
+    // this.sidebarRedirect = this.sidebarRedirect.bind(this);
+    // this.subscriberHelper = this.subscriberHelper.bind(this);
+    // this.openChannelOptions = this.openChannelOptions.bind(this);
   }
 
   dropDownClick(){
@@ -30,55 +34,78 @@ class SideBar extends React.Component {
     }
   }
 
+  dropOptionsClick(e) {
+    e.preventDefault();
+    debugger
+    if (this.state.buttonStat.indexOf("drop-show") === -1) {
+
+      this.setState({
+        buttonStat: "dropdown-options-content drop-show",
+      })
+    } else {
+
+      this.setState({
+        buttonStat: "dropdown-options-content",
+      })
+    }
+  }
+
+  optionsHover(){
+    if (this.state.buttonStat.indexOf("drop-show") === -1) {
+
+      this.setState({
+        buttonStat: "dropdown-options-content drop-show",
+      })
+    } else {
+
+      this.setState({
+        buttonStat: "dropdown-options-content",
+      })
+    }
+  }
+
   componentDidMount(){
     // debugger
-    this.props.fetchChannels(this.props.currentUser.id);
-    // this.props.fetchMessages();
-  }
-
-  sidebarRedirect(id, channel){
+    this.props.fetchChannels(this.props.currentUser.id)
     // debugger
-    this.props.history.push({pathname: `/main/channels/${id}`, state: channel})
   }
 
-  subscriberHelper(channelId){
-    App.cable.subscriptions.create(
-      { channel: "ChatChannel", id: channelId },
-      {
-        received: data => {
-          // debugger
-          switch (data.type) {
-            case "message":
-              this.props.receiveMessage(data.message).then(() => this.bottom.current.scrollIntoView()); //dispatch actions
-              break;
-            case "messages":
-              this.props.receiveMessages(data.messages).then(() => this.bottom.current.scrollIntoView());
-              break;
-          }
-        },
-        speak: function (data) {
-          return this.perform("speak", data);
-        },
-        load: function () {
-          return this.perform("load");
-        }
-      }
-    );
+  componentDidUpdate(prevProps){
+    if(Object.values(prevProps.channels).length < Object.values(this.props.channels).length){
+      subscribeChannels(Object.values(this.props.channels),
+       this.props.currentUser.subscribed_channel_ids);
+    }
   }
+
+  openChannelOptions(channelId){
+    
+    return (e) => {
+      
+    e.preventDefault();
+    debugger
+    this.props.openModal('channelOptions',channelId)
+    }
+  }
+
 
   render(){
     let { currentUser } = this.props
-    // debugger
+
     let userChannels = Object.values(this.props.channels).map((channel) => {
       return <li 
-      key={channel.id} 
-      onClick={() => this.sidebarRedirect(channel.id, channel)} 
-      ># {channel.channel_name}
-      {this.subscriberHelper(channel.id)}
+        key={channel.id} onContextMenu={this.dropOptionsClick}
+      ><NavLink to={`/main/channels/${channel.id}`}># {channel.channel_name}</NavLink>
+      
+        <nav className={this.state.buttonStat} onMouseLeave={this.dropOptionsClick}>
+          <h3>{currentUser.display_name}</h3>
+          <h4>{currentUser.email}</h4>
+          <button onClick={this.props.logout}>Sign Out</button>
+        </nav>
+
       </li>
     })
     
-    // debugger
+
 
     return <>
 
@@ -101,11 +128,11 @@ class SideBar extends React.Component {
         <ul>
           {userChannels}
         </ul>
-        <h4 onClick={this.props.openModal}>+ Add a Channel</h4>
+        <h4 onClick={() => this.props.openModal('channel')}>+ Add a Channel</h4>
       </div>
 
     </>
   }
 }
 
-export default withRouter(SideBar)
+export default SideBar

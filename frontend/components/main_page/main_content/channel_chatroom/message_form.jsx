@@ -12,7 +12,7 @@ class MessageForm extends React.Component {
   }
 
   handleSubmit(e){
-    
+    // debugger
     e.preventDefault();
     App.cable.subscriptions.subscriptions[0].speak({ message: this.state.body,
     channel_id: this.props.channel_id,
@@ -21,7 +21,7 @@ class MessageForm extends React.Component {
   }
 
   render(){
-    // debugger
+
     return (
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>

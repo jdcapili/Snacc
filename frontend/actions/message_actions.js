@@ -7,15 +7,17 @@ export const REMOVE_MESSAGE = "REMOVE_MESSAGE";
 
 //reg action creators
 
-export const receiveMessages = (messages) => ({
-  type: RECEIVE_MESSAGES,
-  messages
-});
+export const receiveMessages = (messages) => {
+  // debugger
+  return {type: RECEIVE_MESSAGES,
+  messages}
+};
 
-export const receiveMessage = (message) => ({
-  type: RECEIVE_MESSAGE,
-  message
-});
+export const receiveMessage = (message) => {
+  // debugger
+  return {type: RECEIVE_MESSAGE,
+    message}
+};
 
 export const removeMessage = (messageId) => ({
   type: REMOVE_MESSAGE,
