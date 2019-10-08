@@ -14,13 +14,17 @@ class ChannelChat extends React.Component{
     if (typeof this.props.channel === 'undefined' || this.props.messages.length < 1) {
       
       // this.props.fetchChannelMessages(this.props.channel.id)
-      this.props.fetchChannel(this.props.match.params.channelId).then(() => this.bottom.current.scrollIntoView())
+      this.props.fetchChannel(this.props.match.params.channelId)
+      .then((payload) => {
+        debugger
+        this.bottom.current.scrollIntoView()
+      })
     } 
   }
 
   componentDidUpdate(prevProps){
     // debugger
-    if (prevProps.location !== this.props.location){
+    if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length){
       
       this.props.fetchChannelMessages(this.props.channel.id).then((payload) => {
         if(payload.messages.length > 0){
