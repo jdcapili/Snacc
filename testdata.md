@@ -13,6 +13,9 @@ chat bug:
 (AJAX request): I was trying to query Message.where(messageable_type: channel, messageable_id: params[:id]) and it keeps sending a GET request to '/cable'
 solution: instead of querying for each messageable_type and messageable_id, query for messageable: channel/dm instance. it will not dispatch a get request to /cable
 
+render bug: everytime I refreshed a page and pressed back a component would render momentarily then disappear.
+solution: I noticed that turbolinks was running and remembered that turbolinks doesn't work well with hashrouter. I deleted turbolinks on application.js and removed it from my rails gemfile and reinstalled the whole thing.
+
 
 questions:
 <!-- 1. inverse_of // answered -->

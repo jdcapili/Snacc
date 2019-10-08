@@ -16,7 +16,7 @@ export const receiveChannels = (channels) => (
 )
 
 export const receiveChannel = (payload) => {
-  // debugger
+
   return {
     type: RECEIVE_CHANNEL,
     channel: payload.channel,
@@ -24,17 +24,17 @@ export const receiveChannel = (payload) => {
   }
 };
 
-export const removeChannel = (channel) => (
+export const removeChannel = (channelId) => (
   {
-    type: RECEIVE_CHANNELS,
-    channelId: channel.id
+    type: REMOVE_CHANNEL,
+    channelId
   }
 )
 
 //thunk action creators
 
-export const fetchChannels = userId => dispatch => {
-  return ChannelsApiUtil.fetchChannels(userId).then(
+export const fetchChannels = () => dispatch => {
+  return ChannelsApiUtil.fetchChannels().then(
     payload => dispatch(receiveChannels(payload))
   );
 };

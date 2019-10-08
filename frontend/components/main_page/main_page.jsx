@@ -10,17 +10,15 @@ class MainPage extends React.Component {
   }
 
   render(){
-    // debugger
+
     return <>
     <div className='main-page'>
       <div className="side-nav-bar">
-        <Route path='/main' component={SideBarContainer} />
+        <SideBarContainer />
       </div>
 
       <div className="main-content-container">
-        {/* <MainContentContainer /> */}
-        {/* <Route path='/main/channels/:channelId' component={ChatRoomContainer} /> */}
-          <ProtectedRoute exact path='/main/channels/:channelId' component={ChannelChatContainer} />
+          <Route path='/main/channels/:channelId' component={ChannelChatContainer} />
       </div>
     </div>
     </>

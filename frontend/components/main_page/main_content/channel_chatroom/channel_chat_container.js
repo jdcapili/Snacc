@@ -1,10 +1,11 @@
 import ChannelChat from './channel_chat';
 import {fetchChannelMessages} from '../../../../actions/message_actions';
+import {fetchChannel} from '../../../../actions/channel_actions';
 import {connect} from 'react-redux';
 
 
 const msp = (state,ownProps) => {
-  // debugger
+
   return{
   currentUser: state.entities.users[state.session.id],
   channel: state.entities.channels[ownProps.match.params.channelId],
@@ -13,7 +14,8 @@ const msp = (state,ownProps) => {
 }
 
 const mdp = dispatch => ({
-  fetchChannelMessages: (id) => dispatch(fetchChannelMessages(id))
+  fetchChannelMessages: (id) => dispatch(fetchChannelMessages(id)),
+  fetchChannel: (channelId) => dispatch(fetchChannel(channelId))
 })
 
 export default connect(msp, mdp)(ChannelChat);

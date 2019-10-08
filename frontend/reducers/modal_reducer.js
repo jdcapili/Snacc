@@ -3,9 +3,10 @@ import { CLOSE_MODAL, OPEN_MODAL } from '../actions/modal_actions';
 
 const modalReducer = (oldState = null, action) => {
   Object.freeze(oldState);
+  debugger
   switch(action.type){
     case OPEN_MODAL: {
-      return action.modalType
+      return {type: action.modalType, datum: action.datum}
     }
     case CLOSE_MODAL: {
       return null

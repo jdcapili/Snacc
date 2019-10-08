@@ -10,7 +10,7 @@ import * as channels from './actions/channel_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  // debugger
+
   let store;
   
   if (window.currentUser) {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //test
-  // window.fetchMessages = messages.fetchMessages;
+  
   window.fetchMessage = messages.fetchMessage;
   window.updateMessage = messages.updateMessage;
   window.deleteMessage = messages.deleteMessage;

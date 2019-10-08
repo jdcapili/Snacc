@@ -18,7 +18,7 @@ class ChannelForm extends React.Component {
   handleClick(e){
     e.preventDefault();
     
-    dispatch(this.props.createChannel(this.state)).then(this.props.closeModal())
+    this.props.createNewChannel(this.state).then(this.props.closeModal())
 
   }
 

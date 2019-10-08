@@ -1,10 +1,8 @@
-export const fetchChannels = sessionId =>
+export const fetchChannels = () =>
   $.ajax({
     method: "GET",
     url: "api/channels",
-    data: {
-      id: sessionId
-  }
+
 }); //should fetch channels currentUser is associated with
 
 export const fetchChannel = channelId =>

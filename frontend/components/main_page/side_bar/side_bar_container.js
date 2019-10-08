@@ -19,7 +19,7 @@ const mdp = dispatch => {
     receiveMessages: (messages) => dispatch(receiveMessages(messages)),
     fetchChannels: (id) => dispatch(fetchChannels(id)),
     logout: () => dispatch(logout()),
-    openModal: () => dispatch(openModal("channel")),
+    openModal: (modalType,data) => dispatch(openModal(modalType,data)),
     closeModal: () => dispatch(closeModal())
   };
 }
