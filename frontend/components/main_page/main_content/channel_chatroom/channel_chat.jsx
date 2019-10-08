@@ -16,8 +16,9 @@ class ChannelChat extends React.Component{
       // this.props.fetchChannelMessages(this.props.channel.id)
       this.props.fetchChannel(this.props.match.params.channelId)
       .then((payload) => {
-        debugger
-        this.bottom.current.scrollIntoView()
+        if (payload.messages.length > 0) {
+          this.bottom.current.scrollIntoView()
+        }
       })
     } 
   }
