@@ -10,7 +10,7 @@ const subscribeChannels = (channelsArray, subsChannelArr) => {
         App.cable.subscriptions.create(
           { channel: "ChatChannel", id: channel.id },
           {
-            r
+            received: data => {
               switch (data.type) {
                 case "message":
                   dispatch(receiveMessage(data.message)); //dispatch actions
