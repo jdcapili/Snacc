@@ -17,6 +17,7 @@
 
 body{
     margin: 0;
+    list-style: none;
 
 }
 
@@ -242,6 +243,10 @@ h2.user-greeting {
     color: white;
 }
 
+.side-nav-bar * {
+    cursor: pointer;
+}
+
 .main-content-container {
     width: 100%;
     background-color: #ffffff;
@@ -396,6 +401,29 @@ h4 {
 .create-form {
     height: 100vh;
     display: flex;
+}
+
+.create-form form {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.inner-div {
+    padding: 25px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.inner-div p {
+    font-family: Lato, sans-serif;
+    margin-top: 15px;
 }
 
 .create-form > div {

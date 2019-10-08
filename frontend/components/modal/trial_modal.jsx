@@ -38,7 +38,7 @@ const msp = state => {
 }
 
 const mdp = dispatch => {
-  // debugger
+  // 
   return {
     closeModal: () => dispatch(closeModal()),
     createChannel: (channel) => dispatch(createChannel(channel))

@@ -4,7 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import App from './App';
 
 const Root = ({ store }) => {
-  // debugger
+  
   // let currentUser = store.getState()
   return <Provider store={store}>
     <HashRouter>

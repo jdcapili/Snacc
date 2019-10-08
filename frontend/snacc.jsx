@@ -4,13 +4,15 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //utils
-import * as channels from './actions/channel_actions'
+import * as messages from './actions/message_actions';
+import * as channels from './actions/channel_actions';
 //
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  
+  // debugger
   let store;
+  
   if (window.currentUser) {
     const preloadedState = {
       entities: {
@@ -25,10 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //test
-  window.fetchChannels = channels.fetchChannels;
+  // window.fetchMessages = messages.fetchMessages;
+  window.fetchMessage = messages.fetchMessage;
+  window.updateMessage = messages.updateMessage;
+  window.deleteMessage = messages.deleteMessage;
+  window.fetchChannelMessages = messages.fetchChannelMessages;
+
   window.fetchChannel = channels.fetchChannel;
-  window.createChannel = channels.createChannel;
-  window.deleteChannel = channels.deleteChannel;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //test

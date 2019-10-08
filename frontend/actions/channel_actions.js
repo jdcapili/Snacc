@@ -15,12 +15,14 @@ export const receiveChannels = (channels) => (
   }
 )
 
-export const receiveChannel = (channel) => (
-  {
+export const receiveChannel = (payload) => {
+  // debugger
+  return {
     type: RECEIVE_CHANNEL,
-    channel
+    channel: payload.channel,
+    messages: payload.messages
   }
-)
+};
 
 export const removeChannel = (channel) => (
   {
