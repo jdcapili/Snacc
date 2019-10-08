@@ -8,13 +8,13 @@ export const REMOVE_MESSAGE = "REMOVE_MESSAGE";
 //reg action creators
 
 export const receiveMessages = (messages) => {
-  // debugger
+  
   return {type: RECEIVE_MESSAGES,
   messages}
 };
 
 export const receiveMessage = (message) => {
-  // debugger
+  
   return {type: RECEIVE_MESSAGE,
     message}
 };

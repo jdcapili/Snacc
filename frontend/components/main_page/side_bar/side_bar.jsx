@@ -36,7 +36,7 @@ class SideBar extends React.Component {
 
   dropOptionsClick(e) {
     e.preventDefault();
-    debugger
+    
     if (this.state.buttonStat.indexOf("drop-show") === -1) {
 
       this.setState({
@@ -65,9 +65,9 @@ class SideBar extends React.Component {
   }
 
   componentDidMount(){
-    // debugger
+    // 
     this.props.fetchChannels(this.props.currentUser.id)
-    // debugger
+    // 
   }
 
   componentDidUpdate(prevProps){
@@ -82,7 +82,7 @@ class SideBar extends React.Component {
     return (e) => {
       
     e.preventDefault();
-    debugger
+    
     this.props.openModal('channelOptions',channelId)
     }
   }

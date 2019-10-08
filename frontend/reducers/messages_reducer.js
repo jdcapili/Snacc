@@ -7,7 +7,7 @@ import {merge} from 'lodash';
 import { RECEIVE_CHANNEL, RECEIVE_CHANNELS } from '../actions/channel_actions';
 
 const messagesReducer = (oldState = {}, action) => {
-  // debugger
+
   Object.freeze(oldState);
   switch(action.type){
     case RECEIVE_MESSAGES:{

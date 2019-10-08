@@ -24,7 +24,7 @@ function Modal({modal, closeModal,createNewChannel}) {
   if(!modal) {
     return null
   }
-  debugger
+  
   let component;
   let modType;
   switch (modal.type) {

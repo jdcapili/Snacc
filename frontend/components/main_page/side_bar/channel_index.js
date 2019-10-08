@@ -4,14 +4,13 @@ import {receiveMessage, receiveMessages} from '../../../actions/message_actions'
 const subscribeChannels = (channelsArray, subsChannelArr) => {
   
   channelsArray.forEach((channel) => {
-    // debugger;
+
     if (subsChannelArr.includes(channel.id)){
-      // debugger;
+  
         App.cable.subscriptions.create(
           { channel: "ChatChannel", id: channel.id },
           {
-            received: data => {
-              // debugger
+            r
               switch (data.type) {
                 case "message":
                   dispatch(receiveMessage(data.message)); //dispatch actions

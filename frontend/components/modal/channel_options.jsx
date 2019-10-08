@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 
 const msp = (state,ownProps) => {
-  debugger
+  
   return {channelId: ownProps.channelId, 
     closeModal: ownProps.closeModal}
 }
@@ -17,7 +17,7 @@ const mdp = dispatch => {
 }
 
 const ChannelOptions = (props) => {
-  debugger
+  
   let {removeChannel,channelId, closeModal} = props
   return <div className='channel-options'>
     <button onClick={()=> removeChannel(channelId)
