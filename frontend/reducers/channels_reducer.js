@@ -16,7 +16,10 @@ const channelsReducer = (oldState = {}, action) => {
       return newState;
     }
     case RECEIVE_CHANNEL: {
-      return merge({},oldState, { [action.channel.id]: action.channel});
+      let newState = merge({}, oldState);
+      delete newState[action.channel.id]
+      newState = merge({}, newState, { [action.channel.id]: action.channel });
+      return newState
     }
     case REMOVE_CHANNEL: {
       let newState = merge({},oldState);

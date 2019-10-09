@@ -3,7 +3,7 @@ class Api::ChannelUsersController < ApplicationController
   
     
     
-    
+   
     users = User.where(:id => params[:channel_user][:user_ids]);
 
     users.each { |user| ChannelUser.create(user: user, channel_id: params[:channel_user][:channel_id]) }
@@ -14,13 +14,9 @@ class Api::ChannelUsersController < ApplicationController
   end
 
   def destroy
-    # user = User.find(params[:channel_user][:user_id]);
-    # @channel = Channel.find(params[:channel_user][:channel_id])
- 
-    # ChannelUser.find_by(user: user, channel: @channel)
 
     ChannelUser.where(channel_id: params[:channel_user][:channel_id],
-      user_id: current_user.id).destroy
+      user_id: current_user.id).destroy_all
 
     @channel = Channel.includes(:subscribers).find(params[:channel_user][:channel_id])
 

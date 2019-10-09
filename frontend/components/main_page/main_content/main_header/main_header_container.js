@@ -1,13 +1,14 @@
 import MainHeader from './main_header';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import { createSubscription, deleteSubscription } from '../../../../actions/channel_user_actions';
 
 const msp = (state,ownProps) => {
 
   return {
-    channel: state.entities.channels[ownProps.channelId],
+    channel: state.entities.channels[ownProps.match.params.channelId],
     currentUser: state.entities.users[state.session.id]
-  }
+  };
 }
 
 const mdp = dispatch => {
@@ -17,5 +18,5 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(msp,mdp)(MainHeader);
+export default withRouter(connect(msp,mdp)(MainHeader));
 

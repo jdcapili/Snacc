@@ -59,7 +59,9 @@ class Message extends React.Component {
         <div><h3>{message.author.author_name}</h3><span>{create_time}</span></div>
         <form onSubmit={this.handleClick}>
           <input type="text" value={this.state.toUpdate} onChange={this.update}/>
+          
           <input type="submit" value="update"/>
+          <button onClick={this.editDoubleClick}>Close</button>
         </form>
       </div>
       </>

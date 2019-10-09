@@ -10,15 +10,6 @@
   flex-direction: column;
 }
 
-.main-content-header {
-    justify-content: space-evenly;
-    height: 60px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #dcdcdc;
-}
-
 .chatroom-container div {
     font-size: 20px;
 }
@@ -93,5 +84,36 @@ span {
 
 .message-form input[type="submit"] {
     display: none;
+}
+
+.main-content-header > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50px;
+}
+
+.main-content-header {
+  justify-content: space-between;
+  height: 60px;
+  padding-left: 20px;
+  display: flex;
+  border-bottom: 1px solid #dcdcdc;
+  align-items: center;
+}
+
+.main-content-header button{
+    height: 40px;
+    width: 150px;
+    margin-right: 20px;
+    color: white;
+}
+
+.join {
+  background-color: #249829;
+}
+
+.leave {
+  background-color: red;
 }
 
