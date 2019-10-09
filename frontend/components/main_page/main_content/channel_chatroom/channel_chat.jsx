@@ -1,7 +1,7 @@
 import React from 'react';
 import MessageForm from './message_form';
-import Message from './message';
-import MainHeader from '../main_header/main_header';
+import MessageContainer from './message_container';
+import MainHeaderContainer from '../main_header/main_header_container';
 
 class ChannelChat extends React.Component{
   constructor(props){
@@ -24,7 +24,7 @@ class ChannelChat extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-    // debugger
+    
     if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length){
       
       this.props.fetchChannelMessages(this.props.channel.id).then((payload) => {
@@ -43,13 +43,13 @@ class ChannelChat extends React.Component{
     let subscriber_ids = typeof this.props.channel === 'undefined' ? '' : this.props.channel.subscriber_ids
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
-   
+    
     let messageList = [];
     if(this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)){
     messageList = this.props.messages.map(message => {
       return (
         <li className="message-item" key={message.id}>
-          <Message message={message}/>
+          <MessageContainer message={message} />
           <div ref={this.bottom} />
         </li>
       )
@@ -58,7 +58,7 @@ class ChannelChat extends React.Component{
 
     return (
       <div className='chatroom-container'>
-        <MainHeader channel={this.props.channel} />
+        <MainHeaderContainer channelId={channel_id}/>
 
 
         <div className='message-list'>

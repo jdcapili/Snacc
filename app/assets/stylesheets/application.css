@@ -425,9 +425,11 @@ h3 {
     color: #d0c3cf;
 }
 
-.channel-groups *:hover {
+.channel-groups a:hover {
     color: white;
 }
+
+
 
 li {
     font-family: Lato, sans-serif;

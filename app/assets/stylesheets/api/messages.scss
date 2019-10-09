@@ -68,6 +68,10 @@ span {
   display: flex;
 }
 
+.message-info > div {
+    cursor: default;
+}
+
 .user-avatar img{
   height: 40px;
   width: 40px;

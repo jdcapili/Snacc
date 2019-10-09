@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {deleteChannel} from '../../../actions/channel_actions'
+
 
 class SidebarListItem extends React.Component {
   constructor(props){
@@ -16,7 +16,7 @@ class SidebarListItem extends React.Component {
 
   dropOptionsClick(e) {
     e.preventDefault();
-    // debugger
+
     if (this.state.toggleStatus.indexOf("drop-show2") === -1) {
 
       this.setState({
@@ -45,7 +45,7 @@ class SidebarListItem extends React.Component {
         # {channel_name}</NavLink>
       
       <nav className={this.state.toggleStatus} onMouseLeave={this.dropOptionsClick} >
-        <button onClick={() => dispatch(deleteChannel(channel.id))}>
+        <button onClick={() => this.props.deleteChannel(channel.id)}>
           Leave Channel
           </button>
       </nav>

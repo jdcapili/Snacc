@@ -34,9 +34,9 @@ class SideBar extends React.Component {
 
   componentDidMount(){
     
-    let {currentUser} = this.props
+    let {currentUser,receiveMessage} = this.props
     Promise.resolve(this.props.fetchChannels(this.props.currentUser.id)).then((payload) => {
-      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids)
+      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage)
     })
     
   }
@@ -63,7 +63,7 @@ class SideBar extends React.Component {
     let { currentUser } = this.props
 
     let userChannels = Object.values(this.props.channels).map((channel) => {
-      return <SidebarListItem channel={channel}  key={channel.id}/>
+      return <SidebarListItem channel={channel}  key={channel.id} deleteChannel={this.props.deleteChannel}/>
     })
     
 

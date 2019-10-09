@@ -14,8 +14,8 @@ class ChatChannel < ApplicationCable::Channel
     author = User.find(data['author_id']) # I might need the currentUserId
     message.author = author
     if message.save
-      
-      datum = message.attributes.merge({author: author.attributes})
+      author = {author: {author_id: author.id, author_name: author.display_name}}
+      datum = message.attributes.merge(author)
       socket = {message: datum,type: 'message'}
       ChatChannel.broadcast_to(@chat_channel, socket)
     end
