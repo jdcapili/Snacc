@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Router, NavLink } from 'react-router-dom';
 import subscribeChannels from './channel_index';
+import SidebarListItem from './sidebar_list_item'
 
 
 class SideBar extends React.Component {
@@ -13,7 +14,7 @@ class SideBar extends React.Component {
       buttonStat: `dropdown-options-content`
     }
     this.dropDownClick = this.dropDownClick.bind(this);
-    this.dropOptionsClick = this.dropOptionsClick.bind(this);
+  
     // this.sidebarRedirect = this.sidebarRedirect.bind(this);
     // this.subscriberHelper = this.subscriberHelper.bind(this);
     // this.openChannelOptions = this.openChannelOptions.bind(this);
@@ -34,48 +35,34 @@ class SideBar extends React.Component {
     }
   }
 
+<<<<<<< HEAD
   dropOptionsClick(e) {
     e.preventDefault();
     
     if (this.state.buttonStat.indexOf("drop-show") === -1) {
+=======
+>>>>>>> messages_branch
 
-      this.setState({
-        buttonStat: "dropdown-options-content drop-show",
-      })
-    } else {
-
-      this.setState({
-        buttonStat: "dropdown-options-content",
-      })
-    }
-  }
-
-  optionsHover(){
-    if (this.state.buttonStat.indexOf("drop-show") === -1) {
-
-      this.setState({
-        buttonStat: "dropdown-options-content drop-show",
-      })
-    } else {
-
-      this.setState({
-        buttonStat: "dropdown-options-content",
-      })
-    }
-  }
 
   componentDidMount(){
     
+<<<<<<< HEAD
     this.props.fetchChannels(this.props.currentUser.id)
+=======
+    let {currentUser} = this.props
+    Promise.resolve(this.props.fetchChannels(this.props.currentUser.id)).then((payload) => {
+      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids)
+    })
+>>>>>>> messages_branch
     
   }
 
-  componentDidUpdate(prevProps){
-    if(Object.values(prevProps.channels).length < Object.values(this.props.channels).length){
-      subscribeChannels(Object.values(this.props.channels),
-       this.props.currentUser.subscribed_channel_ids);
-    }
-  }
+  // componentDidUpdate(prevProps){
+  //   if(Object.values(prevProps.channels).length < Object.values(this.props.channels).length){
+  //     subscribeChannels(Object.values(this.props.channels),
+  //      this.props.currentUser.subscribed_channel_ids);
+  //   }
+  // }
 
   openChannelOptions(channelId){
     
@@ -92,17 +79,7 @@ class SideBar extends React.Component {
     let { currentUser } = this.props
 
     let userChannels = Object.values(this.props.channels).map((channel) => {
-      return <li 
-        key={channel.id} onContextMenu={this.dropOptionsClick}
-      ><NavLink to={`/main/channels/${channel.id}`}># {channel.channel_name}</NavLink>
-      
-        <nav className={this.state.buttonStat} onMouseLeave={this.dropOptionsClick}>
-          <h3>{currentUser.display_name}</h3>
-          <h4>{currentUser.email}</h4>
-          <button onClick={this.props.logout}>Sign Out</button>
-        </nav>
-
-      </li>
+      return <SidebarListItem channel={channel} />
     })
     
 

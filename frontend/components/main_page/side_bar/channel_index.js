@@ -29,6 +29,7 @@ const subscribeChannels = (channelsArray, subsChannelArr) => {
             }
           }
         );
+        // debugger
       }
   })
 }
