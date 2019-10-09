@@ -24,13 +24,8 @@ class ChannelChat extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-<<<<<<< HEAD
-
-    if (prevProps.location !== this.props.location){
-=======
     // debugger
     if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length){
->>>>>>> messages_branch
       
       this.props.fetchChannelMessages(this.props.channel.id).then((payload) => {
         if(payload.messages.length > 0){
