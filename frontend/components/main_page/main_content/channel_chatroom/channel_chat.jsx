@@ -40,11 +40,12 @@ class ChannelChat extends React.Component{
   render(){
     // 
     let channel_id = typeof this.props.channel === 'undefined' ? '' : this.props.channel.id
+    let subscriber_ids = typeof this.props.channel === 'undefined' ? '' : this.props.channel.subscriber_ids
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
     // 
     let messageList = [];
-    if(this.props.messages.length > 0){
+    if(this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)){
     messageList = this.props.messages.map(message => {
       return (
         <li key={message.id}>
