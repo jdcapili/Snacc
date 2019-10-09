@@ -6,19 +6,21 @@ class SidebarListItem extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      toggleStatus: 'dropdown-options-content'
+      toggleStatus: 'dropdown-options-content',
+      toggleLink: ''
     }
 
     this.dropOptionsClick = this.dropOptionsClick.bind(this);
+    this.toggleActiveLink = this.toggleActiveLink.bind(this);
   }
 
   dropOptionsClick(e) {
     e.preventDefault();
-    debugger
-    if (this.state.toggleStatus.indexOf("drop-show") === -1) {
+    // debugger
+    if (this.state.toggleStatus.indexOf("drop-show2") === -1) {
 
       this.setState({
-        toggleStatus: "dropdown-options-content drop-show",
+        toggleStatus: "dropdown-options-content drop-show2",
       })
     } else {
 
@@ -28,13 +30,20 @@ class SidebarListItem extends React.Component {
     }
   }
 
+  toggleActiveLink() {
+    
+    let stat = this.state.toggleLink === '' ? 'active' : '';
+    this.setState({toggleLink: stat})
+  }
+
   render(){
     let {channel} = this.props
-    return <li key={channel.id} >
-      <NavLink to={`/main/channels/${channel.id}`} onContextMenu={this.dropOptionsClick} 
-        onMouseLeave={this.state.toggleStatus === "dropdown-options-content drop-show" ? this.dropOptionsClick : null}>
-        # {channel.channel_name}</NavLink>
-
+    let channel_name = channel.channel_name.length > 10 ? channel.channel_name.slice(0,9) + '...' : channel.channel_name
+    return <li key={channel.id}>
+      <NavLink to={`/main/channels/${channel.id}`} onContextMenu={this.dropOptionsClick}
+        onMouseLeave={this.state.toggleStatus === "dropdown-options-content drop-show2" ? this.dropOptionsClick : null}>
+        # {channel_name}</NavLink>
+      
       <nav className={this.state.toggleStatus} onMouseLeave={this.dropOptionsClick} >
         <button onClick={() => dispatch(deleteChannel(channel.id))}>
           Leave Channel

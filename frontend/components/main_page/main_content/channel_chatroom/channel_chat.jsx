@@ -53,7 +53,7 @@ class ChannelChat extends React.Component{
     if(this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)){
     messageList = this.props.messages.map(message => {
       return (
-        <li key={message.id}>
+        <li className="message-item" key={message.id}>
           <Message message={message}/>
           <div ref={this.bottom} />
         </li>

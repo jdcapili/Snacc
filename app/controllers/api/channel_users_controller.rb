@@ -1,6 +1,6 @@
 class Api::ChannelUsersController < ApplicationController
   def create
-    debugger
+    # debugger
     user = User.find(params[:channel_user][:user_id]);
     @channel = Channel.find(params[:channel_user][:channel_id])
     
@@ -10,11 +10,11 @@ class Api::ChannelUsersController < ApplicationController
   end
 
   def destroy
-
-  end
-
-  private
-  def channel_user_params
-    params.permit(:channel_user).require(:user_id, :channel_id)
+    user = User.find(params[:channel_user][:user_id]);
+    @channel = Channel.find(params[:channel_user][:channel_id])
+ 
+    ChannelUser.find_by(user: user, channel: @channel)
+    
+    render 'api/channels/show'
   end
 end

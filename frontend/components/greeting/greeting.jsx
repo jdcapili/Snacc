@@ -64,7 +64,7 @@ class Greeting extends React.Component{
         <>
         <header className='nav-bar'>
            
-            <NavLink to='/'> <h1> S N A C C</h1></NavLink>
+            <NavLink to='/'><img src={window.slackLogo} alt="SNACC"/> <h1> S N A C C</h1></NavLink>
           <div className="sign-links">
             <h2 className='user-greeting'>{currentUser.display_name}</h2>
             <button onClick={this.props.logout}>Logout</button>
@@ -76,7 +76,7 @@ class Greeting extends React.Component{
       return(
         <>
           <header className={`nav-bar ${this.state.headClass}`}>
-            <h1> <NavLink to='/'>S N A C C</NavLink></h1>
+            <h1> <NavLink to='/'><img src={window.slackLogo} alt="SNACC" />S N A C C</NavLink></h1>
           <div className="sign-links">
             {this.state.signLinks}
           </div>

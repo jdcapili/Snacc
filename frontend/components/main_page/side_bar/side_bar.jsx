@@ -14,10 +14,6 @@ class SideBar extends React.Component {
       buttonStat: `dropdown-options-content`
     }
     this.dropDownClick = this.dropDownClick.bind(this);
-  
-    // this.sidebarRedirect = this.sidebarRedirect.bind(this);
-    // this.subscriberHelper = this.subscriberHelper.bind(this);
-    // this.openChannelOptions = this.openChannelOptions.bind(this);
   }
 
   dropDownClick(){
@@ -35,25 +31,13 @@ class SideBar extends React.Component {
     }
   }
 
-<<<<<<< HEAD
-  dropOptionsClick(e) {
-    e.preventDefault();
-    
-    if (this.state.buttonStat.indexOf("drop-show") === -1) {
-=======
->>>>>>> messages_branch
-
 
   componentDidMount(){
     
-<<<<<<< HEAD
-    this.props.fetchChannels(this.props.currentUser.id)
-=======
     let {currentUser} = this.props
     Promise.resolve(this.props.fetchChannels(this.props.currentUser.id)).then((payload) => {
       subscribeChannels(payload.channels,currentUser.subscribed_channel_ids)
     })
->>>>>>> messages_branch
     
   }
 
@@ -79,7 +63,7 @@ class SideBar extends React.Component {
     let { currentUser } = this.props
 
     let userChannels = Object.values(this.props.channels).map((channel) => {
-      return <SidebarListItem channel={channel} />
+      return <SidebarListItem channel={channel}  key={channel.id}/>
     })
     
 

@@ -230,6 +230,8 @@ form.splash-form {
 button {
     height: 30px;
     width: 100px;
+    align-self: center;
+    border-radius: 5px;
 }
 
 h2.user-greeting {
@@ -239,14 +241,39 @@ h2.user-greeting {
 .side-nav-bar {
     background-color: #6e2142;
     width: 222px;
+    flex: 0 0 222px;
     box-sizing: border-box;
-    padding-left: 15px;
     color: white;
 }
 
 .side-nav-bar * {
     cursor: pointer;
 }
+
+.channel-groups li {
+    padding: 5px 15px;
+    box-sizing: content-box;
+}
+
+.channel-groups h3 {
+    padding: 15px 0 5px 15px;
+}
+
+.channel-groups a {text-decoration: none;color: #d0c3cf;}
+
+.channel-groups a.active {
+    background-color: black;
+    border-radius: 5px;
+    padding: 5px 50px 5px 5px;
+    animation: fadeIn 1s;
+}
+
+
+a, a.active, a:hover, a:focus{
+    outline: 0;
+    user-select: none;
+}
+
 
 .main-content-container {
     width: 100%;
@@ -305,7 +332,13 @@ h2.user-greeting {
 
 .dropdown-sidebar {
     position: relative;
+    left: 15p;
     padding-top: 15px;
+    padding-left: 15px;
+}
+
+.dropdown-sidebar:hover {
+    background-color: #6b1238;
 }
 
 .dropdown-sidebar-content, .dropdown-options-content{
@@ -320,26 +353,44 @@ h2.user-greeting {
     font-size: 15px;
 }
 
+.dropdown-sidebar-content * {
+    margin-bottom: 5px;
+    font-family: Lato, sans-serif;
+}
+
 .dropdown-sidebar-content h4 {
     font-size: 13px;
     padding: 0;
 }
 
 
+.drop-show2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70px;
+    width: 150px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+}
 
+.drop-show2 button {
+    height: 50px;
+    width: 100px;
+}
 
 .drop-show {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 150px;
-    width: 300px;
+    height: 100px;
+    width: 200px;
+    top: 58px;
     background-color: white;
     border-radius: 5px;
-    left: 10px;
     color: black;
-    border: 1px solid slategray;
+    border: 1px solid #dcdcdc;
 }
 
 .userInfo .active{
@@ -360,6 +411,7 @@ h3 {
 .userInfo h4 {
     padding-top: 5px;
     color: #c6b5c5;
+    font-family: Lato, sans-serif;
 }
 
 .userInfo h4:hover{
@@ -368,23 +420,29 @@ h3 {
 
 
 .channel-groups {
-    padding-top: 15px;
     font-family: Lato, sans-serif;
     font-size: 15px;
     color: #d0c3cf;
 }
 
-.channel-groups li:hover, h3:hover, h4:hover {
+.channel-groups *:hover {
     color: white;
 }
 
 li {
     font-family: Lato, sans-serif;
-    padding-top: 15px;
+}
+
+.channel-groups li:focus {
+    background-color: ghostwhite;
 }
 
 h4 {
     padding-top: 15px;
+}
+
+.channel-groups > h4 {
+    padding: 15px;
 }
 
 
@@ -418,6 +476,7 @@ h4 {
 .create-form {
     height: 100vh;
     display: flex;
+    animation: fadeIn .5s;
 }
 
 .create-form form {
@@ -478,15 +537,7 @@ h4 {
 /* MODAL */
 
 
-.main-content-header {
-    justify-content: center;
-    height: 60px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid slategray;
+.message-list, .message-form{
+  border-style: none;
 }
 
-.main-content-header h1 {
-
-}

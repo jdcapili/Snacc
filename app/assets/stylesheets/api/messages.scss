@@ -10,10 +10,20 @@
   flex-direction: column;
 }
 
+.main-content-header {
+    justify-content: space-evenly;
+    height: 60px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #dcdcdc;
+}
 
 .chatroom-container div {
-  font-size: 20px;
+    font-size: 20px;
 }
+
+
 
 
 button.load-button {
@@ -29,3 +39,54 @@ button.load-button {
   box-sizing: border-box;
   padding-left: 10px;
 }
+
+
+.channel-info * {
+  height: 20px;
+}
+
+span {
+  font-size: 15px;
+}
+
+.message-list * {
+  font-family: Lato,sans-serif;
+}
+
+.message-info div {
+  display: flex;
+}
+
+.message-item div *{
+  padding-right: 5px; 
+}
+
+.message-item {
+  height: 66px;
+  padding: 5px;
+  display: flex;
+}
+
+.user-avatar img{
+  height: 40px;
+  width: 40px;
+}
+
+
+.message-form {
+  box-sizing: border-box;
+  padding: 10px 20px 20px 20px;
+  border-style: none;
+
+}
+
+.message-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.message-form input[type="submit"] {
+    display: none;
+}
+
