@@ -45,7 +45,7 @@ function Modal({modal, closeModal,createNewChannel}) {
   }
 
   return (
-    <div className={`modal-background-${modType}`} onClick={closeModal} >
+    <div className={`modal-background-${modType}`}>
       <div className='modal'>
         {component}
       </div>
