@@ -40,7 +40,7 @@ class User < ApplicationRecord
   
   def self.find_by_credentials(username, password)
   
-    user = User.includes(:subscribed_channels, :owned_channels, :dm_groups, :owned_groups)
+    user = User.includes(:messages, :subscribed_channels, :owned_channels, :dm_groups, :owned_groups)
     .find_by(display_name: username)
   
     user && user.is_password?(password) ? user : nil
