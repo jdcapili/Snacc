@@ -1,0 +1,2 @@
+class DmGroup < ApplicationRecord
+end

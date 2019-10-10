@@ -1,0 +1,2 @@
+class DmGroupUser < ApplicationRecord
+end
