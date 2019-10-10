@@ -22,8 +22,13 @@ class User < ApplicationRecord
   has_many :owned_channels,
     class_name: :Channel,
     foreign_key: :creator_id
+  
+  has_many :owned_groups,
+    class_name: :DmGroup,
+    foreign_key: :creator_id
 
   has_many :channel_users, dependent: :destroy
+  has_many :dm_group_users, dependent: :destroy
   has_many :subscribed_channels, through: :channel_users, source: :channel, inverse_of: :subscribers
   has_many :dm_groups, through: :dm_group_users, source: :channel, inverse_of: :members
 
@@ -35,7 +40,8 @@ class User < ApplicationRecord
   
   def self.find_by_credentials(username, password)
   
-    user = User.includes(:subscribed_channels, :owned_channels).find_by(display_name: username)
+    user = User.includes(:subscribed_channels, :owned_channels, :dm_groups, :owned_groups)
+    .find_by(display_name: username)
   
     user && user.is_password?(password) ? user : nil
   end

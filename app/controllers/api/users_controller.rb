@@ -1,5 +1,9 @@
 class Api::UsersController < ApplicationController
 
+  def index
+    @users = User.includes(:messages,:subscribed_channels, :dm_groups).all
+  end
+
   def create
     @user = User.new(user_params)
     channel = Channel.find_by(channel_name: 'general')
