@@ -3,7 +3,6 @@
 # Table name: dm_groups
 #
 #  id         :bigint           not null, primary key
-#  group_name :string           not null
 #  creator_id :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -39,9 +39,5 @@ class Api::DmGroupsController < ApplicationController
     render json: @dm_group.id
   end
 
-  private
-  def dm_group_params
-    params.require(:dm_group).permit(:group_name)
-  end
 end
 

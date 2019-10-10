@@ -1,1 +1,1 @@
-json.extract! dm_group, :id, :group_name, :creator_id, :message_ids, :member_ids
+json.extract! dm_group, :id, :creator_id, :message_ids, :member_ids
