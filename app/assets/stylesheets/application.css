@@ -429,15 +429,16 @@ h3 {
 }
 
 
-.channel-groups {
+.channel-groups, .dm-groups {
     font-family: Lato, sans-serif;
     font-size: 15px;
     color: #d0c3cf;
 }
 
-.channel-groups a:hover {
+.channel-groups a:hover{
     color: white;
 }
+
 
 
 

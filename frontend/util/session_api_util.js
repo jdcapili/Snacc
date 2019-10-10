@@ -24,4 +24,11 @@ export const logout = () => (
     method: "DELETE",
     url: 'api/session',
   })
-) 
+);
+
+export const fetchAllUsers = () => (
+  $.ajax({
+    method: "GET",
+    url: 'api/users'
+  })
+)

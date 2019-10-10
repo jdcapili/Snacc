@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
 
   def index
-    @users = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).all #.reject(:id => current_user.id)
+    @users = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).all
     render "api/users/index"
   end
 

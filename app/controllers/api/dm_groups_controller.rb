@@ -4,7 +4,9 @@ class Api::DmGroupsController < ApplicationController
 
   def index
     #current user's dm_groups
-    @dm_groups = DmGroup.includes(:messages).all #includes(:member_ids)??
+    
+    
+    @dm_groups = current_user.dm_groups.includes(:messages) #includes(:member_ids)??
     render 'api/dm_groups/index'
   end
 
@@ -15,9 +17,8 @@ class Api::DmGroupsController < ApplicationController
   end
 
   def create
-    debugger
-    @dm_group = DmGroup.new(dm_group_params);
-    @dm_group.creator_id = current_user.id
+    
+    @dm_group = DmGroup.new(creator_id: current_user.id);
     
 
     if @dm_group.save

@@ -4,7 +4,7 @@ import { createChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
 import ChannelForm from './channel_form';
 import ChannelOptionsContainer from './channel_options';
-// import DMCreateContainer from
+import GroupFormContainer from './group_form_container';
 
 const msp = state => {
   return {
@@ -34,7 +34,7 @@ function Modal({modal, closeModal,createNewChannel}) {
     break;
     case 'dm':
       modType = 'form';
-      component = <h1>DMs</h1>
+      component = <GroupFormContainer />
       break;
     case 'channelOptions':
       modType = 'button';

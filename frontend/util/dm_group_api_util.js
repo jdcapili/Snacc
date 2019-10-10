@@ -2,7 +2,7 @@ export const fetchDmGroups = () =>
   $.ajax({
     method: "GET",
     url: "api/dm_groups"
-  }); //should fetch channels currentUser is associated with
+  }); 
 
 export const fetchDmGroup = dmGroupId =>
   $.ajax({

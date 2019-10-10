@@ -46,7 +46,7 @@ class SidebarListItem extends React.Component {
       
       <nav className={this.state.toggleStatus} onMouseLeave={this.dropOptionsClick} >
         <button onClick={() => this.props.deleteChannel(channel.id)}>
-          Leave Channel
+          Delete Channel
           </button>
       </nav>
 

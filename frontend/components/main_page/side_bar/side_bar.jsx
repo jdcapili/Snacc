@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter, Router, NavLink } from 'react-router-dom';
 import subscribeChannels from './channel_index';
-import SidebarListItem from './sidebar_list_item'
+import SidebarListItem from './sidebar_list_item';
+import SidebarDmItemContainer from './sidebar_dm_item_container';
 
 
 class SideBar extends React.Component {
@@ -35,10 +36,14 @@ class SideBar extends React.Component {
   componentDidMount(){
     
     let {currentUser,receiveMessage} = this.props
-    Promise.resolve(this.props.fetchChannels(this.props.currentUser.id)).then((payload) => {
+    
+    this.props.fetchAllUsers().then(() => 
+    this.props.fetchChannels(currentUser.id).then((payload) => {
       subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage)
     })
-    
+    ).then(() =>
+    this.props.fetchDmGroups()
+    );
   }
 
   // componentDidUpdate(prevProps){
@@ -65,6 +70,10 @@ class SideBar extends React.Component {
     let userChannels = Object.values(this.props.channels).map((channel) => {
       return <SidebarListItem channel={channel}  key={channel.id} deleteChannel={this.props.deleteChannel}/>
     })
+
+    let userGroups = Object.values(this.props.dmGroups).map((dmGroup) => {
+      return <SidebarDmItemContainer dmGroupId={dmGroup.id} key={dmGroup.id} deleteDmGroup={this.props.deleteDmGroup} />
+    })
     
 
 
@@ -90,6 +99,13 @@ class SideBar extends React.Component {
           {userChannels}
         </ul>
         <h4 onClick={() => this.props.openModal('channel')}>+ Add a Channel</h4>
+      </div>
+
+      <div className="dm-groups">
+        <div><h3>Direct Messages</h3><button onClick={() => this.props.openModal('dm')}>+</button></div>
+        <ul>
+          {userGroups}
+        </ul>
       </div>
 
     </>
