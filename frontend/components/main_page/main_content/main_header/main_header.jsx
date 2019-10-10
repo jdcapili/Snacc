@@ -23,7 +23,7 @@ class MainHeader extends React.Component {
   }
 
   handleClick(){
-    debugger
+    
     let buttonState;
     if (!this.props.channel.subscriber_ids.includes(this.props.currentUser.id)){
       buttonState = 'leave';
@@ -43,7 +43,7 @@ class MainHeader extends React.Component {
       channel_name = this.props.channel.channel_name; 
       
       let buttonDisp = this.state.buttonState === 'join' ? 'Join Channel' : 'Leave Channel'
-      debugger
+      
       return <>
         <div className='main-content-header'>
           <div>
