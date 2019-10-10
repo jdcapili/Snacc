@@ -4,8 +4,7 @@ class Api::DmGroupsController < ApplicationController
 
   def index
     #current user's dm_groups
-
-    @dm_groups = DmGroup.includes(:messages).all #includes(:subscriber_ids)??
+    @dm_groups = DmGroup.includes(:messages).all #includes(:member_ids)??
     render 'api/dm_groups/index'
   end
 
@@ -16,13 +15,13 @@ class Api::DmGroupsController < ApplicationController
   end
 
   def create
-    
+    debugger
     @dm_group = DmGroup.new(dm_group_params);
     @dm_group.creator_id = current_user.id
     
 
     if @dm_group.save
-      @dm_group.members << User.where(:id => user_ids)
+      @dm_group.members << User.where(:id => params[:dm_group][:user_ids]) #user_ids include creator
       # DmGroupUser.create(user_id: current_user.id, dm_group_id: @dm_group.id)
       
       
@@ -42,7 +41,7 @@ class Api::DmGroupsController < ApplicationController
 
   private
   def dm_group_params
-    params.require(:dm_group).permit(:dm_group_name)
+    params.require(:dm_group).permit(:group_name)
   end
 end
 
