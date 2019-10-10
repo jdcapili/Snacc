@@ -72,7 +72,7 @@ class SideBar extends React.Component {
 
       <div className='dropdown-sidebar' >
         <div onClick={this.dropDownClick} className="userInfo">
-          <h3 className={this.state.h3Stat}>S n a c c</h3>
+          <div><h3 className={this.state.h3Stat}>S n a c c</h3><img src={window.expandArrow} /></div>
           <h4>{currentUser.display_name}</h4>
         </div>
         

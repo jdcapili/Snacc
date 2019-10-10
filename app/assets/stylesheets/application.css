@@ -263,9 +263,10 @@ h2.user-greeting {
 
 .channel-groups a.active {
     background-color: black;
+    color: white;
     border-radius: 5px;
     padding: 5px 50px 5px 5px;
-    animation: fadeIn 1s;
+    animation: fadeIn .5s;
 }
 
 
@@ -391,6 +392,7 @@ a, a.active, a:hover, a:focus{
     border-radius: 5px;
     color: black;
     border: 1px solid #dcdcdc;
+    animation: fadeIn .5s
 }
 
 .userInfo .active{
@@ -414,8 +416,16 @@ h3 {
     font-family: Lato, sans-serif;
 }
 
-.userInfo h4:hover{
+.userInfo h4:hover, .userInfo img:hover {
     color: white;
+}
+
+.userInfo div {
+    display: flex;
+}
+
+.userInfo img {
+    width: 20px;
 }
 
 
@@ -530,6 +540,11 @@ h4 {
     position: relative;
     top: 5px;
     right: 5px;
+}
+
+.far{
+    font-size: 15px;
+    margin-right: 5px;
 }
 
 .fas:hover {

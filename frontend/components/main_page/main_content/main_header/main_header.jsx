@@ -48,7 +48,7 @@ class MainHeader extends React.Component {
         <div className='main-content-header'>
           <div>
             <h1 ># {channel_name}</h1>
-            <div className='channel-info'><img src={window.personIcon} /><span>{this.props.channel.subscriber_ids.length}</span>
+            <div className='channel-info'><i class="far fa-user"></i><span>{this.props.channel.subscriber_ids.length}</span>
             </div>
           </div>
 

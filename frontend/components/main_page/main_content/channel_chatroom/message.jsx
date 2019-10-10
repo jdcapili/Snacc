@@ -60,8 +60,8 @@ class Message extends React.Component {
         <form onSubmit={this.handleClick}>
           <input type="text" value={this.state.toUpdate} onChange={this.update}/>
           
-          <input type="submit" value="update"/>
-          <button onClick={this.editDoubleClick}>Close</button>
+          <input type="submit" value="Update"/>
+          <input type='button' onClick={this.editDoubleClick} value='Close' />
         </form>
       </div>
       </>
