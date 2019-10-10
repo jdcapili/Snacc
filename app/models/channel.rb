@@ -3,10 +3,10 @@
 # Table name: channels
 #
 #  id           :bigint           not null, primary key
+#  creator_id   :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  channel_name :string           not null
-#  creator_id   :string           not null
 #
 
 class Channel < ApplicationRecord
