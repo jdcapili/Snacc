@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :channel_users, dependent: :destroy
   has_many :dm_group_users, dependent: :destroy
   has_many :subscribed_channels, through: :channel_users, source: :channel, inverse_of: :subscribers
-  has_many :dm_groups, through: :dm_group_users, source: :channel, inverse_of: :members
+  has_many :dm_groups, through: :dm_group_users, source: :dm_group, inverse_of: :members
 
   has_many :messages, foreign_key: :author_id, class_name: :Message
 

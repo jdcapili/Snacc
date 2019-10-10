@@ -10,4 +10,6 @@
 #
 
 class DmGroupUser < ApplicationRecord
+  belongs_to :user
+  belongs_to :dm_group
 end

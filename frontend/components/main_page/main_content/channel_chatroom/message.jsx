@@ -30,7 +30,8 @@ class Message extends React.Component {
   editDoubleClick(){
  
     if (this.props.message.author.author_id === this.props.currentUserId){
-      this.setState({editState: 'edit-message'})
+      let toggleEdit = this.state.editState === 'edit-message' ? null : 'edit-message'
+      this.setState({editState: toggleEdit})
     }
   }
 
@@ -60,8 +61,10 @@ class Message extends React.Component {
         <form onSubmit={this.handleClick}>
           <input type="text" value={this.state.toUpdate} onChange={this.update}/>
           
-          <input type="submit" value="Update"/>
-          <input type='button' onClick={this.editDoubleClick} value='Close' />
+          <div className='form-buttons'>
+            <input type="submit" value="Update"/>
+            <input type='button' onClick={this.editDoubleClick} value='Close' />
+          </div>
         </form>
       </div>
       </>

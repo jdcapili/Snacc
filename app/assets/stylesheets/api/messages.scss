@@ -11,16 +11,12 @@
 }
 
 .chatroom-container div {
-    font-size: 20px;
+  font-size: 20px;
 }
-
-
-
 
 button.load-button {
   width: 200px;
 }
-
 
 .message-list {
   overflow-y: scroll;
@@ -28,16 +24,18 @@ button.load-button {
   width: 100%;
   border: 1px solid gray;
   box-sizing: border-box;
+  display: flex;
   padding-left: 10px;
+  flex-direction: column;
 }
-
 
 .channel-info * {
   height: 20px;
 }
+
 .channel-info {
-    align-items: baseline;
-    padding-top: 2.5px;
+  align-items: baseline;
+  padding-top: 2.5px;
 }
 
 span {
@@ -50,51 +48,48 @@ span {
 
 .message-info div {
   display: flex;
-  
 }
 
-.message-item div *{
-  padding-right: 5px; 
+.message-item div * {
+  padding-right: 5px;
 }
 
 .message-item {
-  height: 66px;
+  height: auto;
   padding: 5px;
   display: flex;
 }
 
 .message-info > div {
-    cursor: default;
+  cursor: default;
 }
 
-.user-avatar img{
+.user-avatar img {
   height: 40px;
   width: 40px;
 }
-
 
 .message-form {
   box-sizing: border-box;
   padding: 10px 20px 20px 20px;
   border-style: none;
-
 }
 
 .message-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .message-form input[type="submit"] {
-    display: none;
+  display: none;
 }
 
 .main-content-header > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50px;
 }
 
 .main-content-header {
@@ -106,11 +101,11 @@ span {
   align-items: center;
 }
 
-.main-content-header button{
-    height: 40px;
-    width: 150px;
-    margin-right: 20px;
-    color: white;
+.main-content-header button {
+  height: 40px;
+  width: 150px;
+  margin-right: 20px;
+  color: white;
 }
 
 .join {
@@ -121,36 +116,40 @@ span {
   background-color: red;
 }
 
-.message-info  input[type='submit'] {
-    border: 1px solid #868686;
-    height: 100%;
-    width: 80px;
-    border-radius: 5px;
-    margin-right: 5px;
+
+.message-info input[type='submit'] {
+  border: 1px solid #868686;
+  height: 100%;
+  width: 80px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
-.message-info  input[type='text'] {
-    border: 1px solid #868686;
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    margin-right: 5px;
+
+.message-info input[type='text'] {
+  border: 1px solid #868686;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
-.message-info  input[type='button'] {
-    border: 1px solid #868686;
-    height: 100%;
-    width: 80px;
-    border-radius: 5px;
-    margin-right: 5px;
+
+.message-info input[type='button'] {
+  border: 1px solid #868686;
+  height: 100%;
+  width: 80px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
-.message-info form{
+
+.message-info form {
   display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
 .message-info {
   width: 100%;
 }
-
