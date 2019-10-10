@@ -14,12 +14,11 @@ User.destroy_all
 
 
 
-
 demo = User.create(display_name: 'DemoUser', email: 'demo@user.com', password:'123456' )
 demofriend = User.create(display_name: 'DemoFriend', email: 'demo@friend.com', password:'123456')
 
 general = Channel.create(channel_name: 'general', creator_id: demo.id)
-dmgroup = DmGroup.create(group_name: 'testgroup', creator_id: demo.id)
+dmgroup = DmGroup.create(creator_id: demo.id)
 
 general.subscribers << [demo,demofriend]
 dmgroup.members << [demo,demofriend]
