@@ -94,7 +94,7 @@ class SideBar extends React.Component {
       </div>
 
       <div className="channel-groups">
-        <h3>Channels</h3>
+        <div onClick={() => this.props.openModal('channel')}><h3>Channels</h3><i className="fas fa-plus-circle"></i></div>
         <ul>
           {userChannels}
         </ul>
@@ -102,7 +102,7 @@ class SideBar extends React.Component {
       </div>
 
       <div className="dm-groups">
-        <div><h3>Direct Messages</h3><button onClick={() => this.props.openModal('dm')}>+</button></div>
+        <div onClick={() => this.props.openModal('dm')}><h3>Direct Messages</h3><i className="fas fa-plus-circle"></i></div>
         <ul>
           {userGroups}
         </ul>

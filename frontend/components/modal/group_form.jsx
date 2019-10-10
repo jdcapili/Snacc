@@ -28,7 +28,7 @@ class GroupForm extends React.Component {
   }
 
   render() {
-    debugger
+
     let userList = this.props.users.map((user) => {
       if(this.props.currentUserId !== user.id){
       return <li key={user.id} onClick={() => this.selectMembers(user)}>{user.display_name}</li>

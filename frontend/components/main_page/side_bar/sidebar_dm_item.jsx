@@ -49,9 +49,12 @@ class SidebarDmItem extends React.Component {
     }) // would be the name of members except current user
 
     return <li key={dmGroup.id}>
+      <div className="group-info">
+        <div className='status'></div>
       <NavLink to={`/main/dm_groups/${dmGroup.id}`} onContextMenu={this.dropOptionsClick}
         onMouseLeave={this.state.toggleStatus === "dropdown-options-content drop-show2" ? this.dropOptionsClick : null}>
-        # {dmGroup_name}</NavLink>
+        {dmGroup_name}</NavLink>
+      </div>
 
       <nav className={this.state.toggleStatus} onMouseLeave={this.dropOptionsClick} >
         <button onClick={() => this.props.deleteDmGroup(dmGroup.id)}>

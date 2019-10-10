@@ -51,7 +51,6 @@ footer {
     height: 375px;
     padding: 10px;
     border: 1px solid #ddd;
-    margin: auto;
     background: white;
     box-shadow: 0 1px 0 rgba(0,0,0,.25);
     justify-content: space-evenly;
@@ -239,7 +238,7 @@ h2.user-greeting {
 }
 
 .side-nav-bar {
-    background-color: #6e2142;
+    background-color: #3f0e40;
     width: 222px;
     flex: 0 0 222px;
     box-sizing: border-box;
@@ -250,9 +249,19 @@ h2.user-greeting {
     cursor: pointer;
 }
 
+.channel-groups div {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
 .channel-groups li {
     padding: 5px 15px;
     box-sizing: content-box;
+}
+
+.channel-groups li:hover, .channel-groups h4:hover, .dm-groups *:hover {
+    background-color: #350d36;
 }
 
 .channel-groups h3 {
@@ -282,10 +291,12 @@ a, a.active, a:hover, a:focus{
 }
 
 .session-form-parent {
-    height: 100%;
+    height: 100vh;
     margin: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .session-errors {
@@ -299,7 +310,8 @@ a, a.active, a:hover, a:focus{
     border-radius: 5px;
     background-color: white;
     animation: fadeIn 1s;
-
+    width: 555px;
+    align-self: center;
 }
 
 .session-errors ul{
@@ -339,7 +351,7 @@ a, a.active, a:hover, a:focus{
 }
 
 .dropdown-sidebar:hover {
-    background-color: #6b1238;
+    background-color: #350d36;
 }
 
 .dropdown-sidebar-content, .dropdown-options-content{
@@ -559,3 +571,14 @@ h4 {
   border-style: none;
 }
 
+
+
+.dm-groups h3 {
+    padding: 15px 0 5px 15px;
+}
+
+.dm-groups > div {display: flex;justify-content: space-between;box-sizing: border-box;}
+
+i.fas.fa-plus-circle {
+    align-self: center;
+}
