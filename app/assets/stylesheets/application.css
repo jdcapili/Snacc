@@ -260,7 +260,7 @@ h2.user-greeting {
     box-sizing: content-box;
 }
 
-.channel-groups li:hover, .channel-groups h4:hover, .dm-groups *:hover {
+.channel-groups li:hover, .channel-groups h4:hover, .dm-groups li:hover {
     background-color: #350d36;
 }
 

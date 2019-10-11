@@ -5,7 +5,8 @@ class GroupForm extends React.Component {
     super(props);
     this.state = {
       usersToAdd: [],
-      userIdsToAdd:[props.currentUserId]
+      userIdsToAdd:[props.currentUserId],
+      usersList: this.props.users
     }
 
     this.selectMembers = this.selectMembers.bind(this);
@@ -13,13 +14,18 @@ class GroupForm extends React.Component {
   }
 
   selectMembers(user){
+    debugger
     let newArr = this.state.usersToAdd;
     newArr.push(<span key={user.id}>{user.display_name}</span>)
     let newIdArr = this.state.userIdsToAdd
     newIdArr.push(user.id)
+    let newList = this.state.usersList.filter(function (el) { return el.id !== user.id; })
+
+
     this.setState({
       usersToAdd: newArr,
-      userIdsToAdd: newIdArr
+      userIdsToAdd: newIdArr,
+      usersList: newList
     })
   }
 
@@ -29,7 +35,7 @@ class GroupForm extends React.Component {
 
   render() {
 
-    let userList = this.props.users.map((user) => {
+    let userList = this.state.usersList.map((user) => {
       if(this.props.currentUserId !== user.id){
       return <li key={user.id} onClick={() => this.selectMembers(user)}>{user.display_name}</li>
       }

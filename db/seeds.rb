@@ -14,11 +14,18 @@ User.destroy_all
 
 
 
-demo = User.create(display_name: 'DemoUser', email: 'demo@user.com', password:'123456' )
-demofriend = User.create(display_name: 'DemoFriend', email: 'demo@friend.com', password:'123456')
+demoUser = User.create(display_name: 'DemoUser', email: 'demo@user.com', password:'123456' )
+seeduser1 = User.create(display_name: 'I', email: 'demo1@friend.com', password:'123456')
+seeduser2 = User.create(display_name: 'Need', email: 'demo2@friend.com', password:'123456')
+seeduser3 = User.create(display_name: 'Sleep', email: 'demo3@friend.com', password:'123456')
 
 general = Channel.create(channel_name: 'general', creator_id: demo.id)
-dmgroup = DmGroup.create(creator_id: demo.id)
+seedchannel1 = Channel.create(channel_name: 'AppAcademy', creator_id: seeduser1.id)
+seedchannel1 = Channel.create(channel_name: 'FullstackProject', creator_id: seeduser1.id)
 
-general.subscribers << [demo,demofriend]
-dmgroup.members << [demo,demofriend]
+dmgroup = DmGroup.create(creator_id: demo.id)
+dmgroup1 = DmGroup.create(creator_id: demo.id)
+
+general.subscribers << [demo,seeduser1]
+dmgroup.members << [demo,seeduser2]
+dmgroup1.members << [demo,seeduser2,seeduser3]

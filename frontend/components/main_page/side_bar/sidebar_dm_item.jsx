@@ -51,8 +51,7 @@ class SidebarDmItem extends React.Component {
     return <li key={dmGroup.id}>
       <div className="group-info">
         <div className='status'></div>
-      <NavLink to={`/main/dm_groups/${dmGroup.id}`} onContextMenu={this.dropOptionsClick}
-        onMouseLeave={this.state.toggleStatus === "dropdown-options-content drop-show2" ? this.dropOptionsClick : null}>
+      <NavLink to={`/main/dm_groups/${dmGroup.id}`} onContextMenu={this.dropOptionsClick}>
         {dmGroup_name}</NavLink>
       </div>
 
