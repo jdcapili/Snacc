@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Router, NavLink } from 'react-router-dom';
 import subscribeChannels from './channel_index';
-import SidebarListItem from './sidebar_list_item';
+import SidebarListItemContainer from './sidebar_list_item_container';
 import SidebarDmItemContainer from './sidebar_dm_item_container';
 
 
@@ -14,7 +14,10 @@ class SideBar extends React.Component {
       h3Stat: '',
       buttonStat: `dropdown-options-content`
     }
+    this.userInfo = React.createRef();
+
     this.dropDownClick = this.dropDownClick.bind(this);
+ 
   }
 
   dropDownClick(){
@@ -46,6 +49,8 @@ class SideBar extends React.Component {
     );
   }
 
+
+
   // componentDidUpdate(prevProps){
   //   if(Object.values(prevProps.channels).length < Object.values(this.props.channels).length){
   //     subscribeChannels(Object.values(this.props.channels),
@@ -68,11 +73,11 @@ class SideBar extends React.Component {
     let { currentUser } = this.props
 
     let userChannels = Object.values(this.props.channels).map((channel) => {
-      return <SidebarListItem channel={channel}  key={channel.id} deleteChannel={this.props.deleteChannel}/>
+      return <SidebarListItemContainer channelId={channel.id}  key={channel.id}/>
     })
 
     let userGroups = Object.values(this.props.dmGroups).map((dmGroup) => {
-      return <SidebarDmItemContainer dmGroupId={dmGroup.id} key={dmGroup.id} deleteDmGroup={this.props.deleteDmGroup} />
+      return <SidebarDmItemContainer dmGroupId={dmGroup.id} key={dmGroup.id}/>
     })
     
 
@@ -86,7 +91,7 @@ class SideBar extends React.Component {
         </div>
         
 
-        <nav className={this.state.dropStat}>
+        <nav className={this.state.dropStat} tabIndex='1' onMouseLeave={this.dropDownClick} ref={this.userInfo}>
           <h3>{currentUser.display_name}</h3>
           <h4>{currentUser.email}</h4>
           <button onClick={this.props.logout}>Sign Out</button>

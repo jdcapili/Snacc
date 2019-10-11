@@ -5,10 +5,25 @@ class ChannelForm extends React.Component {
   
     super(props)
     this.state = {
-      channel_name: ''
+      channel_name: '',
+      usersToAdd: [],
+      userIdsToAdd: [props.currentUserId]
     }
+
+    this.selectMembers = this.selectMembers.bind(this);
     this.update = this.update.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  selectMembers(user) {
+    let newArr = this.state.usersToAdd;
+    newArr.push(<span key={user.id}>{user.display_name}</span>)
+    let newIdArr = this.state.userIdsToAdd
+    newIdArr.push(user.id)
+    this.setState({
+      usersToAdd: newArr,
+      userIdsToAdd: newIdArr
+    })
   }
 
   update(field){
@@ -18,11 +33,18 @@ class ChannelForm extends React.Component {
   handleClick(e){
     e.preventDefault();
     
-    this.props.createNewChannel(this.state).then(this.props.closeModal())
+    this.props.createChannel(this.state).then(this.props.closeModal())
 
   }
 
   render(){
+
+    let userList = this.props.users.map((user) => {
+      if (this.props.currentUserId !== user.id) {
+        return <li key={user.id} onClick={() => this.selectMembers(user)}>{user.display_name}</li>
+      }
+    }) 
+
     return <>
       <div className="create-form">
         <div>
@@ -36,8 +58,18 @@ class ChannelForm extends React.Component {
             type="text" id="name" 
             placeholder="# e.g AppAcademyProjects"
             value={this.state.channel_name} />
+            <label htmlFor="members">Select Members</label>
+              <div className='member-selection'>
+                <div>{this.state.usersToAdd}</div>
+              </div>
+              <ul>
+                {userList}
+              </ul>
+
             <input type="submit" value="Create!"/>
             </form>
+
+
           </div>
        </div>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { createChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
-import ChannelForm from './channel_form';
+import ChannelFormContainer from './channel_form_container';
 import ChannelOptionsContainer from './channel_options';
 import GroupFormContainer from './group_form_container';
 
@@ -20,7 +20,7 @@ const mdp = dispatch => {
   }
 }
 
-function Modal({modal, closeModal,createNewChannel}) {
+function Modal({modal, closeModal}) {
   if(!modal) {
     return null
   }
@@ -30,7 +30,7 @@ function Modal({modal, closeModal,createNewChannel}) {
   switch (modal.type) {
     case 'channel':
       modType = 'form';
-      component = <ChannelForm closeModal={closeModal} createNewChannel={createNewChannel} />
+      component = <ChannelFormContainer />
     break;
     case 'dm':
       modType = 'form';

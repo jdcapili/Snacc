@@ -11,13 +11,18 @@ export const fetchChannel = channelId =>
     url: `api/channels/${channelId}`,
 });
 
-export const createChannel = channel =>{
-
+export const createChannel = (channel) =>{
+  
+  let {channel_name, userIdsToAdd} = channel;
+  
   return $.ajax({
     method: "POST",
     url: "api/channels",
     data: {
-      channel
+      channel: {
+        channel_name,
+        user_ids: userIdsToAdd
+      }
   }
 })
 };

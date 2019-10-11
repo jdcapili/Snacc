@@ -359,7 +359,6 @@ a, a.active, a:hover, a:focus{
     position: absolute;
     z-index: 1;
     padding: 0px 25px;
-    /* padding-top: 20px; */
 }
 
 .dropdown-sidebar-content h3 {
@@ -404,7 +403,8 @@ a, a.active, a:hover, a:focus{
     border-radius: 5px;
     color: black;
     border: 1px solid #dcdcdc;
-    animation: fadeIn .5s
+    animation: fadeIn .5s;
+
 }
 
 .userInfo .active{

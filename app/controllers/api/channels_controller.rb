@@ -22,7 +22,7 @@ class Api::ChannelsController < ApplicationController
     
 
     if @channel.save
-      ChannelUser.create(user_id: current_user.id, channel_id: @channel.id)
+      @channel.subscribers << User.where(:id => params[:channel][:user_ids])
       
       
       render 'api/channels/show'

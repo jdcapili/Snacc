@@ -45,7 +45,8 @@ export const fetchChannel = channelId => dispatch => {
   );
 };
 
-export const createChannel = channel => dispatch => {
+export const createChannel = (channel) => dispatch => {
+  
   return ChannelsApiUtil.createChannel(channel).then(
     payload => dispatch(receiveChannel(payload))
     
