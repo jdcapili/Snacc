@@ -21,6 +21,18 @@ class ChatChannel < ApplicationCable::Channel
     end
   end
 
+  def update(data)
+
+    message = Message.includes(:author).find(data['message']['id'])
+    author = message.author
+    if message.update({body: data['message']['body']})
+      author = {author: {author_id: author.id, author_name: author.display_name}}
+      datum = message.attributes.merge(author)
+      socket = {message: datum,type: 'message'}
+      ChatChannel.broadcast_to(@chat_channel, socket)
+    end
+  end
+
   def load
     
     messages = Message.all.collect(&:body)

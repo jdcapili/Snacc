@@ -14,7 +14,6 @@ class GroupForm extends React.Component {
   }
 
   selectMembers(user){
-    
     let newArr = this.state.usersToAdd;
     newArr.push(<span key={user.id}>{user.display_name}</span>)
     let newIdArr = this.state.userIdsToAdd

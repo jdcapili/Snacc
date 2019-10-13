@@ -12,7 +12,8 @@
 #
 
 class Message < ApplicationRecord
-  validates :author_id, null: false
+  validates :author_id, presence: true
+  validates :body, presence: true
   validates :messageable_type, inclusion: {in: ['Channel','DmGroup'] }
   
   belongs_to :author,
