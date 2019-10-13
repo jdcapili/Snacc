@@ -46,7 +46,12 @@ class Message extends React.Component {
       body: this.state.toUpdate,
       id: this.props.message.id
     }
-    this.props.updateMessage(message).then(this.setState({editState: null}));
+
+
+    App.cable.subscriptions.subscriptions[0].update({
+      message: message
+    })
+    this.setState({ editState: null })
   }
 
   render(){
