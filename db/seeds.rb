@@ -19,13 +19,13 @@ seeduser1 = User.create(display_name: 'I', email: 'demo1@friend.com', password:'
 seeduser2 = User.create(display_name: 'Need', email: 'demo2@friend.com', password:'123456')
 seeduser3 = User.create(display_name: 'Sleep', email: 'demo3@friend.com', password:'123456')
 
-general = Channel.create(channel_name: 'general', creator_id: demo.id)
+general = Channel.create(channel_name: 'general', creator_id: demoUser.id)
 seedchannel1 = Channel.create(channel_name: 'AppAcademy', creator_id: seeduser1.id)
 seedchannel1 = Channel.create(channel_name: 'FullstackProject', creator_id: seeduser1.id)
 
-dmgroup = DmGroup.create(creator_id: demo.id)
-dmgroup1 = DmGroup.create(creator_id: demo.id)
+dmgroup = DmGroup.create(creator_id: demoUser.id)
+dmgroup1 = DmGroup.create(creator_id: demoUser.id)
 
-general.subscribers << [demo,seeduser1]
-dmgroup.members << [demo,seeduser2]
-dmgroup1.members << [demo,seeduser2,seeduser3]
+general.subscribers << [demoUser,seeduser1]
+dmgroup.members << [demoUser,seeduser2]
+dmgroup1.members << [demoUser,seeduser2,seeduser3]
