@@ -24,7 +24,7 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
               return this.perform("speak", data);
             },
             update: function (data) {
-              debugger
+
               return this.perform("update", data);
             },
             load: function () {
