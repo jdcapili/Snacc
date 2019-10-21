@@ -47,8 +47,8 @@ class Message extends React.Component {
       id: this.props.message.id
     }
 
-
-    App.cable.subscriptions.subscriptions[0].update({
+    
+    App.cable.subscriptions.subscriptions[this.props.subId].update({
       message: message
     })
     this.setState({ editState: null })
@@ -57,7 +57,7 @@ class Message extends React.Component {
   render(){
     let {message} = this.props
     let create_time = this.timeFormat(message.created_at)
-
+    
     if(this.state.editState){
       return <>
       <div className='user-avatar'><img src={window.personIcon} /></div>
@@ -74,6 +74,7 @@ class Message extends React.Component {
       </div>
       </>
     } else {
+      
       return <>
         <div className='user-avatar'><img src={window.personIcon} /></div>
         <div className="message-info">

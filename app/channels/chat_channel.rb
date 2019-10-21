@@ -14,10 +14,15 @@ class ChatChannel < ApplicationCable::Channel
     author = User.find(data['author_id']) # I might need the currentUserId
     message.author = author
     if message.save
+      channel_data = Channel.includes(:messages, :subscribers).find(data['channel_id'])
+      channel = {channel: {id: channel_data.id, channel_name: channel_data.channel_name,
+      creator_id: channel_data.creator_id, message_ids: channel_data.message_ids, subscriber_ids: channel_data.subscriber_ids}}
       author = {author: {author_id: author.id, author_name: author.display_name}}
+ 
       datum = message.attributes.merge(author)
+      datum = datum.merge(channel)
       socket = {message: datum,type: 'message'}
-      ChatChannel.broadcast_to(@chat_channel, socket)
+        ChatChannel.broadcast_to(@chat_channel, socket)
     end
   end
 

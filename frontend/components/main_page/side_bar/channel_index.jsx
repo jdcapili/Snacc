@@ -15,12 +15,14 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
               
               switch (data.type) {
                 case "message":
+                  
+                  if(data.message.messageable_id === channel.id){
                   receiveMessage(data.message); //dispatch actions
+                  }
                   break;
               }
             },
             speak: function (data) {
-              
               return this.perform("speak", data);
             },
             update: function (data) {
@@ -32,7 +34,7 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
             }
           }
         );
-
+          
       }
   })
 }

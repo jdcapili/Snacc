@@ -14,14 +14,15 @@ class MessageForm extends React.Component {
   handleSubmit(e){
 
     e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].speak({ message: this.state.body,
+    console.log(App.cable.subscriptions.subscriptions[this.props.subId])
+    App.cable.subscriptions.subscriptions[this.props.subId].speak({ message: this.state.body,
     channel_id: this.props.channel_id,
     author_id: this.props.currentUser_id })
     this.setState({ body: '' });
   }
 
   render(){
-
+  
     return (
       <div className='message-form'>
         <form onSubmit={this.handleSubmit.bind(this)}>

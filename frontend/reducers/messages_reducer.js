@@ -24,6 +24,7 @@ const messagesReducer = (oldState = {}, action) => {
       return newState;
     }
     case RECEIVE_MESSAGE: {
+      
       return merge({}, oldState, {[action.message.id]: action.message})
     }
     case REMOVE_MESSAGE: {

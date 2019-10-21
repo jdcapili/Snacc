@@ -5,11 +5,17 @@ import {connect} from 'react-redux';
 
 
 const msp = (state,ownProps) => {
+  
+  let channel = state.entities.channels[ownProps.match.params.channelId];
+  let messages = Object.values(state.entities.messages).filter((message) => {
+    return channel.message_ids.includes(message.id)
 
+  });
+  console.log(messages);
   return{
   currentUser: state.entities.users[state.session.id],
-  channel: state.entities.channels[ownProps.match.params.channelId],
-  messages: Object.values(state.entities.messages)
+  channel,
+  messages
   }
 }
 
