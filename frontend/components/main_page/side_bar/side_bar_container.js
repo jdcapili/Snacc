@@ -8,7 +8,7 @@ import SideBar from './side_bar';
 
 const msp = state => {
   
-  
+ 
   return {
     currentUser: state.entities.users[state.session.id],
     channels: state.entities.channels,

@@ -6,3 +6,9 @@ json.messages do
     json.partial! "api/messages/message", message: message
   end
 end
+
+json.subscribers do
+  json.array!(@channel.subscribers) do |subscriber|
+    json.partial! "api/users/user", user: subscriber
+  end
+end

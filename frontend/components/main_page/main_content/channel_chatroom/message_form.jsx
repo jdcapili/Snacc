@@ -14,10 +14,19 @@ class MessageForm extends React.Component {
   handleSubmit(e){
 
     e.preventDefault();
-    console.log(App.cable.subscriptions.subscriptions[this.props.subId])
-    App.cable.subscriptions.subscriptions[this.props.subId].speak({ message: this.state.body,
-    channel_id: this.props.channel_id,
-    author_id: this.props.currentUser_id })
+
+    let {channel} = this.props
+    App.cable.subscriptions.subscriptions.forEach((subs,idx) => {
+      let identifier = JSON.parse(subs.identifier);
+      if(identifier.channel === "ChatChannel" && identifier.id === channel.id){
+        App.cable.subscriptions.subscriptions[idx].speak({
+          message: this.state.body,
+          channel_id: this.props.channel_id,
+          author_id: this.props.currentUser_id
+        })
+      }
+    })
+
     this.setState({ body: '' });
   }
 

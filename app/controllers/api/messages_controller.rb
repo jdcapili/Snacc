@@ -27,12 +27,6 @@ class Api::MessagesController < ApplicationController
     if current_user.id == @message.author_id
       @message.destroy!
       render json: @message.id
-    #   if(@message.messageable_type == 'Channel')
-    #     channel = Channel.find(message.messageable_id)
-    #     @messages = Message.where(messageable: channel)
-    #   end
-    
-    # render 'api/messages/index'
     end
   end
 

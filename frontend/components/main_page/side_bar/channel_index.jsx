@@ -6,8 +6,9 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
   
   channelsArray.forEach((channel) => {
 
-    if (subsChannelArr.includes(channel.id)){
-  
+    if (subsChannelArr.includes(channel.id) && App.cable.subscriptions.subscriptions.every((subs) => JSON.parse(subs.identifier).id !== channel.id))
+    {
+
         App.cable.subscriptions.create(
           { channel: "ChatChannel", id: channel.id },
           {

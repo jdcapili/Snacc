@@ -9,7 +9,7 @@ class Api::ChannelUsersController < ApplicationController
     users.each { |user| ChannelUser.create(user: user, channel_id: params[:channel_user][:channel_id]) }
     
     @channel = Channel.includes(:subscribers).find(params[:channel_user][:channel_id])
-
+    
     render 'api/channels/show'
   end
 

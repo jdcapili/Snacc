@@ -7,6 +7,7 @@ class ChannelChat extends React.Component{
   constructor(props){
     super(props);
     this.bottom = React.createRef();
+
     
   }
   componentDidMount(){
@@ -20,7 +21,8 @@ class ChannelChat extends React.Component{
           this.bottom.current.scrollIntoView()
         }
       })
-    } 
+    }
+
   }
 
   componentDidUpdate(prevProps){
@@ -32,8 +34,9 @@ class ChannelChat extends React.Component{
         this.bottom.current.scrollIntoView()}
       }
       )
-      
-    } 
+    }
+
+
         
   }
 
@@ -43,20 +46,15 @@ class ChannelChat extends React.Component{
     let subscriber_ids = typeof this.props.channel === 'undefined' ? '' : this.props.channel.subscriber_ids
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
-    let sub_id;
-    App.cable.subscriptions.subscriptions.forEach((subs,idx) => {
-      
-      if (channel_id === JSON.parse(subs.identifier).id)
-      { sub_id = idx }
-      // console.log([this.props.channel.channel_name, sub_id])
-    })
-    window.cableData = App;
+
+
+
     let messageList = [];
     if(this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)){
     messageList = this.props.messages.map(message => {
       return (
         <li className="message-item" key={message.id}>
-          <MessageContainer message={message} subId={sub_id || null}/>
+          <MessageContainer message={message} channel={this.props.channel}/>
           <div ref={this.bottom} />
         </li>
       )
@@ -71,7 +69,7 @@ class ChannelChat extends React.Component{
         <div className='message-list'>
           {messageList}
         </div>
-        <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id} subId={sub_id} />
+        <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id}/>
       </div>
     )
   }

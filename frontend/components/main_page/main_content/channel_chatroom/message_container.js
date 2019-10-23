@@ -6,11 +6,12 @@ import { connect } from "react-redux";
 
 
 const msp = (state,ownProps) => {
-  let {message, subId} = ownProps;
+  let {message,channel} = ownProps;
+
   return {
  currentUserId: state.session.id,
  message,
- subId
+ channel
 }}
 
 const mdp = dispatch => ({

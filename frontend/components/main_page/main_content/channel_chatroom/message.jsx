@@ -47,10 +47,20 @@ class Message extends React.Component {
       id: this.props.message.id
     }
 
+    let channel_id = this.props.channel.id;
+
+    App.cable.subscriptions.subscriptions.forEach((subs, idx) => {
+  
+      if (JSON.parse(subs.identifier).id === channel_id) {
     
-    App.cable.subscriptions.subscriptions[this.props.subId].update({
-      message: message
+        App.cable.subscriptions.subscriptions[idx].update({
+          message: message
+        })
+      }
     })
+
+    
+
     this.setState({ editState: null })
   }
 

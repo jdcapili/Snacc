@@ -49,14 +49,18 @@ class SideBar extends React.Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
 
+    if (typeof this.props.currentUser !== "undefined" &&
+     this.props.currentUser.subscribed_channel_ids.length !== prevProps.currentUser.subscribed_channel_ids.length){
+  
+    let { currentUser, receiveMessage } = this.props
+      this.props.fetchChannels(currentUser.id).then((payload) => {
+        subscribeChannels(payload.channels, currentUser.subscribed_channel_ids, receiveMessage)
+      })
 
-  // componentDidUpdate(prevProps){
-  //   if(Object.values(prevProps.channels).length < Object.values(this.props.channels).length){
-  //     subscribeChannels(Object.values(this.props.channels),
-  //      this.props.currentUser.subscribed_channel_ids);
-  //   }
-  // }
+    }
+  }
 
   openChannelOptions(channelId){
     

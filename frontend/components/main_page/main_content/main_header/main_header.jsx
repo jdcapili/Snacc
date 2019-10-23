@@ -27,10 +27,13 @@ class MainHeader extends React.Component {
     let buttonState;
     if (!this.props.channel.subscriber_ids.includes(this.props.currentUser.id)){
       buttonState = 'leave';
-      this.props.createSubscription(this.props.channelId, [this.props.currentUser.id]).then(() => this.setState({buttonState}))
+      this.props.createSubscription(this.props.channelId, [this.props.currentUser.id]).then(
+        () => this.setState({ buttonState }))
     } else {
       buttonState = 'join';
-      this.props.deleteSubscription(this.props.channelId).then(() => this.setState({ buttonState }))
+      this.props.deleteSubscription(this.props.channelId).then(
+      () => this.setState({ buttonState })
+      )
     }
   }
   

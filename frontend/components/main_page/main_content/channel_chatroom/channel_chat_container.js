@@ -11,7 +11,7 @@ const msp = (state,ownProps) => {
     return channel.message_ids.includes(message.id)
 
   });
-  console.log(messages);
+
   return{
   currentUser: state.entities.users[state.session.id],
   channel,
