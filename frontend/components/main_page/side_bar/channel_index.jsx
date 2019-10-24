@@ -6,7 +6,13 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
   
   channelsArray.forEach((channel) => {
 
-    if (subsChannelArr.includes(channel.id) && App.cable.subscriptions.subscriptions.every((subs) => JSON.parse(subs.identifier).id !== channel.id))
+    if (subsChannelArr.includes(channel.id) &&
+     App.cable.subscriptions.subscriptions.every((subs) =>{
+       let identifier = JSON.parse(subs.identifier)
+        if(identifier.channel === "DmChatChannel") return true;
+        else{ return identifier.id !== channel.id; }
+      }))
+   
     {
 
         App.cable.subscriptions.create(
@@ -18,7 +24,7 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
                 case "message":
                   
                   if(data.message.messageable_id === channel.id){
-                  receiveMessage(data.message); //dispatch actions
+                  receiveMessage(data.message, "channel"); //dispatch actions
                   }
                   break;
               }

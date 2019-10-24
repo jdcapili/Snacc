@@ -3,6 +3,9 @@ import {
   RECEIVE_GROUP,
   REMOVE_GROUP
 } from "../actions/dm_group_actions";
+import {
+  RECEIVE_MESSAGE
+} from "../actions/message_actions";
 import { merge } from "lodash";
 
 const dmGroupsReducer = (oldState = {}, action) => {
@@ -21,6 +24,18 @@ const dmGroupsReducer = (oldState = {}, action) => {
       newState = merge({}, newState, { [action.dmGroup.id]: action.dmGroup });
       return newState;
     }
+    case RECEIVE_MESSAGE: {
+      
+      let newState = merge({}, oldState);
+      if (action.channelType === "dmGroup") {
+        delete newState[action.message.dm_group.id];
+        newState = merge({}, newState, {
+          [action.message.dm_group.id]: action.message.dm_group
+        });
+      }
+      return newState;
+    }
+
     case REMOVE_GROUP: {
       let newState = merge({}, oldState);
       delete newState[action.dmGroupId];

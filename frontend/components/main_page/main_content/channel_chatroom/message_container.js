@@ -1,7 +1,4 @@
 import Message from "./message";
-import {
-  updateMessage
-} from "../../../../actions/message_actions";
 import { connect } from "react-redux";
 
 

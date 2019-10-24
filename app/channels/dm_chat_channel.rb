@@ -7,16 +7,19 @@ class DmChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-     
+    
     message = Message.new(body: data['message'])
     message.messageable_type = 'DmGroup'
-    message.messageable_id = data['dm_group_id'] 
+    message.messageable_id = data['channel_id'] 
     author = User.find(data['author_id']) # I might need the currentUserId
     message.author = author
     if message.save
-      dm_group_data = DmGroup.includes(:messages, :subscribers).find(data['dm_group_id'])
+      
+      dm_group_data = DmGroup.includes(:messages, :members).find(data['channel_id'])
       dm_group = {dm_group: {id: dm_group_data.id,
-      creator_id: dm_group_data.creator_id, message_ids: dm_group_data.message_ids, subscriber_ids: dm_group_data.subscriber_ids}}
+      creator_id: dm_group_data.creator_id, 
+      message_ids: dm_group_data.message_ids, 
+      member_ids: dm_group_data.member_ids}}
       author = {author: {author_id: author.id, author_name: author.display_name}}
  
       datum = message.attributes.merge(author)
@@ -38,7 +41,7 @@ class DmChatChannel < ApplicationCable::Channel
       datum = message.attributes.merge(author)
       datum = datum.merge(dm_group)
       socket = {message: datum,type: 'message'}
-      ChatChannel.broadcast_to(@dm_chat_channel, socket)
+      DmChatChannel.broadcast_to(@dm_chat_channel, socket)
     end
   end
 

@@ -29,8 +29,10 @@ export const removeGroup = dmGroupId => ({
 //thunk action creators
 
 export const fetchDmGroups = () => dispatch => {
-  return DmGroupsApiUtil.fetchDmGroups().then(payload =>
-    dispatch(receiveGroups(payload))
+  return DmGroupsApiUtil.fetchDmGroups().then(payload => {
+    
+    return dispatch(receiveGroups(payload))
+  }
   );
 };
 
@@ -41,8 +43,10 @@ export const fetchDmGroup = (groupId) => dispatch => {
 };
 
 export const createDmGroup = userIds => dispatch => {
-  return DmGroupsApiUtil.createDmGroup(userIds).then(payload =>
-    dispatch(receiveGroup(payload))
+  return DmGroupsApiUtil.createDmGroup(userIds).then(payload => {
+    
+    return dispatch(receiveGroup(payload))
+  }
   );
 };
 

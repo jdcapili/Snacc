@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Router, NavLink } from 'react-router-dom';
 import subscribeChannels from './channel_index';
+import subscribeDmGroups from './dm_index';
 import SidebarListItemContainer from './sidebar_list_item_container';
 import SidebarDmItemContainer from './sidebar_dm_item_container';
 
@@ -45,20 +46,31 @@ class SideBar extends React.Component {
       subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage)
     })
     ).then(() =>
-    this.props.fetchDmGroups()
+      this.props.fetchDmGroups().then((payload) => {
+        subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
+      })
     );
   }
 
   componentDidUpdate(prevProps) {
-
-    if (typeof this.props.currentUser !== "undefined" &&
-     this.props.currentUser.subscribed_channel_ids.length !== prevProps.currentUser.subscribed_channel_ids.length){
-  
-    let { currentUser, receiveMessage } = this.props
-      this.props.fetchChannels(currentUser.id).then((payload) => {
+    
+    if (typeof this.props.currentUser !== "undefined"){
+      
+      let { currentUser, receiveMessage } = this.props;
+      if(this.props.currentUser.subscribed_channel_ids.length !== prevProps.currentUser.subscribed_channel_ids.length){      
+      
+        this.props.fetchChannels(currentUser.id).then((payload) => {
         subscribeChannels(payload.channels, currentUser.subscribed_channel_ids, receiveMessage)
       })
+      }
 
+      if (this.props.currentUser.dm_group_ids.length !== prevProps.currentUser.dm_group_ids.length) {
+        
+        this.props.fetchDmGroups().then((payload) => {
+          subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
+        })
+      }
+      
     }
   }
 

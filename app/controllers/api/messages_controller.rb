@@ -3,9 +3,13 @@ class Api::MessagesController < ApplicationController
   before_action :ensure_logged_in
 
   def index #tested
-    
-    channel = Channel.find(params[:id])
-    @messages = Message.where(messageable: channel).includes(:author)
+    if params[:type] == "channel"
+     
+      messageable = Channel.find(params[:id])
+    elsif params[:type] == "dm_group"
+      messageable = DmGroup.find(params[:id])
+    end
+    @messages = Message.where(messageable: messageable).includes(:author)
     render 'api/messages/index'
   end
 

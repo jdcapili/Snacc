@@ -18,7 +18,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    receiveMessage: (message) => dispatch(receiveMessage(message)),
+    receiveMessage: (message, channelType) => dispatch(receiveMessage(message,channelType)),
     receiveMessages: (messages) => dispatch(receiveMessages(messages)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchChannels: (id) => dispatch(fetchChannels(id)),

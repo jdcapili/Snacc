@@ -10,57 +10,61 @@ class DmChannelChat extends React.Component {
 
 
   }
-  // componentDidMount() {
+  componentDidMount() {
 
-  //   if (typeof this.props.channel === 'undefined' || this.props.messages.length < 1) {
+    if (typeof this.props.dmGroup === 'undefined' || this.props.messages.length < 1) {
 
-  //     // this.props.fetchChannelMessages(this.props.channel.id)
-  //     this.props.fetchChannel(this.props.match.params.channelId)
-  //       .then((payload) => {
-  //         if (payload.messages.length > 0) {
-  //           this.bottom.current.scrollIntoView()
-  //         }
-  //       })
-  //   }
+      // this.props.fetchChannelMessages(this.props.channel.id)
+      
+      this.props.fetchDmGroup(this.props.match.params.dmGroupId)
+        .then((payload) => {
+          
+          if (payload.messages.length > 0) {
+            
+            this.bottom.current.scrollIntoView()
+          }
+        })
+    }
 
-  // }
+  }
 
-  // componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
 
-  //   if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length) {
+    if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length) {
+      
+      this.props.fetchGroupMessages(this.props.dmGroup.id).then((payload) => {
+        
+        if (payload.messages.length > 0) {
+          this.bottom.current.scrollIntoView()
+        }
+      }
+      )
+    }
 
-  //     this.props.fetchChannelMessages(this.props.channel.id).then((payload) => {
-  //       if (payload.messages.length > 0) {
-  //         this.bottom.current.scrollIntoView()
-  //       }
-  //     }
-  //     )
-  //   }
 
 
-
-  // }
+  }
 
   render() {
-
-    // let dm_group_id = typeof this.props.channel === 'undefined' ? '' : this.props.channel.id
-    // let subscriber_ids = typeof this.props.channel === 'undefined' ? '' : this.props.channel.subscriber_ids
-    // let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
-
-
+    
+    let dm_group_id = typeof this.props.dmGroup === 'undefined' ? '' : this.props.dmGroup.id
+    let member_ids = typeof this.props.dmGroup === 'undefined' ? '' : this.props.dmGroup.member_ids
+    let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
 
 
-    // let messageList = [];
-    // if (this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)) {
-    //   messageList = this.props.messages.map(message => {
-    //     return (
-    //       <li className="message-item" key={message.id}>
-    //         <MessageContainer message={message} channel={this.props.channel} />
-    //         <div ref={this.bottom} />
-    //       </li>
-    //     )
-    //   });
-    // }
+
+
+    let messageList = [];
+    if (this.props.messages.length > 0 && member_ids.includes(currentUser_id)) {
+      messageList = this.props.messages.map(message => {
+        return (
+          <li className="message-item" key={message.id}>
+            <MessageContainer message={message} dmGroup={this.props.dmGroup} />
+            <div ref={this.bottom} />
+          </li>
+        )
+      });
+    }
 
     return (
       <div className='chatroom-container'>
@@ -68,7 +72,7 @@ class DmChannelChat extends React.Component {
 
 
         <div className='message-list'>
-          MESSAGES
+          {messageList}
         </div>
         <MessageFormContainer/>
       </div>
