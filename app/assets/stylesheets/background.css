@@ -58,13 +58,13 @@
     width: 205px;
     height: 80px;
     padding: 0;
-    border: 1px solid black;
+    border: 1px solid #c9c7c7;
     border-radius: 5px;
     margin: 20px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
     font-weight: bold;
 }
 
@@ -83,6 +83,7 @@
   height: 30px;
   width: 30px;
   box-sizing: border-box;
+
 }
 
 /* positions */
@@ -94,13 +95,13 @@
 }
 
 .apple{
-  top: 500px;
+  top: 600px;
   left: 200px;
  z-index: 2;
 }
 
 .babel{
-  top: 300px;
+  top: 250px;
   left: 100px;
  z-index: 2;
 }
@@ -118,20 +119,20 @@
 }
 
 .rubyGem{
-  top: 500px;
-  right: 300px;
+  top: 550px;
+  right: 400px;
  z-index: 2;
 }
 
 .dropbox {
-  top: 400px;
-  right: 500px;
+  top: 450px;
+  right: -400px;
  z-index: 2;
 }
 
 .react {
-  top: 300px;
-  right: 300px;
+  top: 500px;
+  right: 600px;
  z-index: 2;
 }
 
@@ -169,4 +170,9 @@
 }
 
 
-
+/* FEATURES images */
+.feat {
+  border-radius: 20px;
+  box-shadow: 2.5px 2.5px #858585;
+  animation: fadeIn 1s;
+}

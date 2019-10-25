@@ -30,6 +30,10 @@ footer button {
     background: transparent;
     border: transparent;
 }
+footer a {
+    text-decoration: none;
+    color: black;
+}
 
 footer {
     position: fixed;
@@ -40,7 +44,7 @@ footer {
     color: white;
     z-index: 10;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     height: 40px;
 }
 
@@ -68,12 +72,8 @@ form.session-form {
 }
 
 header {
-    width: 80%;
     display: flex;
-    align-items: center;
-    padding-right: 10%;
-    border: 0px 100px;
-    padding-left: 10%;
+    align-self: center;
     background-color: white;
     overflow: hidden;
     position: fixed;
@@ -82,7 +82,7 @@ header {
     height: 70px;
     margin: 0 auto;
     box-sizing: border-box;
-    width: 100%;
+    width: 1230px;
 }
 
 
@@ -99,8 +99,9 @@ header h1 {
 }
 
 .form-page{
-    border-bottom: 1px solid slategray;
-    box-shadow: 2px 0px 2px slategray;
+    box-shadow: 2px 0px 2px #858585;
+    width: 100%;
+    padding: 0 10px;
 }
 
 
@@ -146,7 +147,11 @@ header img {
     font-size: larger;
 }
 
-main#root {height: 100vh;background-color: white;}
+main#root {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: white;}
 
 .opening-page {
     height: 700px;
@@ -202,7 +207,7 @@ form.splash-form {
     display: inline-block;
   	overflow: hidden;
   	letter-spacing: 2px;
- 	animation: typing 2s steps(30, end), blink-caret .75s step-end infinite;;
+ 	animation: typing 1.25s steps(30, end), blink-caret .75s step-end infinite;;
     white-space: nowrap;
     box-sizing: border-box;
 }

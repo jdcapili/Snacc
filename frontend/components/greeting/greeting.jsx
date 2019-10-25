@@ -9,7 +9,11 @@ class Greeting extends React.Component{
       signLinks: [],
       headClass: '',
     }
+
+   
   }
+
+
 
   componentDidMount(){
     
@@ -33,17 +37,20 @@ class Greeting extends React.Component{
   }
   
   componentDidUpdate(prevProps){
+
     if(prevProps.location.pathname !== this.props.location.pathname){
       if (this.props.location.pathname === '/signup') {
-        
+
         this.setState({ signLinks: <NavLink to="/signin" >Sign In</NavLink>,
         headClass: 'form-page' });
       } else if (this.props.location.pathname === '/signin') {
+
         this.setState({
           signLinks: <NavLink to="/signup" >Sign Up</NavLink>,
           headClass: 'form-page'
         });
       } else {
+        
         this.setState({
           signLinks: [<NavLink to="/signup" key='signup'>Sign Up</NavLink>,
           <NavLink to="/signin" key='signin'>Sign In</NavLink>],
