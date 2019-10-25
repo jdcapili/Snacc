@@ -38,7 +38,7 @@ class SideBar extends React.Component {
   }
 
   redirectGeneral(){
-    // debugger
+    
     if(this.props.location.pathname === "/main"){
     let general = Object.values(this.props.channels)[0]
     this.props.history.push(`/main/channels/${general.id}`);
@@ -55,7 +55,7 @@ class SideBar extends React.Component {
       subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage);
       // let general = payload.channels[0];
       this.redirectGeneral()
-      // debugger
+      
     })
     ).then(() =>
       this.props.fetchDmGroups().then((payload) => {
