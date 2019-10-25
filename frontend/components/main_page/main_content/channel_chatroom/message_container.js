@@ -1,15 +1,14 @@
 import Message from "./message";
-import {
-  updateMessage
-} from "../../../../actions/message_actions";
 import { connect } from "react-redux";
 
 
 const msp = (state,ownProps) => {
+  let {message,channel} = ownProps;
 
   return {
  currentUserId: state.session.id,
- message: ownProps.message,
+ message,
+ channel
 }}
 
 const mdp = dispatch => ({

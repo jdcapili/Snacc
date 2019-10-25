@@ -3,9 +3,13 @@ class Api::MessagesController < ApplicationController
   before_action :ensure_logged_in
 
   def index #tested
-    
-    channel = Channel.find(params[:id])
-    @messages = Message.where(messageable: channel).includes(:author)
+    if params[:type] == "channel"
+     
+      messageable = Channel.find(params[:id])
+    elsif params[:type] == "dm_group"
+      messageable = DmGroup.find(params[:id])
+    end
+    @messages = Message.where(messageable: messageable).includes(:author)
     render 'api/messages/index'
   end
 
@@ -27,12 +31,6 @@ class Api::MessagesController < ApplicationController
     if current_user.id == @message.author_id
       @message.destroy!
       render json: @message.id
-    #   if(@message.messageable_type == 'Channel')
-    #     channel = Channel.find(message.messageable_id)
-    #     @messages = Message.where(messageable: channel)
-    #   end
-    
-    # render 'api/messages/index'
     end
   end
 

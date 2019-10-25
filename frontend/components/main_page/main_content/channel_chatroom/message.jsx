@@ -47,17 +47,27 @@ class Message extends React.Component {
       id: this.props.message.id
     }
 
+    let channel_id = this.props.channel.id;
 
-    App.cable.subscriptions.subscriptions[0].update({
-      message: message
+    App.cable.subscriptions.subscriptions.forEach((subs, idx) => {
+  
+      if (JSON.parse(subs.identifier).id === channel_id) {
+    
+        App.cable.subscriptions.subscriptions[idx].update({
+          message: message
+        })
+      }
     })
+
+    
+
     this.setState({ editState: null })
   }
 
   render(){
     let {message} = this.props
     let create_time = this.timeFormat(message.created_at)
-
+    
     if(this.state.editState){
       return <>
       <div className='user-avatar'><img src={window.personIcon} /></div>
@@ -74,6 +84,7 @@ class Message extends React.Component {
       </div>
       </>
     } else {
+      
       return <>
         <div className='user-avatar'><img src={window.personIcon} /></div>
         <div className="message-info">

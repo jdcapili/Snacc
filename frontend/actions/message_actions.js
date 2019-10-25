@@ -13,10 +13,11 @@ export const receiveMessages = (messages) => {
   messages}
 };
 
-export const receiveMessage = (message) => {
+export const receiveMessage = (message, channelType) => {
   
   return {type: RECEIVE_MESSAGE,
-    message}
+    message,
+  channelType}
 };
 
 export const removeMessage = (messageId) => ({
@@ -31,15 +32,17 @@ export const fetchChannelMessages = (channelId) => dispatch => { //tested
   .then(payload => dispatch(receiveMessages(payload)))
 }
 
+export const fetchGroupMessages = (dmGroupId) => dispatch => { //tested
+  
+  return MessagesApiUtil.fetchGroupMessages(dmGroupId)
+  .then(payload => dispatch(receiveMessages(payload)))
+}
+
 export const fetchMessage = messageId => dispatch => { //tested
   return MessagesApiUtil.fetchMessage(messageId)
   .then(payload => dispatch(receiveMessage(payload)))
 }
 
-export const updateMessage = message => dispatch => { //tested
-  return MessagesApiUtil.updateMessage(message)
-  .then(payload => dispatch(receiveMessage(payload)))
-}
 
 export const deleteMessage = messageId => dispatch => { //tested
   return MessagesApiUtil.deleteMessage(messageId)

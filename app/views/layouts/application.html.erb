@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    
     <script> type='text/javascript'
      window.slackLogo = "<%= image_url('slack_logo.png') %>"
      window.screenshot1 = "<%= image_url('screenshot1.png') %>"
@@ -33,7 +34,7 @@
    <script src="https://kit.fontawesome.com/c73027ee2d.js" crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:700,800|Open+Sans:400,700,800|Oswald:400,600,700|Raleway:400,800i,900|Roboto:400,700,900&display=swap" rel="stylesheet">
    </script>
-    
+    <%= favicon_link_tag asset_path('slack_logo.png') %>
   </head>
 
   <body>

@@ -1,11 +1,24 @@
-export const fetchChannelMessages = channelId =>
+export const fetchChannelMessages = (channelId) =>
   $.ajax({
     method: "GET",
     url: "api/messages",
     data: {
-      id: channelId
+      id: channelId,
+      type: "channel"
     }
 });
+
+export const fetchGroupMessages = (dmGroupId) => {
+  
+  return $.ajax({
+    method: "GET",
+    url: "api/messages",
+    data: {
+      id: dmGroupId,
+      type: "dm_group"
+    }
+  }
+)};
 
 export const fetchMessage = messageId =>
   $.ajax({
@@ -13,14 +26,7 @@ export const fetchMessage = messageId =>
     url: `api/messages/${messageId}`,
 });
 
-export const updateMessage = message =>
-  $.ajax({
-    method: "PATCH",
-    url: `api/messages/${message.id}`,
-    data: {
-      message
-    }
-});
+
 
 export const deleteMessage = messageId =>
   $.ajax({

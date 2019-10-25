@@ -5,10 +5,11 @@ import { receiveMessage,receiveMessages } from '../../../actions/message_actions
 import { logout, fetchAllUsers } from '../../../actions/session_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
 import SideBar from './side_bar';
+import { withRouter } from 'react-router-dom';
 
 const msp = state => {
   
-  
+ 
   return {
     currentUser: state.entities.users[state.session.id],
     channels: state.entities.channels,
@@ -18,7 +19,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    receiveMessage: (message) => dispatch(receiveMessage(message)),
+    receiveMessage: (message, channelType) => dispatch(receiveMessage(message,channelType)),
     receiveMessages: (messages) => dispatch(receiveMessages(messages)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchChannels: (id) => dispatch(fetchChannels(id)),
@@ -31,4 +32,4 @@ const mdp = dispatch => {
   };
 }
 
-export default connect(msp,mdp)(SideBar)
+export default withRouter(connect(msp,mdp)(SideBar))

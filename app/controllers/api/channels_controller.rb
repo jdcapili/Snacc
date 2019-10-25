@@ -3,7 +3,8 @@ class Api::ChannelsController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    #current user's subscribed channels
+    #current user's subscribed channels pending for refactor
+    #after creating search feature
 
     @channels = Channel.includes(:messages).all #includes(:subscriber_ids)??
     render 'api/channels/index'

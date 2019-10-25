@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Router, NavLink } from 'react-router-dom';
 import subscribeChannels from './channel_index';
+import subscribeDmGroups from './dm_index';
 import SidebarListItemContainer from './sidebar_list_item_container';
 import SidebarDmItemContainer from './sidebar_dm_item_container';
 
@@ -17,7 +18,8 @@ class SideBar extends React.Component {
     this.userInfo = React.createRef();
 
     this.dropDownClick = this.dropDownClick.bind(this);
- 
+    
+    this.redirectGeneral = this.redirectGeneral.bind(this);
   }
 
   dropDownClick(){
@@ -35,28 +37,57 @@ class SideBar extends React.Component {
     }
   }
 
+  redirectGeneral(){
+    // debugger
+    if(this.props.location.pathname === "/main"){
+    let general = Object.values(this.props.channels)[0]
+    this.props.history.push(`/main/channels/${general.id}`);
+    }
+  }
+
 
   componentDidMount(){
     
     let {currentUser,receiveMessage} = this.props
-    
+    let {props} = this;
     this.props.fetchAllUsers().then(() => 
     this.props.fetchChannels(currentUser.id).then((payload) => {
-      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage)
+      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage);
+      // let general = payload.channels[0];
+      this.redirectGeneral()
+      // debugger
     })
     ).then(() =>
-    this.props.fetchDmGroups()
+      this.props.fetchDmGroups().then((payload) => {
+        subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
+      })
     );
+
   }
 
+  componentDidUpdate(prevProps) {
+    
+    if (typeof this.props.currentUser !== "undefined"){
+      
+      let { currentUser, receiveMessage } = this.props;
+      if(this.props.currentUser.subscribed_channel_ids.length !== prevProps.currentUser.subscribed_channel_ids.length){      
+      
+        this.props.fetchChannels(currentUser.id).then((payload) => {
+        subscribeChannels(payload.channels, currentUser.subscribed_channel_ids, receiveMessage)
+      })
+      }
 
+      if (this.props.currentUser.dm_group_ids.length !== prevProps.currentUser.dm_group_ids.length) {
+        
+        this.props.fetchDmGroups().then((payload) => {
+          subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
+        })
+      }
+      
+    }
 
-  // componentDidUpdate(prevProps){
-  //   if(Object.values(prevProps.channels).length < Object.values(this.props.channels).length){
-  //     subscribeChannels(Object.values(this.props.channels),
-  //      this.props.currentUser.subscribed_channel_ids);
-  //   }
-  // }
+    
+  }
 
   openChannelOptions(channelId){
     

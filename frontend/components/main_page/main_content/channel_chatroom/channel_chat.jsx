@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageForm from './message_form';
+import MessageFormContainer from './message_form_container';
 import MessageContainer from './message_container';
 import MainHeaderContainer from '../main_header/main_header_container';
 
@@ -7,6 +7,7 @@ class ChannelChat extends React.Component{
   constructor(props){
     super(props);
     this.bottom = React.createRef();
+
     
   }
   componentDidMount(){
@@ -20,7 +21,8 @@ class ChannelChat extends React.Component{
           this.bottom.current.scrollIntoView()
         }
       })
-    } 
+    }
+
   }
 
   componentDidUpdate(prevProps){
@@ -32,8 +34,9 @@ class ChannelChat extends React.Component{
         this.bottom.current.scrollIntoView()}
       }
       )
-      
-    } 
+    }
+
+
         
   }
 
@@ -43,19 +46,21 @@ class ChannelChat extends React.Component{
     let subscriber_ids = typeof this.props.channel === 'undefined' ? '' : this.props.channel.subscriber_ids
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
     
-    
+
+
+
     let messageList = [];
     if(this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)){
     messageList = this.props.messages.map(message => {
       return (
         <li className="message-item" key={message.id}>
-          <MessageContainer message={message} />
+          <MessageContainer message={message} channel={this.props.channel}/>
           <div ref={this.bottom} />
         </li>
       )
     });
     }
-
+    
     return (
       <div className='chatroom-container'>
         <MainHeaderContainer channelId={channel_id}/>
@@ -64,7 +69,7 @@ class ChannelChat extends React.Component{
         <div className='message-list'>
           {messageList}
         </div>
-        <MessageForm channel_id={channel_id} currentUser_id={currentUser_id} />
+        <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id}/>
       </div>
     )
   }
