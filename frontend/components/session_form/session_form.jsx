@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
   handleClick(e){
     e.preventDefault();
     this.props.action(this.state).then(()=> {
-      debugger
+      
     this.setState({
       display_name: '',
       email: '',
