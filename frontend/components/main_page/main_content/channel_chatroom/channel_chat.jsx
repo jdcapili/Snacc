@@ -12,7 +12,9 @@ class ChannelChat extends React.Component{
   }
   componentDidMount(){
     
-    if (typeof this.props.channel === 'undefined' || this.props.messages.length < 1) {
+    if (typeof this.props.channel === 'undefined' 
+    || this.props.messages.length < 1 
+      || this.props.messages.length !== this.props.channel.message_ids.length) {
       
       // this.props.fetchChannelMessages(this.props.channel.id)
       this.props.fetchChannel(this.props.match.params.channelId)

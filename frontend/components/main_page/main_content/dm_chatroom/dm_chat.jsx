@@ -11,8 +11,10 @@ class DmChannelChat extends React.Component {
 
   }
   componentDidMount() {
-
-    if (typeof this.props.dmGroup === 'undefined' || this.props.messages.length < 1) {
+    
+    if (typeof this.props.dmGroup === 'undefined' 
+    || this.props.messages.length < 1 
+    || this.props.messages.length !== this.props.dmGroup.message_ids.length) {
 
       // this.props.fetchChannelMessages(this.props.channel.id)
       
@@ -29,7 +31,7 @@ class DmChannelChat extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-
+    
     if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length) {
       
       this.props.fetchGroupMessages(this.props.dmGroup.id).then((payload) => {
