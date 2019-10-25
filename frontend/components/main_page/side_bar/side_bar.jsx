@@ -18,7 +18,8 @@ class SideBar extends React.Component {
     this.userInfo = React.createRef();
 
     this.dropDownClick = this.dropDownClick.bind(this);
- 
+    
+    this.redirectGeneral = this.redirectGeneral.bind(this);
   }
 
   dropDownClick(){
@@ -36,20 +37,32 @@ class SideBar extends React.Component {
     }
   }
 
+  redirectGeneral(){
+    // debugger
+    if(this.props.location.pathname === "/main"){
+    let general = Object.values(this.props.channels)[0]
+    this.props.history.push(`/main/channels/${general.id}`);
+    }
+  }
+
 
   componentDidMount(){
     
     let {currentUser,receiveMessage} = this.props
-    
+    let {props} = this;
     this.props.fetchAllUsers().then(() => 
     this.props.fetchChannels(currentUser.id).then((payload) => {
-      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage)
+      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage);
+      // let general = payload.channels[0];
+      this.redirectGeneral()
+      // debugger
     })
     ).then(() =>
       this.props.fetchDmGroups().then((payload) => {
         subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
       })
     );
+
   }
 
   componentDidUpdate(prevProps) {
@@ -72,6 +85,8 @@ class SideBar extends React.Component {
       }
       
     }
+
+    
   }
 
   openChannelOptions(channelId){

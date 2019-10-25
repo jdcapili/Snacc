@@ -5,6 +5,7 @@ import { receiveMessage,receiveMessages } from '../../../actions/message_actions
 import { logout, fetchAllUsers } from '../../../actions/session_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
 import SideBar from './side_bar';
+import { withRouter } from 'react-router-dom';
 
 const msp = state => {
   
@@ -31,4 +32,4 @@ const mdp = dispatch => {
   };
 }
 
-export default connect(msp,mdp)(SideBar)
+export default withRouter(connect(msp,mdp)(SideBar))

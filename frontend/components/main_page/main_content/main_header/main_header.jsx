@@ -31,6 +31,16 @@ class MainHeader extends React.Component {
         () => this.setState({ buttonState }))
     } else {
       buttonState = 'join';
+      let {channelId} = this.props
+      
+      App.cable.subscriptions.subscriptions.forEach((subs) => {
+        let identifier = JSON.parse(subs.identifier);
+        
+        if(identifier.channel === "ChatChannel" && identifier.id === channelId){
+          subs.unsubscribe();
+        }
+      });
+      
       this.props.deleteSubscription(this.props.channelId).then(
       () => this.setState({ buttonState })
       )
