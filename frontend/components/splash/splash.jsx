@@ -39,6 +39,9 @@ class Splash extends React.Component {
         <div className='rubyGem'><img className='rubyGem2' src={window.rubyGem} /></div>
         <div className='dropbox'><img className='dropbox2' src={window.dropbox} /></div>
         <div className='react'><img className='react2' src={window.react} /></div>
+        <div className='chrome'><img className='chrome2' src={window.chrome} /></div>
+        <div className='googleGroups'><img className='googleGroups2' src={window.googleGroups} /></div>
+        <div className='dell'><img className='dell2' src={window.dell} /></div>
         </div>
 
 

@@ -151,7 +151,8 @@ main#root {
     display: flex;
     justify-content: center;
     height: 100vh;
-    background-color: white;}
+    background-color: #f8f8f8;
+}
 
 .opening-page {
     height: 700px;

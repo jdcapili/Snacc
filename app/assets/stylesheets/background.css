@@ -91,68 +91,72 @@
 .alexa{
   top: 200px;
   left: 500px;
- z-index: 2;
 }
 
 .apple{
   top: 600px;
   left: 200px;
- z-index: 2;
 }
 
 .babel{
   top: 250px;
   left: 100px;
- z-index: 2;
 }
 
 .ruby{
   top: 200px;
   right: 500px;
- z-index: 2;
 }
 
 .webpack{
   top: 150px;
   right: 700px;
- z-index: 2;
 }
 
 .rubyGem{
   top: 550px;
   right: 400px;
- z-index: 2;
 }
 
 .dropbox {
   top: 450px;
-  right: -400px;
- z-index: 2;
+  left: 400px;
 }
 
 .react {
   top: 500px;
   right: 600px;
- z-index: 2;
 }
 
-.splash-bg > div > img {
+.chrome {
+  top: 180px;
+  right: 300px;
+}
+
+.googleGroups {
+  top: 200px;
+  left: 300px;
+}
+
+.dell {
+  top: 550px;
+}
+
+.react2, .dropbox2, .alexa2, .apple2,.babel2, .ruby2, .webpack2 {
   animation: xAxis 10s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
 }
 
-.splash-bg > div {
+.react, .dropbox, .alexa, .apple,.babel, .ruby, .webpack {
   animation: yAxis 10s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
 }
 
-/* .alexa2 {
-  animation: 5s linear infinite;
-} */
+.chrome, .rubyGem, .googleGroups, .dell {
+  animation: yAxis2 12s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+}
 
-/* .alexa2::after{
-  content:'';
-  animation: yAxis 10s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
-} */
-
+.chrome2, .rubyGem2, .googleGroups2, .dell2 {
+  animation: xAxis2 12s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+}
 
 
 @keyframes xAxis {
@@ -163,6 +167,20 @@
 }
 
 @keyframes yAxis {
+  50% {
+    animation-timing-function: ease-out;
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes xAxis2 {
+  50% {
+    animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    transform: translateX(-50px);
+  }
+}
+
+@keyframes yAxis2 {
   50% {
     animation-timing-function: ease-out;
     transform: translateY(-50px);
