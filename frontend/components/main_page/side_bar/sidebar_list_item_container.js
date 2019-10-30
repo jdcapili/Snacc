@@ -8,13 +8,13 @@ const msp = (state, ownProps) => {
 
   return {
     channel,
-    currentUserId
+    currentUserId,
   };
 };
 
 const mdp = dispatch => {
   return {
-    deleteChannel: id => dispatch(deleteChannel(id))
+    deleteChannel: id => dispatch(deleteChannel(id)),
   };
 };
 

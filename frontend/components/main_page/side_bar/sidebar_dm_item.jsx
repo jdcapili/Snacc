@@ -48,13 +48,13 @@ class SidebarDmItem extends React.Component {
       else {dmGroup_name += `, ${member.display_name}`}
     }) // would be the name of members except current user
 
-    return <li key={dmGroup.id}>
-      <div className="group-info">
-        <div className='status'></div>
-      <NavLink to={`/main/dm_groups/${dmGroup.id}`} onContextMenu={this.dropOptionsClick}>
-        {dmGroup_name}</NavLink>
-      </div>
+    return <li key={dmGroup.id} >
 
+        
+      <NavLink to={`/main/dm_groups/${dmGroup.id}`} onContextMenu={this.dropOptionsClick}>
+        <div className='status'></div>
+        {dmGroup_name}</NavLink>
+   
       <nav className={this.state.toggleStatus} onMouseLeave={this.dropOptionsClick} >
         <button onClick={() => this.props.deleteDmGroup(dmGroup.id)}>
           Delete Group

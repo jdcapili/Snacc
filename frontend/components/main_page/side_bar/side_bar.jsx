@@ -13,13 +13,15 @@ class SideBar extends React.Component {
     this.state = {
       dropStat: `dropdown-sidebar-content`,
       h3Stat: '',
-      buttonStat: `dropdown-options-content`
+      buttonStat: `dropdown-options-content`,
     }
     this.userInfo = React.createRef();
 
     this.dropDownClick = this.dropDownClick.bind(this);
     
     this.redirectGeneral = this.redirectGeneral.bind(this);
+
+
   }
 
   dropDownClick(){
@@ -40,7 +42,7 @@ class SideBar extends React.Component {
   redirectGeneral(){
     
     if(this.props.location.pathname === "/main"){
-    let general = Object.values(this.props.channels)[0]
+    let general = Object.values(this.props.channels)[0];
     this.props.history.push(`/main/channels/${general.id}`);
     }
   }
@@ -53,7 +55,7 @@ class SideBar extends React.Component {
     this.props.fetchAllUsers().then(() => 
     this.props.fetchChannels(currentUser.id).then((payload) => {
       subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage);
-      // let general = payload.channels[0];
+
       this.redirectGeneral()
       
     })
@@ -100,8 +102,10 @@ class SideBar extends React.Component {
   }
 
 
+
+
   render(){
-    let { currentUser } = this.props
+    let { currentUser } = this.props;
 
     let userChannels = Object.values(this.props.channels).map((channel) => {
       return <SidebarListItemContainer channelId={channel.id}  key={channel.id}/>

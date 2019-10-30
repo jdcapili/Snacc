@@ -18,7 +18,7 @@ const msp = (state, ownProps) => {
   }
   return{
     dmGroup,
-    members, 
+    members,
   }
 }
 

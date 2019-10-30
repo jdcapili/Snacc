@@ -9,23 +9,27 @@
     background-color: #2aac76;
 }
 
-.group-info {
-    display: flex;
-    width: 100%;
-    padding: 5px 15px;
-    box-sizing: border-box;
-}
+// .group-info {
+//     display: flex;
+//     width: 100%;
+//     padding: 5px 15px;
+//     box-sizing: border-box;
+// }
 
 
 
-.group-info a {
+.dm-groups a {
     text-decoration: none;
     color: #d0c3cf;
     padding-left: 10px;
+    width: 222px;
+    box-sizing: border-box;
+    display: flex;
 }
 
 .status {
     align-self: center;
+    margin-right: 5px;
 }
 
 .channel-groups div:hover, .channel-groups h4:hover {
