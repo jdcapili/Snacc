@@ -1,5 +1,8 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_ALL_USERS } from '../actions/session_actions';
 import { RECEIVE_CHANNEL } from '../actions/channel_actions';
+import {
+  RECEIVE_MESSAGE,
+} from "../actions/message_actions";
 import {merge} from 'lodash';
 
 const usersReducer = (oldState={}, action) => {
@@ -23,6 +26,12 @@ const usersReducer = (oldState={}, action) => {
         newState = merge({}, newState, { [subscriber.id]: subscriber });
         })
       
+      return newState;
+    }
+    case RECEIVE_MESSAGE: {
+      let newState = merge({}, oldState);
+      delete newState[action.author.id];
+      newState = merge({}, newState, { [action.author.id]: action.author });
       return newState;
     }
     default:

@@ -49,11 +49,13 @@
 
 .inner-div ul {
     display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
 .inner-div li {
     padding: 5px;
-    margin: 0px 5px;
+    margin: 5px 5px;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
 }

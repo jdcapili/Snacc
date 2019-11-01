@@ -52,15 +52,24 @@ class ChannelChat extends React.Component{
 
 
     let messageList = [];
+    let channelChatShow = [];
     if(this.props.messages.length > 0 && subscriber_ids.includes(currentUser_id)){
-    messageList = this.props.messages.map(message => {
-      return (
-        <li className="message-item" key={message.id}>
-          <MessageContainer message={message} channel={this.props.channel}/>
-          <div ref={this.bottom} />
-        </li>
-      )
-    });
+      messageList = this.props.messages.map(message => {
+        return (
+          <li className="message-item" key={message.id}>
+            <MessageContainer message={message} channel={this.props.channel}/>
+            <div ref={this.bottom} />
+          </li>
+        )
+      });
+    }
+    
+    if(subscriber_ids.includes(currentUser_id)){
+      channelChatShow = <>< div className='message-list' >
+        {messageList}
+      </div >
+      <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id} />
+      </>;
     }
     
     return (
@@ -68,10 +77,7 @@ class ChannelChat extends React.Component{
         <MainHeaderContainer channelId={channel_id}/>
 
 
-        <div className='message-list'>
-          {messageList}
-        </div>
-        <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id}/>
+        {channelChatShow}
       </div>
     )
   }

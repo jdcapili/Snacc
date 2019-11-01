@@ -22,9 +22,9 @@ class DmChatChannel < ApplicationCable::Channel
       member_ids: dm_group_data.member_ids}}
       author = {author: {author_id: author.id, author_name: author.display_name}}
  
-      datum = message.attributes.merge(author)
+      datum = {message: message.attributes}.merge(author)
       datum = datum.merge(dm_group)
-      socket = {message: datum,type: 'message'}
+      socket = {datum: datum,type: 'message'}
         DmChatChannel.broadcast_to(@dm_chat_channel, socket)
     end
   end

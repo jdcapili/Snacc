@@ -19,7 +19,7 @@ const mdp = dispatch => {
       dispatch(createSubscription(channelId, userIds)),
     deleteSubscription: channelId => dispatch(deleteSubscription(channelId)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
-    receiveMessage: message => dispatch(receiveMessage(message))
+    receiveMessage: (message,channelType) => dispatch(receiveMessage(message,channelType))
   };
 }
 

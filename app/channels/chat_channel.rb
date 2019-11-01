@@ -11,17 +11,20 @@ class ChatChannel < ApplicationCable::Channel
     message = Message.new(body: data['message'])
     message.messageable_type = 'Channel'
     message.messageable_id = data['channel_id'] 
-    author = User.find(data['author_id']) # I might need the currentUserId
-    message.author = author
+    author = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).find(data['author_id']) # I might need the currentUserId
+    message.author_id = author.id
     if message.save
       channel_data = Channel.includes(:messages, :subscribers).find(data['channel_id'])
       channel = {channel: {id: channel_data.id, channel_name: channel_data.channel_name,
       creator_id: channel_data.creator_id, message_ids: channel_data.message_ids, subscriber_ids: channel_data.subscriber_ids}}
-      author = {author: {author_id: author.id, author_name: author.display_name}}
+      author = {author: {id: author.id, display_name: author.display_name, email: author.email, 
+      subscribed_channel_ids: author.subscribed_channel_ids, owned_channel_ids: author.owned_channel_ids,
+      dm_group_ids: author.dm_group_ids, owned_group_ids: author.owned_group_ids,
+      message_ids: author.message_ids}}
  
-      datum = message.attributes.merge(author)
+      datum = {message: message.attributes}.merge(author)
       datum = datum.merge(channel)
-      socket = {message: datum,type: 'message'}
+      socket = {datum: datum,type: 'message'}
         ChatChannel.broadcast_to(@chat_channel, socket)
     end
   end
@@ -32,12 +35,17 @@ class ChatChannel < ApplicationCable::Channel
     channel_data = Channel.includes(:messages, :subscribers).find(message.messageable_id)
     channel = {channel: {id: channel_data.id, channel_name: channel_data.channel_name,
       creator_id: channel_data.creator_id, message_ids: channel_data.message_ids, subscriber_ids: channel_data.subscriber_ids}}
-    author = message.author
+    author = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).find(message.author_id)
     if message.update({body: data['message']['body']})
-      author = {author: {author_id: author.id, author_name: author.display_name}}
-      datum = message.attributes.merge(author)
+ 
+      author = {author: {id: author.id, display_name: author.display_name, email: author.email, 
+      subscribed_channel_ids: author.subscribed_channel_ids, owned_channel_ids: author.owned_channel_ids,
+      dm_group_ids: author.dm_group_ids, owned_group_ids: author.owned_group_ids,
+      message_ids: author.message_ids}}
+      
+      datum = {message: message.attributes}.merge(author)
       datum = datum.merge(channel)
-      socket = {message: datum,type: 'message'}
+      socket = {datum: datum,type: 'message'}
       ChatChannel.broadcast_to(@chat_channel, socket)
     end
   end

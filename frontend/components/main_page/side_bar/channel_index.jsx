@@ -15,32 +15,33 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
    
     {
 
-        App.cable.subscriptions.create(
-          { channel: "ChatChannel", id: channel.id },
-          {
-            received: data => {
-              
-              switch (data.type) {
-                case "message":
-                  
-                  if(data.message.messageable_id === channel.id){
-                  receiveMessage(data.message, "channel"); //dispatch actions
-                  }
-                  break;
-              }
-            },
-            speak: function (data) {
-              return this.perform("speak", data);
-            },
-            update: function (data) {
+      App.cable.subscriptions.create(
+        { channel: "ChatChannel", id: channel.id },
+        {
+          received: data => {
 
-              return this.perform("update", data);
-            },
-            load: function () {
-              return this.perform("load");
+            switch (data.type) {
+              case "message":
+                debugger
+                if (data.datum.message.messageable_id === channel.id) {
+                  debugger
+                  receiveMessage(data.datum, "channel"); //dispatch actions
+                }
+                break;
             }
+          },
+          speak: function (data) {
+            return this.perform("speak", data);
+          },
+          update: function (data) {
+
+            return this.perform("update", data);
+          },
+          load: function () {
+            return this.perform("load");
           }
-        );
+        }
+      );
           
       }
   })

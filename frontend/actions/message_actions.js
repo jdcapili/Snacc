@@ -13,10 +13,12 @@ export const receiveMessages = (messages) => {
   messages}
 };
 
-export const receiveMessage = (message, channelType) => {
-  
+export const receiveMessage = (datum, channelType) => {
+  debugger
   return {type: RECEIVE_MESSAGE,
-    message,
+    message: datum.message,
+    chatChannel: datum.channel || datum.dm_group,
+    author: datum.author,
   channelType}
 };
 

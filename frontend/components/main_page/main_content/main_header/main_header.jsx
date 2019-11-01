@@ -9,6 +9,7 @@ class MainHeader extends React.Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.subsToChannel = this.subsToChannel.bind(this);
   }
 
 
@@ -22,11 +23,44 @@ class MainHeader extends React.Component {
     }
   }
 
+  subsToChannel(channel){
+    App.cable.subscriptions.create(
+      { channel: "ChatChannel", id: channel.id },
+      {
+        received: data => {
+
+          switch (data.type) {
+            case "message":
+              debugger
+              if (data.datum.message.messageable_id === channel.id) {
+                debugger
+                this.props.receiveMessage(data.datum, "channel"); //dispatch actions
+              }
+              break;
+          }
+        },
+        speak: function (data) {
+          return this.perform("speak", data);
+        },
+        update: function (data) {
+
+          return this.perform("update", data);
+        },
+        load: function () {
+          return this.perform("load");
+        }
+      }
+    );
+  }
+
   handleClick(){
     
     let buttonState;
     if (!this.props.channel.subscriber_ids.includes(this.props.currentUser.id)){
       buttonState = 'leave';
+      let { channel } = this.props;
+      this.subsToChannel(channel);
+
       this.props.createSubscription(this.props.channelId, [this.props.currentUser.id]).then(
         () => this.setState({ buttonState }))
     } else {

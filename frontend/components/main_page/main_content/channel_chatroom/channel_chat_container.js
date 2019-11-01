@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 
 const msp = (state,ownProps) => {
-  
+  debugger
   let channel = state.entities.channels[ownProps.match.params.channelId];
   let messages = Object.values(state.entities.messages).filter((message) => {
     return channel.message_ids.includes(message.id)
