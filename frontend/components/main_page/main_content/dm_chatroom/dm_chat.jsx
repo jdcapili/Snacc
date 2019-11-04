@@ -34,15 +34,15 @@ class DmChannelChat extends React.Component {
     
     if (prevProps.location.pathname !== this.props.location.pathname) {
 
-      if (prevProps.messages.length < this.props.messages.length) {
-        this.props.fetchDmGroup(this.props.match.params.dmGroupId)
-          .then((payload) => {
+      
+      this.props.fetchDmGroup(this.props.match.params.dmGroupId)
+        .then((payload) => {
 
-            if (payload.messages.length > 0) {
-              this.bottom.current.scrollIntoView()
-            }
-          })
-      }
+          if (payload.messages.length > 0) {
+            this.bottom.current.scrollIntoView()
+          }
+        })
+      
     } else {
       if (prevProps.messages.length < this.props.messages.length) {
 

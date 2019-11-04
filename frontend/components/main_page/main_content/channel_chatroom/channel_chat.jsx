@@ -31,15 +31,15 @@ class ChannelChat extends React.Component{
     
     if (prevProps.location.pathname !== this.props.location.pathname ){
 
-      if (prevProps.messages.length < this.props.messages.length){
-        this.props.fetchChannel(this.props.match.params.channelId)
-          .then((payload) => {
+      
+      this.props.fetchChannel(this.props.match.params.channelId)
+        .then((payload) => {
 
-            if (payload.messages.length > 0 && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
-              this.bottom.current.scrollIntoView()
-            }
-        })
-      }
+          if (payload.messages.length > 0 && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
+            this.bottom.current.scrollIntoView()
+          }
+      })
+      
     }else{
       if (prevProps.messages.length < this.props.messages.length && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
         
