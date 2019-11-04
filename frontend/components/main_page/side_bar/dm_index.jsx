@@ -16,12 +16,12 @@ const subscribeDmGroups = (dmGroupsArray, subsDmGroupArr, receiveMessage) => {
         { channel: "DmChatChannel", id: dmGroup.id },
         {
           received: data => {
-            debugger
+            
             switch (data.type) {
               case "message":
-                debugger
+                
                 if (data.datum.message.messageable_id === dmGroup.id) {
-                  debugger
+                  
                   receiveMessage(data.datum, "dmGroup"); //dispatch actions
                 }
                 break;

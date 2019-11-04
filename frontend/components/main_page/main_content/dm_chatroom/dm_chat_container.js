@@ -7,7 +7,7 @@ const msp = (state, ownProps) => {
   
   let dmGroup = state.entities.dmGroups[ownProps.match.params.dmGroupId];
   let messages = Object.values(state.entities.messages).filter(message => {
-    debugger
+    
     return dmGroup.message_ids.includes(message.id);
   });
 

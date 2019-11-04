@@ -42,7 +42,7 @@ class ChannelChat extends React.Component{
       }
     }else{
       if (prevProps.messages.length < this.props.messages.length && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
-      debugger   
+        
         this.bottom.current.scrollIntoView()
 
       }

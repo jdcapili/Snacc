@@ -56,7 +56,7 @@ class DmChannelChat extends React.Component {
   }
 
   render() {
-    debugger
+    
     let dm_group_id = typeof this.props.dmGroup === 'undefined' ? '' : this.props.dmGroup.id
     let member_ids = typeof this.props.dmGroup === 'undefined' ? '' : this.props.dmGroup.member_ids
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
