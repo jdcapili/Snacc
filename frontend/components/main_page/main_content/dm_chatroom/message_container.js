@@ -7,7 +7,8 @@ const msp = (state, ownProps) => {
   return {
     currentUserId: state.session.id,
     message,
-    dmGroup
+    dmGroup,
+    author: state.entities.users[message.author_id]
   };
 };
 

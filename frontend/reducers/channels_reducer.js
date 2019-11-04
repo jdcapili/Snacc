@@ -25,15 +25,15 @@ const channelsReducer = (oldState = {}, action) => {
       return newState;
     }
     case RECEIVE_MESSAGE: {
-      debugger
+      
       let newState = merge({}, oldState);
       if(action.channelType === "channel"){
-        debugger
+        
       delete newState[action.chatChannel.id];
-      debugger
+      
       newState = merge({}, newState, { [action.chatChannel.id]: action.chatChannel });
       }
-      debugger
+      
       return newState;
     }
     case REMOVE_CHANNEL: {

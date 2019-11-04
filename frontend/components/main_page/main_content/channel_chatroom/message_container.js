@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const msp = (state,ownProps) => {
   let {message,channel} = ownProps;
-  debugger
+
   return {
  currentUserId: state.session.id,
  message,

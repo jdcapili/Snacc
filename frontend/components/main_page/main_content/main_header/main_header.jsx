@@ -31,9 +31,9 @@ class MainHeader extends React.Component {
 
           switch (data.type) {
             case "message":
-              debugger
+              
               if (data.datum.message.messageable_id === channel.id) {
-                debugger
+                
                 this.props.receiveMessage(data.datum, "channel"); //dispatch actions
               }
               break;

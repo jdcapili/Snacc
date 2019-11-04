@@ -14,7 +14,7 @@ export const receiveMessages = (messages) => {
 };
 
 export const receiveMessage = (datum, channelType) => {
-  debugger
+
   return {type: RECEIVE_MESSAGE,
     message: datum.message,
     chatChannel: datum.channel || datum.dm_group,

@@ -28,9 +28,9 @@ const dmGroupsReducer = (oldState = {}, action) => {
       
       let newState = merge({}, oldState);
       if (action.channelType === "dmGroup") {
-        delete newState[action.message.dm_group.id];
+        delete newState[action.chatChannel.id];
         newState = merge({}, newState, {
-          [action.message.dm_group.id]: action.message.dm_group
+          [action.chatChannel.id]: action.chatChannel
         });
       }
       return newState;

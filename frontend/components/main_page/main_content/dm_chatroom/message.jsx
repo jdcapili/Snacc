@@ -65,14 +65,14 @@ class Message extends React.Component {
   }
 
   render() {
-    let { message } = this.props
+    let { message,author } = this.props
     let create_time = this.timeFormat(message.created_at)
 
     if (this.state.editState) {
       return <>
         <div className='user-avatar'><img src={window.personIcon} /></div>
         <div className="message-info">
-          <div><h3>{message.author.author_name}</h3><span>{create_time}</span></div>
+          <div><h3>{author.display_name}</h3><span>{create_time}</span></div>
           <form onSubmit={this.handleClick}>
             <input type="text" value={this.state.toUpdate} onChange={this.update} />
 
@@ -88,7 +88,7 @@ class Message extends React.Component {
       return <>
         <div className='user-avatar'><img src={window.personIcon} /></div>
         <div className="message-info">
-          <div><h3>{message.author.author_name}</h3><span>{create_time}</span></div>
+          <div><h3>{author.display_name}</h3><span>{create_time}</span></div>
           <p onDoubleClick={this.editDoubleClick}>{message.body}</p>
         </div>
       </>

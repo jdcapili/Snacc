@@ -7,13 +7,14 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-     
+    
     message = Message.new(body: data['message'])
     message.messageable_type = 'Channel'
     message.messageable_id = data['channel_id'] 
-    author = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).find(data['author_id']) # I might need the currentUserId
-    message.author_id = author.id
+     # I might need the currentUserId
+    message.author_id = data['author_id']
     if message.save
+      author = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).find(data['author_id'])
       channel_data = Channel.includes(:messages, :subscribers).find(data['channel_id'])
       channel = {channel: {id: channel_data.id, channel_name: channel_data.channel_name,
       creator_id: channel_data.creator_id, message_ids: channel_data.message_ids, subscriber_ids: channel_data.subscriber_ids}}

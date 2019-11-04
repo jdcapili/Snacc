@@ -22,9 +22,9 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
 
             switch (data.type) {
               case "message":
-                debugger
+                
                 if (data.datum.message.messageable_id === channel.id) {
-                  debugger
+                  
                   receiveMessage(data.datum, "channel"); //dispatch actions
                 }
                 break;

@@ -11,19 +11,23 @@ class DmChatChannel < ApplicationCable::Channel
     message = Message.new(body: data['message'])
     message.messageable_type = 'DmGroup'
     message.messageable_id = data['channel_id'] 
-    author = User.find(data['author_id']) # I might need the currentUserId
-    message.author = author
+    message.author_id = data['author_id']
     if message.save
       
+      author = User.includes(:messages,:subscribed_channels, :dm_groups, :owned_channels, :owned_groups).find(data['author_id'])
       dm_group_data = DmGroup.includes(:messages, :members).find(data['channel_id'])
       dm_group = {dm_group: {id: dm_group_data.id,
       creator_id: dm_group_data.creator_id, 
       message_ids: dm_group_data.message_ids, 
       member_ids: dm_group_data.member_ids}}
-      author = {author: {author_id: author.id, author_name: author.display_name}}
+      author = {author: {id: author.id, display_name: author.display_name, email: author.email, 
+      subscribed_channel_ids: author.subscribed_channel_ids, owned_channel_ids: author.owned_channel_ids,
+      dm_group_ids: author.dm_group_ids, owned_group_ids: author.owned_group_ids,
+      message_ids: author.message_ids}}
  
       datum = {message: message.attributes}.merge(author)
       datum = datum.merge(dm_group)
+      
       socket = {datum: datum,type: 'message'}
         DmChatChannel.broadcast_to(@dm_chat_channel, socket)
     end

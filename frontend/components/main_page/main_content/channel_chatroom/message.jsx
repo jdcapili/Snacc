@@ -65,7 +65,7 @@ class Message extends React.Component {
   }
 
   render(){
-    debugger
+
     let {message,author} = this.props
     let create_time = this.timeFormat(message.created_at)
     

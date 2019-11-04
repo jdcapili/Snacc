@@ -19,7 +19,7 @@ class ChannelChat extends React.Component{
       // this.props.fetchChannelMessages(this.props.channel.id)
       this.props.fetchChannel(this.props.match.params.channelId)
       .then((payload) => {
-        if (payload.messages.length > 0) {
+        if (payload.messages.length > 0 && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
           this.bottom.current.scrollIntoView()
         }
       })
@@ -29,13 +29,23 @@ class ChannelChat extends React.Component{
 
   componentDidUpdate(prevProps){
     
-    if (prevProps.location !== this.props.location || prevProps.messages.length < this.props.messages.length){
-      
-      this.props.fetchChannelMessages(this.props.channel.id).then((payload) => {
-        if(payload.messages.length > 0){
-        this.bottom.current.scrollIntoView()}
+    if (prevProps.location.pathname !== this.props.location.pathname ){
+
+      if (prevProps.messages.length < this.props.messages.length){
+        this.props.fetchChannel(this.props.match.params.channelId)
+          .then((payload) => {
+
+            if (payload.messages.length > 0 && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
+              this.bottom.current.scrollIntoView()
+            }
+        })
       }
-      )
+    }else{
+      if (prevProps.messages.length < this.props.messages.length && this.props.channel.subscriber_ids.includes(this.props.currentUser.id)) {
+      debugger   
+        this.bottom.current.scrollIntoView()
+
+      }
     }
 
 
@@ -68,7 +78,7 @@ class ChannelChat extends React.Component{
       channelChatShow = <>< div className='message-list' >
         {messageList}
       </div >
-      <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id} />
+      <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id} bottom={this.bottom} />
       </>;
     }
     
