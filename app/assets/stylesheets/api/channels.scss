@@ -1,3 +1,42 @@
 // Place all the styles related to the api/channels controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.member-count {
+    width: 30px;
+    cursor: pointer;
+}
+
+.member-count:hover {
+    color: #6394bc;
+}
+
+.info-divider{
+    cursor: default;
+    margin-right: 5px;
+}
+
+.star-fave:hover {
+    cursor: pointer;
+    color: #f2c744;
+}
+
+.non-subscriber {
+    width: 100%;
+    height: 100%;
+    background-color: #efeff0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.non-subscriber h3 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 5em;
+}
+
+.non-subscriber img {
+    margin: 0 auto;
+}

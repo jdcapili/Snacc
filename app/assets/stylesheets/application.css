@@ -296,9 +296,9 @@ h2.user-greeting {
 }
 
 a.active {
-    background-color: black;
+    background-color: #1164A3;
     color: white;
-    animation: fadeIn .5s;
+    animation: toActive 1s;
     font-weight: bolder;
     height: 100%;
     width: 222px;
@@ -344,6 +344,18 @@ a, a.active, a:hover, a:focus{
 
 .session-errors ul{
     font-family: 'Lato',sans-serif;
+}
+
+@keyframes toActive {
+   0% {opacity: 0;
+    margin-bottom: 0px; 
+    }
+   50% {opacity: 1;
+    margin-bottom: 20px; 
+    }
+    100% {opacity: 1;
+    margin-bottom: 0px; 
+    }
 }
 
 @keyframes fadeIn {

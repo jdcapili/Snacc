@@ -11,8 +11,10 @@
 }
 
 .chatroom-container div {
-  font-size: 20px;
+  font-size: 15px;
 }
+
+
 
 button.load-button {
   width: 200px;
@@ -34,6 +36,7 @@ button.load-button {
 }
 
 .channel-info {
+  display: flex;
   align-items: baseline;
   padding-top: 2.5px;
 }
@@ -58,6 +61,7 @@ span {
   height: auto;
   padding: 5px;
   display: flex;
+  align-items: center;
 }
 
 .message-info > div {
@@ -94,11 +98,17 @@ span {
 
 .main-content-header {
   justify-content: space-between;
+  margin-top: 10px;
   height: 60px;
   padding-left: 20px;
   display: flex;
   border-bottom: 1px solid #dcdcdc;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.main-content-header h1{
+  font-weight: 900;
 }
 
 .main-content-header button {
@@ -107,6 +117,9 @@ span {
   margin-right: 20px;
   color: white;
   border: 1px solid #dcdcdc;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 17px;
 }
 
 .join {
@@ -152,5 +165,9 @@ span {
 }
 
 .message-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
 }

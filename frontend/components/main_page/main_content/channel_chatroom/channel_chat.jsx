@@ -80,6 +80,13 @@ class ChannelChat extends React.Component{
       </div >
       <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id} bottom={this.bottom} />
       </>;
+    }else{
+      let joinText = this.props.channel ? <h3>Join {this.props.channel.channel_name}</h3> : <h3>Join Channel</h3>
+      channelChatShow = <> <div className='non-subscriber'>
+        {joinText}
+        <img src={window.spc}/>
+        <h3>to participate</h3>
+        </div></>
     }
     
     return (
