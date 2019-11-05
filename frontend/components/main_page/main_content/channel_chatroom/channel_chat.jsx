@@ -76,7 +76,9 @@ class ChannelChat extends React.Component{
     
     if(subscriber_ids.includes(currentUser_id)){
       channelChatShow = <>< div className='message-list' >
+        <ul>
         {messageList}
+        </ul>
       </div >
       <MessageFormContainer channel_id={channel_id} currentUser_id={currentUser_id} bottom={this.bottom} />
       </>;

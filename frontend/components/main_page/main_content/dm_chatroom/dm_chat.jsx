@@ -82,7 +82,9 @@ class DmChannelChat extends React.Component {
 
 
         <div className='message-list'>
+          <ul>
           {messageList}
+          </ul>
         </div>
         <MessageFormContainer/>
       </div>

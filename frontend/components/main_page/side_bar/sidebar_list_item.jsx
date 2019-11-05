@@ -44,7 +44,7 @@ class SidebarListItem extends React.Component {
 
   render(){
     let {channel} = this.props
-    let channel_name = channel.channel_name.length > 10 ? channel.channel_name.slice(0,9) + '...' : channel.channel_name
+    let channel_name = channel.channel_name
     return <li key={channel.id} >
       <NavLink to={`/main/channels/${channel.id}`} onContextMenu={this.dropOptionsClick} >
         # {channel_name}</NavLink>
