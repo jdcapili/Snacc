@@ -50,7 +50,7 @@
 .inner-div ul {
     display: flex;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: scroll;  
 }
 
 .inner-div li {
@@ -58,6 +58,7 @@
     margin: 5px 5px;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
+    animation: fadeInListItem 1s;
 }
 
 .inner-div button {
@@ -74,7 +75,8 @@
     font-family: Lato,sans-serif;
     font-weight: bold;
     margin-right: 5px;
-    animation: fadeIn .25s;  
+    animation: fadeIn .25s; 
+    position: relative; 
 }
 
 .member-selection {
@@ -82,4 +84,14 @@
     padding: 10px;
     box-sizing: border-box;
     display: flex;
+    overflow: hidden;
+}
+
+.member-selection i.fas.fa-times {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    border-radius: 10px;
+    background-color: white;
+    color: red;
 }

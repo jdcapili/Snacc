@@ -367,6 +367,18 @@ a, a.active, a:hover, a:focus{
     }
 }
 
+@keyframes fadeInListItem {
+    
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 @keyframes fadeInForm {
    0% {opacity: 0; 
     }

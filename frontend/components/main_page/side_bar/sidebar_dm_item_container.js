@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import SidebarDmItem from './sidebar_dm_item';
-import { deleteDmGroup } from '../../../actions/dm_group_actions';
+import { removeGroup } from '../../../actions/dm_group_actions';
 
 const msp = (state, ownProps) => {
 
@@ -24,7 +24,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
   return {
-    deleteDmGroup: (id) => dispatch(deleteDmGroup(id))
+   removeGroup: (id) => dispatch(removeGroup(id))
   }
 }
 

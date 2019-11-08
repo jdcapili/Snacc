@@ -56,8 +56,8 @@ class SidebarDmItem extends React.Component {
         {dmGroup_name}</NavLink>
    
       <nav className={this.state.toggleStatus} onMouseLeave={this.dropOptionsClick} >
-        <button onClick={() => this.props.deleteDmGroup(dmGroup.id)}>
-          Delete Group
+        <button onClick={() => this.props.removeGroup(dmGroup.id)}>
+          Close Group
           </button>
       </nav>
 

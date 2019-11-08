@@ -7,7 +7,7 @@ import Footer from './greeting/footer';
 import Splash from './splash/splash';
 import SigninFormContainer from './session_form/signin_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
-import Modal from './modal/trial_modal';
+import Modal from './modal/modal';
 // import ChatRoomContainer from './main_page/main_content/chatroom_container'
 // import ChatRoom from './main_page/main_content/chatroom';
 
