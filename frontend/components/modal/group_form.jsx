@@ -12,6 +12,7 @@ class GroupForm extends React.Component {
     this.selectMembers = this.selectMembers.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
     this.removeFromSelection = this.removeFromSelection.bind(this);
+    this.closeFromOutside = this.closeFromOutside.bind(this);
   }
 
   selectMembers(user){
@@ -46,6 +47,12 @@ class GroupForm extends React.Component {
     
   }
 
+  closeFromOutside(e) {
+    if (e.target.className === 'create-form') {
+      this.props.closeModal()
+    }
+  }
+
   handleCreate(){
     this.props.createDmGroup(this.state.userIdsToAdd).then(this.props.closeModal())
   }
@@ -59,7 +66,7 @@ class GroupForm extends React.Component {
     }) 
 
     return <>
-      <div className="create-form">
+      <div className="create-form" onClick={this.closeFromOutside}>
         <div>
           <i className="fas fa-times" onClick={this.props.closeModal}></i>
           <div onSubmit={this.handleClick} className="inner-div">

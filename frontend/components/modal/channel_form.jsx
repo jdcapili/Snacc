@@ -15,6 +15,7 @@ class ChannelForm extends React.Component {
     this.update = this.update.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.removeFromSelection = this.removeFromSelection.bind(this);
+    this.closeFromOutside = this.closeFromOutside.bind(this);
   }
 
   selectMembers(user) {
@@ -61,6 +62,12 @@ class ChannelForm extends React.Component {
 
   }
 
+  closeFromOutside(e){
+    if(e.target.className === 'create-form'){
+      this.props.closeModal()
+    }
+  }
+
   render(){
 
     let userList = this.state.usersList.map((user) => {
@@ -70,12 +77,12 @@ class ChannelForm extends React.Component {
     }) 
 
     return <>
-      <div className="create-form">
+      <div className="create-form" onClick={this.closeFromOutside}>
         <div>
           <i className="fas fa-times" onClick={this.props.closeModal}></i>
           <div onSubmit={this.handleClick} className="inner-div">
             <h1>Create a Channel</h1>
-            <p>Channels are where your members communicate. They're best when organized around a topic -- #AppAcademyProjects, for example. :3</p>
+            <p>Channels are where your members communicate. They're best when organized around a topic -- #AppAcademyProjects, for example.</p>
             <form>
             <label htmlFor="name">Name</label>
             <input onChange={this.update('channel_name')} 
