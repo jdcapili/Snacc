@@ -94,7 +94,7 @@ class MainHeader extends React.Component {
       return <>
         <div className='main-content-header'>
           <div>
-            <h1 ># {channel_name}</h1>
+            <h1 >#{channel_name}</h1>
             
             <div className='channel-info'>
               <div className='star-fave'>

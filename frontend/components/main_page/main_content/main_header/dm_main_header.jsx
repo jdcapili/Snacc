@@ -54,7 +54,15 @@ class DmMainHeader extends React.Component {
       return <div className='main-content-header'>
           <div>
             <h1 >{dm_group_name}</h1>
-            <div className='channel-info'><i className="far fa-user"></i><span>{this.props.users.length + 1}</span>
+            <div className='channel-info'>
+              <div className='star-fave'>
+                <i className="far fa-star"></i>
+              </div>
+              <span className='info-divider'>|</span>
+              <div className="member-count">
+                <i className="far fa-user"></i>
+                <span>{this.props.users.length + 1}</span>
+              </div>
             </div>
           </div>
 
