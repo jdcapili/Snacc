@@ -32,6 +32,7 @@ seeduser14 = User.create(display_name: 'raphiree', email: 'demo14@friend.com', p
 seeduser15 = User.create(display_name: 'tsheng1', email: 'demo15@friend.com', password:'123456')
 seeduser16 = User.create(display_name: 'andreskim', email: 'demo16@friend.com', password:'123456')
 seeduser17 = User.create(display_name: 'jc4883', email: 'demo17@friend.com', password:'123456')
+seeduser18 = User.create(display_name: 'E-kandilas', email: 'demo18@friend.com', password:'123456')
 
 
 
@@ -43,7 +44,7 @@ seedchannel2 = Channel.create(channel_name: 'FullstackProject', creator_id: seed
 dmgroup = DmGroup.create(creator_id: demoUser.id)
 dmgroup1 = DmGroup.create(creator_id: demoUser.id)
 
-general.subscribers << [demoUser,seeduser1,seeduser2, seeduser3, seeduser4, seeduser5, seeduser6,seeduser7, seeduser8, seeduser9, seeduser10, seeduser11,seeduser12,seeduser13,seeduser14,seeduser15, seeduser16, seeduser17]
+general.subscribers << [demoUser,seeduser1,seeduser2, seeduser3, seeduser4, seeduser5, seeduser6,seeduser7, seeduser8, seeduser9, seeduser10, seeduser11,seeduser12,seeduser13,seeduser14,seeduser15, seeduser16, seeduser17, seeduser18]
 seedchannel1.subscribers << [seeduser1, seeduser7]
 seedchannel2.subscribers << [seeduser1,seeduser9,seeduser13]
 dmgroup.members << [demoUser,seeduser5,seeduser6, seeduser10]
