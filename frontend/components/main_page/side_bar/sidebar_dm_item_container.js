@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import SidebarDmItem from './sidebar_dm_item';
 import { removeGroup } from '../../../actions/dm_group_actions';
+import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
 
@@ -28,4 +29,5 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(msp, mdp)(SidebarDmItem);
+export default withRouter(connect(msp, mdp)(SidebarDmItem))
+;

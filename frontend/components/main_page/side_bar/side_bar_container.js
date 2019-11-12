@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom';
 
 const msp = state => {
   
- 
+  
   return {
     currentUser: state.entities.users[state.session.id],
     channels: state.entities.channels,

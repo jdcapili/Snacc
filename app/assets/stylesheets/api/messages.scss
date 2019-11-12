@@ -107,8 +107,14 @@ span {
   box-sizing: border-box;
 }
 
-.main-content-header h1{
-  font-weight: 900;
+.main-content-header h1 {
+    width: 700px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 900;
+    box-sizing: content-box;
 }
 
 .main-content-header button {

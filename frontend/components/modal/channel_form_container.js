@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import ChannelForm from "./channel_form";
 import { closeModal } from "../../actions/modal_actions";
 import { createChannel } from "../../actions/channel_actions";
+import { withRouter } from 'react-router-dom';
 
 const msp = state => {
   return {
@@ -17,7 +18,7 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   msp,
   mdp
-)(ChannelForm);
+)(ChannelForm));

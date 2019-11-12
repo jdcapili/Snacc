@@ -82,6 +82,7 @@ class SideBar extends React.Component {
       if (this.props.currentUser.dm_group_ids.length !== prevProps.currentUser.dm_group_ids.length) {
         
         this.props.fetchDmGroups().then((payload) => {
+          
           subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
         })
       }
@@ -132,6 +133,13 @@ class SideBar extends React.Component {
           <button onClick={this.props.logout}>Sign Out</button>
         </nav>
       </div>
+
+      <div className="side-bar-ol-presence">
+        <a href="https://github.com/jdcapili" target="_blank"><i className="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jd-capili/" target="_blank"><i className="fab fa-linkedin"></i></a>
+        <a href="https://angel.co/john-daniele-capili" target="_blank" id="angel-list"><i className="fab fa-angellist"></i></a>
+      </div>
+
 
       <div className="channel-groups">
         <div onClick={() => this.props.openModal('channel')}><h3>Channels</h3><i className="fas fa-plus-circle"></i></div>

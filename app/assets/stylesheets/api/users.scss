@@ -49,16 +49,22 @@
 
 .inner-div ul {
     display: flex;
+    height: 75px;
     flex-wrap: wrap;
-    overflow-y: scroll;  
+    overflow-y: auto;
 }
 
 .inner-div li {
     padding: 5px;
     margin: 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     animation: fadeInListItem 1s;
+    box-sizing: border-box;
 }
 
 .inner-div button {
@@ -71,17 +77,26 @@
 .member-selection span {
     border: 1px solid #d1d1d1;
     padding: 5px;
+    height: 30px;
+    box-sizing: border-box;
     border-radius: 5px;
     font-family: Lato,sans-serif;
     font-weight: bold;
-    margin-right: 5px;
-    animation: fadeIn .25s; 
-    position: relative; 
+    margin-right: 15px;
+    margin-top: 5px;
+    animation: fadeIn .25s;
+    position: relative;
+}
+
+.member-selection .form-error{
+    border: none;
+    color: red;
 }
 
 .member-selection {
     align-items: center;
     padding: 10px;
+    height: 60px;
     box-sizing: border-box;
     display: flex;
     overflow: hidden;
@@ -94,4 +109,14 @@
     border-radius: 10px;
     background-color: white;
     color: red;
+}
+
+.member-selection div {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    height: 60px;
 }

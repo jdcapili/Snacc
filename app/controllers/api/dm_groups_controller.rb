@@ -23,6 +23,7 @@ class Api::DmGroupsController < ApplicationController
 
     if @dm_group.save
       @dm_group.members << User.where(:id => params[:dm_group][:user_ids]) #user_ids include creator
+      @dm_group = DmGroup.includes(:messages, :members,:creator).find(@dm_group.id)
       # DmGroupUser.create(user_id: current_user.id, dm_group_id: @dm_group.id)
       
       

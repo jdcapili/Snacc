@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import SidebarListItem from "./sidebar_list_item";
 import { deleteChannel } from "../../../actions/channel_actions";
+import { withRouter } from "react-router-dom";
 
 const msp = (state, ownProps) => {
   let channel = state.entities.channels[ownProps.channelId];
@@ -18,7 +19,7 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   msp,
   mdp
-)(SidebarListItem);
+)(SidebarListItem));

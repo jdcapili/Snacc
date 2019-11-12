@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import GroupForm from './group_form';
 import { closeModal } from '../../actions/modal_actions';
 import { createDmGroup } from '../../actions/dm_group_actions';
+import { withRouter } from 'react-router-dom';
 
 const msp = state => {
   return {
@@ -17,4 +18,4 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(msp, mdp)(GroupForm)
+export default withRouter(connect(msp, mdp)(GroupForm))

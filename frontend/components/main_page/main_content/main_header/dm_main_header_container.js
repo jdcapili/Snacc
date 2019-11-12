@@ -9,9 +9,10 @@ import { fetchAllUsers } from "../../../../actions/session_actions";
 import { receiveMessage } from "../../../../actions/message_actions";
 
 const msp = (state, ownProps) => {
-  let memberIds = Object.values(state.entities.dmGroups).length !== 0 ? 
-    state.entities.dmGroups[ownProps.match.params.dmGroupId].member_ids :
-    [];
+  let memberIds = [];
+  if (Object.values(state.entities.dmGroups).length !== 0 && state.entities.dmGroups[ownProps.match.params.dmGroupId]){
+    memberIds = state.entities.dmGroups[ownProps.match.params.dmGroupId].member_ids;
+  }
   let userList = Object.values(state.entities.users);
   let users = userList.length === 0 ? [] :
     userList.filter((user) => memberIds.includes(user.id) && user.id !== state.session.id);

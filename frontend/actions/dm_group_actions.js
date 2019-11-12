@@ -17,7 +17,8 @@ export const receiveGroup = payload => {
   return {
     type: RECEIVE_GROUP,
     dmGroup: payload.dm_group,
-    messages: payload.messages
+    messages: payload.messages,
+    members: payload.members
   };
 };
 

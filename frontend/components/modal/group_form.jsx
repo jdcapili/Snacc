@@ -6,13 +6,15 @@ class GroupForm extends React.Component {
     this.state = {
       usersToAdd: [],
       userIdsToAdd:[props.currentUserId],
-      usersList: this.props.users
+      usersList: this.props.users,
+      error: ''
     }
 
     this.selectMembers = this.selectMembers.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
     this.removeFromSelection = this.removeFromSelection.bind(this);
     this.closeFromOutside = this.closeFromOutside.bind(this);
+    this.redirectNewChat = this.redirectNewChat.bind(this);
   }
 
   selectMembers(user){
@@ -29,7 +31,8 @@ class GroupForm extends React.Component {
     this.setState({
       usersToAdd: newArr,
       userIdsToAdd: newIdArr,
-      usersList: newList
+      usersList: newList,
+      error: ""
     })
   }
 
@@ -54,7 +57,18 @@ class GroupForm extends React.Component {
   }
 
   handleCreate(){
-    this.props.createDmGroup(this.state.userIdsToAdd).then(this.props.closeModal())
+    if(this.state.userIdsToAdd.length === 1){
+      this.setState({error: 'Please Select Members'})
+    }else{
+    this.props.createDmGroup(this.state.userIdsToAdd).then((payload) => {
+      this.redirectNewChat(payload.dmGroup.id)
+    })
+    }
+  }
+
+  redirectNewChat(chatId){
+    this.props.closeModal();
+    this.props.history.push(`/main/dm_groups/${chatId}`)
   }
 
   render() {
@@ -73,6 +87,7 @@ class GroupForm extends React.Component {
             <h1>Create a Direct Message Group</h1>
             <div className='member-selection'>
               <div>{this.state.usersToAdd}</div>
+              <span className="form-error">{this.state.error}</span>
             </div>
             <button onClick={this.handleCreate}>Create!</button>
             <ul>

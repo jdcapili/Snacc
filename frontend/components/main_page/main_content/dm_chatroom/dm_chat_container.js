@@ -6,10 +6,14 @@ import {connect} from 'react-redux';
 const msp = (state, ownProps) => {
   
   let dmGroup = state.entities.dmGroups[ownProps.match.params.dmGroupId];
-  let messages = Object.values(state.entities.messages).filter(message => {
-    
-    return dmGroup.message_ids.includes(message.id);
-  });
+  let messages = [];
+  if(typeof dmGroup !== 'undefined'){
+   
+    messages = Object.values(state.entities.messages).filter(message => {
+      
+      return dmGroup.message_ids.includes(message.id);
+    });
+  }
 
   return {
     currentUser: state.entities.users[state.session.id],

@@ -8,7 +8,8 @@ class ChannelForm extends React.Component {
       channel_name: '',
       usersToAdd: [],
       userIdsToAdd: [props.currentUserId],
-      usersList: this.props.users
+      usersList: this.props.users,
+      error: ''
     }
 
     this.selectMembers = this.selectMembers.bind(this);
@@ -16,6 +17,7 @@ class ChannelForm extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.removeFromSelection = this.removeFromSelection.bind(this);
     this.closeFromOutside = this.closeFromOutside.bind(this);
+    this.redirectNewChat = this.redirectNewChat.bind(this);
   }
 
   selectMembers(user) {
@@ -33,7 +35,8 @@ class ChannelForm extends React.Component {
     this.setState({
       usersToAdd: newArr,
       userIdsToAdd: newIdArr,
-      usersList: newList
+      usersList: newList,
+      error:''
     })
   }
 
@@ -58,8 +61,15 @@ class ChannelForm extends React.Component {
   handleClick(e){
     e.preventDefault();
     
-    this.props.createChannel(this.state).then(this.props.closeModal())
+    this.props.createChannel(this.state).then((payload) => {
+      this.redirectNewChat(payload.channel.id)
+    })
 
+  }
+
+  redirectNewChat(chatId) {
+    this.props.closeModal();
+    this.props.history.push(`/main/channels/${chatId}`)
   }
 
   closeFromOutside(e){
@@ -92,6 +102,7 @@ class ChannelForm extends React.Component {
             <label htmlFor="members">Select Members</label>
               <div className='member-selection'>
                 <div>{this.state.usersToAdd}</div>
+                <span className="form-error">{this.state.error}</span>
               </div>
               <ul>
                 {userList}

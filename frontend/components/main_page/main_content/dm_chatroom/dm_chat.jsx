@@ -30,8 +30,7 @@ class DmChannelChat extends React.Component {
 
   }
 
-  componentDidUpdate(prevProps) {
-    
+  componentDidUpdate(prevProps) { 
     if (prevProps.location.pathname !== this.props.location.pathname) {
 
       
@@ -44,7 +43,7 @@ class DmChannelChat extends React.Component {
         })
       
     } else {
-      if (prevProps.messages.length < this.props.messages.length) {
+      if (prevProps.messages.length < this.props.messages.length || this.props.messages.length !== 0) {
 
         this.bottom.current.scrollIntoView()
 
@@ -57,7 +56,7 @@ class DmChannelChat extends React.Component {
 
   render() {
     
-    let dm_group_id = typeof this.props.dmGroup === 'undefined' ? '' : this.props.dmGroup.id
+
     let member_ids = typeof this.props.dmGroup === 'undefined' ? '' : this.props.dmGroup.member_ids
     let currentUser_id = typeof this.props.currentUser === 'undefined' ? '' : this.props.currentUser.id
 

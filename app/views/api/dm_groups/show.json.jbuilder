@@ -6,6 +6,9 @@ json.messages do
     json.partial! "api/messages/message", message: message
   end
 end
-json.creator do
-  json.partial! "api/users/user", user: @dm_group.creator
+
+json.members do
+  json.array!(@dm_group.members) do |member|
+    json.partial! "api/users/user", user: member
+  end
 end

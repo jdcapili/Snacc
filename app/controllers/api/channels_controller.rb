@@ -11,7 +11,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.includes(:messages, :subscribers).find(params[:id]) #.includes(:subscriber_ids)
+    @channel = Channel.includes(:messages, :subscribers, :creator).find(params[:id]) #.includes(:subscriber_ids)
     
     render 'api/channels/show'
   end
@@ -24,7 +24,7 @@ class Api::ChannelsController < ApplicationController
 
     if @channel.save
       @channel.subscribers << User.where(:id => params[:channel][:user_ids])
-      
+      @channel = Channel.includes(:messages, :subscribers, :creator).find(@channel.id)
       
       render 'api/channels/show'
     else

@@ -270,6 +270,7 @@ h2.user-greeting {
 
 .channel-groups li, .dm-groups li {
     display: flex;
+    position: relative;
     width: 222px;
     height: 30px;
     align-items: center;
@@ -411,6 +412,10 @@ a, a.active, a:hover, a:focus{
     position: absolute;
     z-index: 1;
     padding: 0px 25px;
+}
+.dropdown-options-content{
+    top: 30px;
+    left: 10px;
 }
 
 .dropdown-sidebar-content h3 {
@@ -559,7 +564,7 @@ h4 {
 .create-form form {
     height: 200px;
     width: 100%;
-    margin: auto;
+    margin: 50px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -633,4 +638,12 @@ h4 {
 
 i.fas.fa-plus-circle {
     align-self: center;
+}
+
+.channel-groups .chat-name, .dm-groups .chat-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 170px;
+    display: inline-block;
 }
