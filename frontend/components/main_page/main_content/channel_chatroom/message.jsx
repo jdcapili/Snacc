@@ -11,7 +11,7 @@ class Message extends React.Component {
       editState: null
     }
     this.timeFormat = this.timeFormat.bind(this);
-    this.editDoubleClick = this.editDoubleClick.bind(this);
+    this.editClick = this.editClick.bind(this);
     this.update = this.update.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -27,7 +27,7 @@ class Message extends React.Component {
     return hours+":"+minutes+ampm
   }
 
-  editDoubleClick(){
+  editClick(){
  
     if (this.props.author.id === this.props.currentUserId){
       let toggleEdit = this.state.editState === 'edit-message' ? null : 'edit-message'
@@ -73,13 +73,19 @@ class Message extends React.Component {
       return <>
       <div className='user-avatar'><img src={window.personIcon} /></div>
       <div className="message-info">
-        <div><h3>{author.display_name}</h3><span>{create_time}</span></div>
+          <div>
+            <h3>{author.display_name}</h3>
+            <span>{create_time}</span>
+            <div className="author-options">
+              <i class="fas fa-edit" onClick={this.editClick}></i>
+            </div>
+          </div>
         <form onSubmit={this.handleClick}>
           <input type="text" value={this.state.toUpdate} onChange={this.update}/>
           
           <div className='form-buttons'>
             <input type="submit" value="Update"/>
-            <input type='button' onClick={this.editDoubleClick} value='Close' />
+            <input type='button' onClick={this.editClick} value='Close' />
           </div>
         </form>
       </div>
@@ -89,8 +95,14 @@ class Message extends React.Component {
       return <>
         <div className='user-avatar'><img src={window.personIcon} /></div>
         <div className="message-info">
-          <div><h3>{author.display_name}</h3><span>{create_time}</span></div>
-          <p onDoubleClick={this.editDoubleClick}>{message.body}</p>
+          <div>
+            <h3>{author.display_name}</h3>
+            <span>{create_time}</span>
+            <div className="author-options">
+              <i class="fas fa-edit" onClick={this.editClick}></i>
+            </div>
+          </div>
+          <p onDoubleClick={this.editClick}>{message.body}</p>
         </div>
       </>
     }

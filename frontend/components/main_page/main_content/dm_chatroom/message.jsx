@@ -72,7 +72,13 @@ class Message extends React.Component {
       return <>
         <div className='user-avatar'><img src={window.personIcon} /></div>
         <div className="message-info">
-          <div><h3>{author.display_name}</h3><span>{create_time}</span></div>
+          <div>
+              <h3>{author.display_name}</h3>
+              <span>{create_time}</span>
+            <div className="author-options">
+              <i class="fas fa-edit"></i>
+            </div>
+          </div>
           <form onSubmit={this.handleClick}>
             <input type="text" value={this.state.toUpdate} onChange={this.update} />
 
