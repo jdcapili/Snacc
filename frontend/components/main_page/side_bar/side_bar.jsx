@@ -50,11 +50,11 @@ class SideBar extends React.Component {
 
   componentDidMount(){
     
-    let {currentUser,receiveMessage} = this.props
+    let {currentUser,receiveMessage,removeMessage} = this.props
     let {props} = this;
     this.props.fetchAllUsers().then(() => 
     this.props.fetchChannels(currentUser.id).then((payload) => {
-      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage);
+      subscribeChannels(payload.channels,currentUser.subscribed_channel_ids,receiveMessage,removeMessage);
 
       this.redirectGeneral()
       

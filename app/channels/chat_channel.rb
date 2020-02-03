@@ -51,6 +51,17 @@ class ChatChannel < ApplicationCable::Channel
     end
   end
 
+  def delete(data)
+    message = Message.find(data['message']['id'])
+
+    if data['message']['currentUserId'] == message.author_id
+      message.destroy!
+      datum = {message: message.attributes}
+      socket = {datum: datum, type: 'delete'}
+      ChatChannel.broadcast_to(@chat_channel, socket)
+    end
+  end
+
   def load
     
     messages = Message.all.collect(&:body)

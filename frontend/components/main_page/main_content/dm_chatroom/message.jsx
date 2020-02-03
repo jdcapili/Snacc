@@ -76,7 +76,7 @@ class Message extends React.Component {
               <h3>{author.display_name}</h3>
               <span>{create_time}</span>
             <div className="author-options">
-              <i class="fas fa-edit"></i>
+              <i className="fas fa-edit"></i>
             </div>
           </div>
           <form onSubmit={this.handleClick}>

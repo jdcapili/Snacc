@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
+const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage, removeMessage) => {
   
   channelsArray.forEach((channel) => {
 
@@ -28,6 +28,13 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
                   receiveMessage(data.datum, "channel"); //dispatch actions
                 }
                 break;
+              case "delete":
+                
+                if (data.datum.message.messageable_id === channel.id) {
+
+                  removeMessage(data.datum, "channel"); //dispatch actions
+                }
+                break;
             }
           },
           speak: function (data) {
@@ -36,6 +43,9 @@ const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage) => {
           update: function (data) {
 
             return this.perform("update", data);
+          },
+          delete: function (data) {
+            return this.perform("delete", data)
           },
           load: function () {
             return this.perform("load");
