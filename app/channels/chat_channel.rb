@@ -31,7 +31,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def update(data)
-
+    
     message = Message.includes(:author).find(data['message']['id'])
     channel_data = Channel.includes(:messages, :subscribers).find(message.messageable_id)
     channel = {channel: {id: channel_data.id, channel_name: channel_data.channel_name,
@@ -47,6 +47,17 @@ class ChatChannel < ApplicationCable::Channel
       datum = {message: message.attributes}.merge(author)
       datum = datum.merge(channel)
       socket = {datum: datum,type: 'message'}
+      ChatChannel.broadcast_to(@chat_channel, socket)
+    end
+  end
+
+  def delete(data)
+    message = Message.find(data['message']['id'])
+
+    if data['message']['currentUserId'] == message.author_id
+      message.destroy!
+      datum = {message: message.attributes}
+      socket = {datum: datum, type: 'delete'}
       ChatChannel.broadcast_to(@chat_channel, socket)
     end
   end

@@ -139,18 +139,22 @@ span {
 
 
 .message-info input[type='submit'] {
-  border: 1px solid #868686;
-  height: 100%;
-  width: 80px;
-  border-radius: 5px;
-  margin-right: 5px;
+    border: 1px solid #868686;
+    background-color: #249829;
+    color: #ffffff;
+    height: 100%;
+    width: 80px;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
 }
 
 
 .message-info input[type='text'] {
   border: 1px solid #868686;
   height: 100%;
-  width: 100%;
+  width: auto;
   border-radius: 5px;
   margin-right: 5px;
 }
@@ -177,4 +181,14 @@ span {
   flex-direction: column;
   width: 100%;
   height: 100%;
+}
+
+.author-options {
+    margin-left: 5px;
+    height: 15px;
+    }
+
+
+.author-options .fas {
+    position: inherit;
 }

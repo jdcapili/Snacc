@@ -10,19 +10,20 @@ import { RECEIVE_GROUP } from '../actions/dm_group_actions';
 const messagesReducer = (oldState = {}, action) => {
 
   Object.freeze(oldState);
+  let newState
   switch (action.type) {
     case RECEIVE_MESSAGES: {
-      let newState = {};
+      newState = {};
       action.messages.forEach(message => (newState[message.id] = message));
       return newState;
     }
     case RECEIVE_CHANNEL: {
-      let newState = {};
+      newState = {};
       action.messages.forEach(message => (newState[message.id] = message));
       return newState;
     }
     case RECEIVE_GROUP: {
-      let newState = {};
+      newState = {};
       action.messages.forEach(message => (newState[message.id] = message));
       return newState;
     }
@@ -30,8 +31,10 @@ const messagesReducer = (oldState = {}, action) => {
       return merge({}, oldState, { [action.message.id]: action.message });
     }
     case REMOVE_MESSAGE: {
-      let newState = merge({}, oldState);
-      delete newState[action.messageId];
+      
+      newState = merge({}, oldState);
+      delete newState[action.message.id];
+      
       return newState;
     }
     default:

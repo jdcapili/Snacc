@@ -7,9 +7,9 @@ class ChannelChat extends React.Component{
   constructor(props){
     super(props);
     this.bottom = React.createRef();
+    }
 
-    
-  }
+
   componentDidMount(){
     
     if (typeof this.props.channel === 'undefined' 

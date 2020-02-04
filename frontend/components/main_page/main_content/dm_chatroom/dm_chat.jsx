@@ -43,7 +43,7 @@ class DmChannelChat extends React.Component {
         })
       
     } else {
-      if (prevProps.messages.length < this.props.messages.length || this.props.messages.length !== 0) {
+      if (this.props.messages.length !== 0 && prevProps.messages.length < this.props.messages.length) {
 
         this.bottom.current.scrollIntoView()
 

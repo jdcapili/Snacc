@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchChannels, deleteChannel } from '../../../actions/channel_actions';
 import { fetchDmGroups, deleteDmGroup } from "../../../actions/dm_group_actions";
-import { receiveMessage,receiveMessages } from '../../../actions/message_actions';
+import { receiveMessage,receiveMessages, removeMessage } from '../../../actions/message_actions';
 import { logout, fetchAllUsers } from '../../../actions/session_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
 import SideBar from './side_bar';
@@ -20,6 +20,7 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     receiveMessage: (message, channelType) => dispatch(receiveMessage(message,channelType)),
+    removeMessage: (message, channelType) => dispatch(removeMessage(message, channelType)),
     receiveMessages: (messages) => dispatch(receiveMessages(messages)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchChannels: (id) => dispatch(fetchChannels(id)),

@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-const subscribeDmGroups = (dmGroupsArray, subsDmGroupArr, receiveMessage) => {
+const subscribeDmGroups = (dmGroupsArray, subsDmGroupArr, receiveMessage, removeMessage) => {
  
   dmGroupsArray.forEach((dmGroup) => {
    
@@ -18,26 +18,33 @@ const subscribeDmGroups = (dmGroupsArray, subsDmGroupArr, receiveMessage) => {
           received: data => {
             
             switch (data.type) {
-              case "message":
+              case "messageDM":
                 
                 if (data.datum.message.messageable_id === dmGroup.id) {
                   
                   receiveMessage(data.datum, "dmGroup"); //dispatch actions
                 }
                 break;
+              case "deleteDM":
+                
+                if (data.datum.message.messageable_id === dmGroup.id) {
+
+                  removeMessage(data.datum, "dmGroup"); //dispatch actions
+                }
+                break;
             }
           },
           speak: function (data) {
             
-            return this.perform("speak", data);
+            return this.perform("speakDM", data);
           },
-          update: function (data) {
-
-            return this.perform("update", data);
+          updateDM: function (data) {
+            
+            return this.perform("updateDM", data);
           },
-          load: function () {
-            return this.perform("load");
-          }
+          deleteDM: function (data) {
+            return this.perform("deleteDM", data)
+          },
         }
       );
 

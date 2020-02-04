@@ -14,7 +14,7 @@ export const receiveMessages = (messages) => {
 };
 
 export const receiveMessage = (datum, channelType) => {
-
+  
   return {type: RECEIVE_MESSAGE,
     message: datum.message,
     chatChannel: datum.channel || datum.dm_group,
@@ -22,9 +22,12 @@ export const receiveMessage = (datum, channelType) => {
   channelType}
 };
 
-export const removeMessage = (messageId) => ({
+export const removeMessage = (datum, channelType) => ({
   type: REMOVE_MESSAGE,
-  messageId
+  message: datum.message,
+  author: datum.message.author_id,
+  chatChannel: datum.message.messageable_id,
+  channelType
 });
 
 // thunk action creators
