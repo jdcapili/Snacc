@@ -52,14 +52,16 @@ class Message extends React.Component {
     }
 
     let channel_id = this.props.channel.id;
-
+    let sub;
     App.cable.subscriptions.subscriptions.forEach((subs, idx) => {
-  
-      if (JSON.parse(subs.identifier).id === channel_id) {
+      sub = JSON.parse(subs.identifier);
+      
+      if (sub.id === channel_id && sub.channel === 'ChatChannel') {
     
         App.cable.subscriptions.subscriptions[idx].update({
           message: message
         })
+        return
       }
     })
 
@@ -76,20 +78,17 @@ class Message extends React.Component {
     }
 
     let channel_id = this.props.channel.id;
-
+    let sub;
     App.cable.subscriptions.subscriptions.forEach((subs, idx) => {
+      sub = JSON.parse(subs.identifier);
 
-      if (JSON.parse(subs.identifier).id === channel_id) {
+      if (sub.id === channel_id && sub.channel === 'ChatChannel') {
 
         App.cable.subscriptions.subscriptions[idx].delete({
           message: message
         })
       }
     })
-
-
-
-    this.setState({ editState: null })
   }
 
   toggleOption(e){

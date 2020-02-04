@@ -31,7 +31,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def update(data)
-
+    
     message = Message.includes(:author).find(data['message']['id'])
     channel_data = Channel.includes(:messages, :subscribers).find(message.messageable_id)
     channel = {channel: {id: channel_data.id, channel_name: channel_data.channel_name,

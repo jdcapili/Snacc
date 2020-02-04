@@ -61,7 +61,7 @@ class SideBar extends React.Component {
     })
     ).then(() =>
       this.props.fetchDmGroups().then((payload) => {
-        subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage)
+        subscribeDmGroups(payload.dmGroups, currentUser.dm_group_ids, receiveMessage, removeMessage)
       })
     );
 
