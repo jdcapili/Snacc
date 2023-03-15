@@ -75,11 +75,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: Snacc_production
-  username: Snacc
-  password: <%= ENV['SNACC_DATABASE_PASSWORD'] %>
+  url: <%= ENV['HEROKU_POSTGRESQL_MAROON_URL'] %>
+#
+# production:
+#   <<: *default
+#   database: Snacc_production
+#   username: Snacc
+#   password: <%= ENV['SNACC_DATABASE_PASSWORD'] %>
