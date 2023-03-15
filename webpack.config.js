@@ -16,13 +16,13 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
-          query: {
-            presets: ["@babel/env", "@babel/react"]
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/env', '@babel/react']
           }
         }
       }
     ]
   },
-  devtool: "eval-source-map"
+  devtool: "source-map"
 };
