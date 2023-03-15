@@ -1,5 +1,5 @@
 // runs subscriberHelper on didMount
-import React from 'react';
+// import React from 'react';
 
 
 const subscribeChannels = (channelsArray, subsChannelArr, receiveMessage, removeMessage) => {

@@ -4,7 +4,7 @@ import {
   REMOVE_MESSAGE
 } from '../actions/message_actions';
 import {merge} from 'lodash';
-import { RECEIVE_CHANNEL, RECEIVE_CHANNELS } from '../actions/channel_actions';
+import { RECEIVE_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_GROUP } from '../actions/dm_group_actions';
 
 const messagesReducer = (oldState = {}, action) => {

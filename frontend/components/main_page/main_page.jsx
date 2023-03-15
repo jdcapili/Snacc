@@ -2,7 +2,7 @@ import React from 'react';
 import SideBarContainer from './side_bar/side_bar_container';
 import ChannelChatContainer from './main_content/channel_chatroom/channel_chat_container';
 import DmChannelChatContainer from './main_content/dm_chatroom/dm_chat_container';
-import { ProtectedRoute } from '../../util/route_util';
+// import { ProtectedRoute } from '../../util/route_util';
 import {Route} from 'react-router-dom';
 
 

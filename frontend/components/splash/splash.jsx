@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import SelectedFeature from './features_screen';
 
 class Splash extends React.Component {

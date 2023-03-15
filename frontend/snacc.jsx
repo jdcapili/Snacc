@@ -4,8 +4,8 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //utils
-import * as messages from './actions/message_actions';
-import * as channels from './actions/channel_actions';
+// import * as messages from './actions/message_actions';
+// import * as channels from './actions/channel_actions';
 //
 
 document.addEventListener("DOMContentLoaded", () => {
