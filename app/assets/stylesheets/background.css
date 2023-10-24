@@ -47,11 +47,16 @@
 }
 
 .feat-selection {
-    justify-content: space-evenly;
+    justify-content: center;
     display: flex;
     width: 100%;
     padding: 0px 50px;
     box-sizing: border-box;
+}
+
+.features-screen{
+  margin-right: 10px;
+
 }
 
 .features-options li {
@@ -66,10 +71,12 @@
     align-items: center;
     text-align: center;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .splash-bg {
   position: relative;
+  z-index: 6;
 }
 
 .splash-bg > div{

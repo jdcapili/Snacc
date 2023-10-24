@@ -18,7 +18,7 @@
 body{
     margin: 0;
     list-style: none;
-
+    height: 100%;
 }
 
 footer img {
@@ -45,6 +45,7 @@ footer {
     z-index: 10;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     height: 40px;
 }
 
@@ -90,6 +91,7 @@ header {
     position: absolute;
     z-index: 5;
     width: 100%;
+    background-color: #f8f8f8;
 }
 
 
@@ -155,7 +157,7 @@ header a.active {
 main#root {
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     background-color: #f8f8f8;
 }
 
